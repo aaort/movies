@@ -12,8 +12,8 @@ const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 export default function MoviePoster({ movie }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   return (
-    <div className="flex flex-col gap-10 bg-slate-300 text-slate-900 rounded-md p-4">
-      <div className="relative w-full aspect-square overflow-clip rounded-md">
+    <div className="flex flex-col gap-4 bg-slate-300 text-slate-900 rounded-md overflow-clip">
+      <div className="relative w-full aspect-square">
         <Image
           fill
           alt=""
@@ -26,7 +26,7 @@ export default function MoviePoster({ movie }: Props) {
           onLoadingComplete={() => setIsLoading(false)}
         />
       </div>
-      <div>
+      <div className="mx-4 mb-4">
         <p>{movie.title}</p>
         <p>{movie.release_date}</p>
       </div>
