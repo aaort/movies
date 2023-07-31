@@ -13,7 +13,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
               </Link>
             </li>
             <li>
-              <Link href="#" className="navbar-link">
+              <Link href="/trending/people" className="navbar-link">
                 People
               </Link>
             </li>
@@ -30,7 +30,9 @@ export default function Layout({ children }: React.PropsWithChildren) {
           </ul>
         </nav>
       </header>
-      {children}
+      <main className="px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-20">
+        {children}
+      </main>
       <footer></footer>
     </div>
   );
