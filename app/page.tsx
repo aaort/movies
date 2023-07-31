@@ -12,7 +12,7 @@ export default function Home() {
     if (!sessionStorage.getItem('session_id')) {
       redirect('/login');
     }
-  });
+  }, []);
 
   useEffect(() => {
     const setTrendingMovies = async () => {
@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="grid p-10 gap-16 grid-cols-4">
+    <main className="grid p-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-20 gap-16 grid-cols-4">
       {movies?.map((movie) => (
         <MoviePoster key={movie.id} movie={movie} />
       ))}
