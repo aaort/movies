@@ -1,10 +1,7 @@
 'use client';
+import getSessionId from '@/lib/auth/getSessionId';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-
-const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
-const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function CreateSession() {
   const searchParams = useSearchParams();
@@ -13,27 +10,17 @@ export default function CreateSession() {
   const requestToken = searchParams.get('request_token');
 
   useEffect(() => {
-    if (!requestToken) return;
-    const getSessionId = async () => {
-      const response = await fetch(
-        `${apiBaseUrl}authentication/session/new?api_key=${apiKey}&request_token=${requestToken}`,
-        {
-          headers: {
-            accept: 'application/json',
-            'content-type': 'application/json',
-            Authorization: `Bearer ${readApiKey}`,
-          },
-        }
-      );
+    if (!requestToken) throw new Error('Missing Request Token');
 
-      const data = await response.json();
-      const sessionId = data.session_id;
+    getSessionId(requestToken).then((sessionId) => {
+      if (sessionId) {
+        sessionStorage.setItem('session_id', sessionId);
+      } else {
+        throw new Error('Missing Session id');
+      }
+    });
 
-      if (!sessionId) return;
-      sessionStorage.setItem('session_id', sessionId);
-      push('/');
-    };
-    getSessionId();
+    push('/');
   }, [requestToken, push]);
 
   return <h1>Creating session...</h1>;
