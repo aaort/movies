@@ -28,3 +28,24 @@ type Person = {
   popularity: number;
   profile_path: string;
 };
+
+type TV = Pick<
+  Movie,
+  | 'adult'
+  | 'backdrop_path'
+  | 'id'
+  | 'original_language'
+  | 'overview'
+  | 'media_type'
+  | 'genre_ids'
+  | 'popularity'
+  | 'vote_average'
+  | 'vote_count'
+  | 'poster_path'
+> & {
+  name: string;
+  original_name: string;
+  poster_path: string;
+  first_air_date: string;
+  origin_country: string[];
+};
