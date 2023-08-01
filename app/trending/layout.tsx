@@ -17,9 +17,9 @@ export default function Layout({ children }: React.PropsWithChildren) {
                 <li className="px-4 py-2">
                   <Link
                     href="/trending/tv"
-                    className="navbar-link whitespace-nowrap"
+                    className="navbar-link whitespace-nowrap w-full"
                   >
-                    TV
+                    TV Series
                   </Link>
                 </li>
                 <li className="px-4 py-2">
