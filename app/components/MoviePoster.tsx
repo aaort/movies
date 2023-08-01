@@ -13,7 +13,7 @@ export default function MoviePoster({ movie }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   return (
     <div className="flex flex-col gap-4 bg-slate-300 text-slate-900 rounded-md overflow-clip cursor-pointer duration-200 hover:scale-105">
-      <div className="relative w-full aspect-square">
+      <div className="relative w-full aspect-[1/1.3]">
         <Image
           fill
           alt=""
