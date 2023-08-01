@@ -9,7 +9,7 @@ export default function Home() {
       return redirect('/login');
     }
 
-    redirect('/movies/trending');
+    redirect('/trending/movies');
   }, []);
 
   return (
