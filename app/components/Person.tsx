@@ -18,6 +18,7 @@ export default function Person({ person }: Props) {
           fill
           alt=""
           src={`${imagesBaseUrl}${person.profile_path}`}
+          sizes="(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)"
           className={`object-fill duration-700 ease-in-out ${
             isLoading
               ? 'scale-110 blur-2xl grayscale'
