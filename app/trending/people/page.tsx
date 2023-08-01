@@ -5,7 +5,7 @@ export default async function TrendingPeople() {
   const people = (await getTrendingPeople()).results;
 
   return (
-    <div className="grid gap-16 grid-cols-4">
+    <div className="grid gap-16 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {people.map((person) => (
         <Person key={person.id} person={person} />
       ))}
