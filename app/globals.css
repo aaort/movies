@@ -12,6 +12,6 @@ img {
 
 @layer components {
   .navbar-link {
-    @apply inline-block relative after:transition-all after:duration-200 after:content-[''] after:absolute after:h-[2px] after:w-0 hover:after:w-full after:bottom-0 after:left-0 after:bg-current;
+    @apply inline-block text-xl relative after:transition-all after:duration-200 after:content-[''] after:absolute after:h-[2px] after:w-0 hover:after:w-full after:bottom-[-4px] after:left-0  after:bg-current;
   }
 }
