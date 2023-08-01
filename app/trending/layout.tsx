@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Layout({ children }: React.PropsWithChildren) {
   return (
     <div className="flex flex-col h-full justify-between">
-      <header className="flex justify-between items-center py-10 px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32">
-        <Breadcrumbs />
+      <header className="flex flex-wrap justify-end gap-y-4 items-center py-10 px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32">
         <nav>
           <ul className="flex gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center">
             <li className="relative inline-block group">
