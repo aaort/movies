@@ -1,4 +1,4 @@
-import TVPoster from '@/app/components/TVPoster';
+import TVItem from '@/app/components/TVPosterItem';
 import getTrendingTV from '@/lib/getTrendingTV';
 
 export default async function TrendingTV() {
@@ -7,7 +7,7 @@ export default async function TrendingTV() {
   return (
     <div className="grid gap-16 grid-cols-4">
       {tvs.map((tv) => (
-        <TVPoster key={tv.id} tv={tv} />
+        <TVItem key={tv.id} tv={tv} />
       ))}
     </div>
   );

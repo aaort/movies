@@ -1,4 +1,4 @@
-import Person from '@/app/components/Person';
+import PersonItem from '@/app/components/PersonItem';
 import getTrendingPeople from '@/lib/getTrendingPeople';
 
 export default async function TrendingPeople() {
@@ -7,7 +7,7 @@ export default async function TrendingPeople() {
   return (
     <div className="grid gap-16 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {people.map((person) => (
-        <Person key={person.id} person={person} />
+        <PersonItem key={person.id} person={person} />
       ))}
     </div>
   );

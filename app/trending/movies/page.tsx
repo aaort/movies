@@ -1,4 +1,4 @@
-import MoviePoster from '@/app/components/MoviePoster';
+import MovieItem from '@/app/components/MovieItem';
 import getTrendingMovies from '@/lib/getTrendingMovies';
 
 export default async function TrendingMovies() {
@@ -7,7 +7,7 @@ export default async function TrendingMovies() {
   return (
     <div className="grid gap-16 grid-cols-4">
       {movies?.map((movie) => (
-        <MoviePoster key={movie.id} movie={movie} />
+        <MovieItem key={movie.id} movie={movie} />
       ))}
     </div>
   );
