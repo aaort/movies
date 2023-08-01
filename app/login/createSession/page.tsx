@@ -15,12 +15,11 @@ export default function CreateSession() {
     getSessionId(requestToken).then((sessionId) => {
       if (sessionId) {
         sessionStorage.setItem('session_id', sessionId);
+        push('/');
       } else {
         throw new Error('Missing Session id');
       }
     });
-
-    push('/');
   }, [requestToken, push]);
 
   return <h1>Creating session...</h1>;
