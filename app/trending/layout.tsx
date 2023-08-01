@@ -8,7 +8,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
           <ul className="flex gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center">
             <li className="relative inline-block group">
               <button className="text-xl">Trending</button>
-              <ul className="hidden group-hover:flex flex-col z-10 absolute bg-white border border-gray-300 divide-y divide-gray-100 rounded-md">
+              <ul className="hidden group-hover:flex flex-col z-10 absolute bg-white border border-gray-300 rounded-md shadow-2xl">
                 <li className="px-4 py-2">
                   <Link href="/trending/movies" className="navbar-link">
                     Movies
@@ -17,7 +17,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
                 <li className="px-4 py-2">
                   <Link
                     href="/trending/tv"
-                    className="navbar-link whitespace-nowrap	"
+                    className="navbar-link whitespace-nowrap"
                   >
                     TV
                   </Link>
