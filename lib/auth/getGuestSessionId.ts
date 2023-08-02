@@ -11,5 +11,5 @@ export default async function getGuestSessionId() {
     },
   });
 
-  return (await data.json()).request_token;
+  return (await data.json()).guest_session_id;
 }

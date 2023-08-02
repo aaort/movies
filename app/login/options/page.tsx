@@ -21,7 +21,7 @@ export default async function Options() {
         </Link>
         <Link
           className="bg-slate-700 text-slate-100 px-4 py-2 rounded-md"
-          href="#"
+          href="/api/setGuestSessionId"
         >
           Login As Guest
         </Link>
