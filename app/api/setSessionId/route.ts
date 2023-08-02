@@ -1,16 +1,22 @@
+import getSessionId from '@/lib/auth/getSessionId';
 import { cookies } from 'next/headers';
 import { NextResponse, type NextRequest } from 'next/server';
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
 export async function GET(req: NextRequest) {
-  const sessionId = req.nextUrl.searchParams.get('session_id');
+  const requestToken = req.nextUrl.searchParams.get('request_token');
+
+  if (!requestToken) return undefined;
+  const sessionId = await getSessionId(requestToken);
 
   cookies().set({
     name: 'session_id',
-    value: sessionId!,
+    value: sessionId,
     httpOnly: true,
     secure: true,
     sameSite: 'strict',
   });
 
-  return NextResponse.json({}, { status: 200, statusText: 'ok' });
+  return NextResponse.redirect(`${appUrl}/trending/movies`);
 }
