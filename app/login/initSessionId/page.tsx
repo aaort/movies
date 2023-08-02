@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -12,6 +13,7 @@ type Props = {
 
 export default function InitSessionId({ searchParams }: Props) {
   const requestToken = searchParams.request_token;
+  const { push } = useRouter();
 
   useEffect(() => {
     if (!requestToken) throw new Error("ain't got request token");
@@ -26,6 +28,7 @@ export default function InitSessionId({ searchParams }: Props) {
 
         if (sessionId) {
           await fetch(`${appUrl}/api/setSessionId?session_id=${sessionId}`);
+          push('/trending/movies');
         }
       } catch (e) {
         throw new Error('Could not get the request token');
@@ -33,7 +36,7 @@ export default function InitSessionId({ searchParams }: Props) {
     };
 
     getSessionId();
-  }, [requestToken]);
+  }, [requestToken, push]);
 
   return <h1>Initing Session Id</h1>;
 }
