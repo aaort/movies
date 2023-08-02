@@ -1,6 +1,5 @@
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
 
 export default async function getSessionId(
   requestToken: string
@@ -8,11 +7,7 @@ export default async function getSessionId(
   const response = await fetch(
     `${apiBaseUrl}authentication/session/new?api_key=${apiKey}&request_token=${requestToken}`,
     {
-      headers: {
-        accept: 'application/json',
-        'content-type': 'application/json',
-        Authorization: `Bearer ${readApiKey}`,
-      },
+      cache: 'no-cache',
     }
   );
 

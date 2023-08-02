@@ -3,6 +3,7 @@ const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
 
 export default async function getRequestToken(): Promise<string> {
   const data = await fetch(`${baseApiUrl}authentication/token/new`, {
+    cache: 'no-cache',
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
