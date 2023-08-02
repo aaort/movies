@@ -6,8 +6,8 @@ export default async function TrendingPeople() {
 
   return (
     <div className="grid gap-4 md:gap-10 lg:gap-14 xl:gap-16 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-      {people.map((person) => (
-        <PersonItem key={person.id} person={person} />
+      {people.map((person, index) => (
+        <PersonItem key={person.id} person={person} index={index} />
       ))}
     </div>
   );
