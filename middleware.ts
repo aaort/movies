@@ -4,15 +4,14 @@ const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export async function middleware(request: NextRequest) {
   if (!request.cookies.has('session_id')) {
-    return NextResponse.redirect(`${appUrl}login/options`);
+    return NextResponse.rewrite(`${appUrl}login/options`);
   }
 
-  // TODO:
-  // if (request.nextUrl.pathname.startsWith('/login')) {
-  //   return NextResponse.redirect(`${appUrl}trending/movies`);
-  // }
+  if (request.nextUrl.pathname.startsWith('/login')) {
+    return NextResponse.rewrite(appUrl);
+  }
 }
 
 export const config = {
-  matcher: '/((?!login|api|_next/static|_next/image|favicon.ico).*)',
+  matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
 };
