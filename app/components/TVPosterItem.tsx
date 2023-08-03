@@ -10,7 +10,7 @@ const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 export default function TVItem({ tv, index }: Props) {
   return (
     <div className="flex group flex-col gap-4 bg-slate-300 text-slate-900 rounded-md overflow-clip cursor-pointer">
-      <div className="relative w-full aspect-[1/1.3]">
+      <div className="relative w-full aspect-[1/1.5]">
         <Image
           fill
           alt=""
