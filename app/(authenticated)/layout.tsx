@@ -10,13 +10,13 @@ export default function Layout({ children }: Props) {
           <ul className="flex gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center">
             <li className="relative inline-block group">
               <button className="text-xl">Trending</button>
-              <ul className="hidden group-hover:flex flex-col z-10 absolute bg-white border border-gray-300 rounded-md shadow-2xl">
-                <li className="px-4 py-2">
+              <ul className="hidden group-hover:flex flex-col gap-4 p-4 z-10 absolute bg-white border border-gray-300 rounded-md shadow-2xl">
+                <li className="">
                   <Link href="/trending/movies" className="navbar-link">
                     Movies
                   </Link>
                 </li>
-                <li className="px-4 py-2">
+                <li className="">
                   <Link
                     href="/trending/tv"
                     className="navbar-link whitespace-nowrap w-full"
@@ -24,7 +24,7 @@ export default function Layout({ children }: Props) {
                     TV Series
                   </Link>
                 </li>
-                <li className="px-4 py-2">
+                <li className="">
                   <Link href="/trending/people" className="navbar-link">
                     People
                   </Link>
