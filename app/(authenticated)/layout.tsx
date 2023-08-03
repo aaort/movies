@@ -37,6 +37,11 @@ export default function Layout({ children }: Props) {
               </Link>
             </li>
             <li>
+              <Link href="/favorite/movies" className="navbar-link">
+                Favorite
+              </Link>
+            </li>
+            <li>
               <Link href="#" className="navbar-link">
                 About
               </Link>
