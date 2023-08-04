@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Roboto_Mono } from 'next/font/google';
-import Link from 'next/link';
 import './globals.css';
 
 const inter = Roboto_Mono({
