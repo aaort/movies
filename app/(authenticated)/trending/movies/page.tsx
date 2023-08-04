@@ -1,6 +1,6 @@
 import GridList from '@/app/components/GridList';
 import MovieItem from '@/app/components/MovieItem';
-import getTrendingMovies from '@/lib/getTrendingMovies';
+import getTrendingMovies from '@/lib/api/getTrendingMovies';
 
 export default async function TrendingMovies() {
   const movies = (await getTrendingMovies()).results;

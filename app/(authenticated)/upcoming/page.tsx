@@ -1,6 +1,6 @@
-import getUpcomingMovies from '@/lib/getUpcomingMovies';
-import MovieItem from '@/app/components/MovieItem';
 import GridList from '@/app/components/GridList';
+import MovieItem from '@/app/components/MovieItem';
+import getUpcomingMovies from '@/lib/api/getUpcomingMovies';
 
 export default async function UpcomingMovies() {
   const movies = (await getUpcomingMovies()).results;

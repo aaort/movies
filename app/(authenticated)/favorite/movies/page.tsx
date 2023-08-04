@@ -1,6 +1,6 @@
 import GridList from '@/app/components/GridList';
 import MovieItem from '@/app/components/MovieItem';
-import getFavoriteMovies from '@/lib/getFavoriteMovies';
+import getFavoriteMovies from '@/lib/api/getFavoriteMovies';
 
 export default async function FavoriteMovies() {
   const movies = (await getFavoriteMovies()).results;
