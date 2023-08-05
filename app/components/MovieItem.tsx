@@ -1,8 +1,8 @@
+import { toggleFavorite } from '@/app/actions';
 import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
 import Image from 'next/image';
 import Link from 'next/link';
 import FavoriteButton from './FavoriteButton';
-import { toggleFavorite } from './actions';
 
 type Props = {
   movie: Movie;
