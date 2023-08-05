@@ -30,7 +30,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
       >
         <div className='flex text-white gap-4 md:gap-8 lg:gap-16 w-[85%] mx-auto z-20'>
           <div className='relative w-[100%] min-w-[200px] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
-            <Image alt='Poster' fill src={imagePaths.poster} />
+            <Image alt='Poster' fill src={imagePaths.poster} priority />
           </div>
 
           <div className='flex flex-col gap-10 justify-between'>
