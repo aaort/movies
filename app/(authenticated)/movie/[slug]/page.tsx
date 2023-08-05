@@ -2,7 +2,7 @@ import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
 import getMovieDetails from '@/lib/api/getMovieDetails';
 import getTrendingMovies from '@/lib/api/getTrendingMovies';
 import Image from 'next/image';
-import Cast from './sections/cast';
+import Cast from './sections/Cast';
 
 type Props = {
   params: { slug: string };
