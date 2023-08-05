@@ -2,6 +2,7 @@ import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
 import getMovieDetails from '@/lib/api/getMovieDetails';
 import getTrendingMovies from '@/lib/api/getTrendingMovies';
 import Image from 'next/image';
+import Cast from './sections/cast';
 
 type Props = {
   params: { slug: string };
@@ -14,15 +15,15 @@ export async function generateStaticParams() {
 }
 
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
-  const movieDetails = await getMovieDetails(Number(movieId));
+  const movie = await getMovieDetails(Number(movieId));
 
   const imagePaths = {
-    backdrop: generateImageUrlByFilename(movieDetails.backdrop_path),
-    poster: generateImageUrlByFilename(movieDetails.poster_path),
+    backdrop: generateImageUrlByFilename(movie.backdrop_path),
+    poster: generateImageUrlByFilename(movie.poster_path),
   };
 
   return (
-    <section>
+    <section className='space-y-10 mb-10'>
       <div
         style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
         className='bg-center bg-no-repeat h-[80svh] bg-cover grid place-items-center after:content-[" "] after:inset-0 after:absolute after:h-[80svh] after:opacity-60 after:bg-slate-950 after:z-10'
@@ -36,23 +37,25 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
             <div className='space-y-8'>
               <div className='flex justify-between items-center'>
                 <h1>
-                  {movieDetails.title}
+                  {movie.title}
                   <span className='text-neutral-200 text-sm ml-4'>
-                    {movieDetails.release_date}
+                    {movie.release_date}
                   </span>
                 </h1>
                 <span>Play Trailer</span>
               </div>
-              <p>{movieDetails.tagline}</p>
+              <p>{movie.tagline}</p>
             </div>
 
             <div className='space-y-4'>
               <p className='text-xl text-neutral-200'>Overview</p>
-              <p className='text-lg'>{movieDetails.overview}</p>
+              <p className='text-lg'>{movie.overview}</p>
             </div>
           </div>
         </div>
       </div>
+
+      <Cast movieId={movie.id} />
     </section>
   );
 }
