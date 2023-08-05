@@ -3,10 +3,17 @@ import getAccount from './getAccount';
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
 
-export default async function addMovieToFavorite(
-  movieId: number,
-  sessionId: string
-) {
+type Props = {
+  movieId: number;
+  sessionId: string;
+  value: boolean;
+};
+
+export default async function toggleMovieFavorite({
+  movieId,
+  sessionId,
+  value,
+}: Props) {
   const account = await getAccount();
 
   const response = await fetch(
@@ -21,10 +28,12 @@ export default async function addMovieToFavorite(
       body: JSON.stringify({
         media_type: 'movie',
         media_id: movieId,
-        favorite: true,
+        favorite: value,
       }),
     }
   );
 
-  return await response.json();
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
