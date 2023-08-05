@@ -7,9 +7,10 @@ import Link from 'next/link';
 type Props = {
   movie: Movie;
   index: number;
+  favorite: boolean;
 };
 
-export default function MovieItem({ movie, index }: Props) {
+export default function MovieItem({ movie, index, favorite }: Props) {
   async function addToFavorite() {
     'use server';
     const sessionId = cookies().get('session_id')?.value;
@@ -39,8 +40,8 @@ export default function MovieItem({ movie, index }: Props) {
                   fill='none'
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
-                  stroke='currentColor'
-                  className='w-6 h-6'
+                  aria-checked={favorite}
+                  className='w-6 h-6 stroke-current aria-checked:fill-red-400 aria-checked:stroke-red-400'
                 >
                   <path
                     strokeLinecap='round'
