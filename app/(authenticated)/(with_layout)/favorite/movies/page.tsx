@@ -8,7 +8,7 @@ export default async function FavoriteMovies() {
   return (
     <GridList>
       {movies.map((movie, index) => (
-        <MovieItem key={movie.id} movie={movie} index={index} />
+        <MovieItem key={movie.id} movie={movie} index={index} favorite={true} />
       ))}
     </GridList>
   );
