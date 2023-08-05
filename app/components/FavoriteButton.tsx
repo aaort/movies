@@ -18,7 +18,7 @@ export default function FavoriteButton({ checked, onToggle }: Props) {
 
   return (
     <button
-      className='p-2 bg-slate-200 rounded-full hover:opacity-90'
+      className='p-2 bg-slate-700 rounded-full hover:scale-110'
       onClick={handleToggle}
     >
       <svg
