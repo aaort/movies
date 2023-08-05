@@ -24,9 +24,9 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
   return (
     <section className='space-y-10 mb-10'>
-      <div className='bg-center bg-no-repeat h-[80svh] bg-cover grid place-items-center'>
-        <div className='absolute top-0 w-full h-[80svh] after:content-[" "] after:inset-0 after:absolute after:h-[80svh] after:opacity-60 after:bg-slate-950 after:z-10'>
-          <div className='relative w-full h-full'>
+      <div className='relative bg-center bg-no-repeat h-[80svh] bg-cover grid place-items-center'>
+        <div className='absolute top-0 w-full h-full after:content-[" "] after:inset-0 after:absolute after:h-[80svh] after:opacity-60 after:bg-slate-950 after:z-10'>
+          <div className='relative h-full'>
             <Image
               alt='Movie poster background'
               fill
@@ -36,7 +36,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           </div>
         </div>
         <div className='flex text-white gap-4 md:gap-8 lg:gap-16 mx-4 md:mx-10 lg:mx-16 xl:mx-22 z-20'>
-          <div className='relative w-full min-w-[20vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
+          <div className='relative w-full min-w-[15vw] max-w-[25vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
             <Image alt='Movie poster' fill src={imagePaths.poster} priority />
           </div>
           <div className='flex flex-col gap-10 justify-between'>
