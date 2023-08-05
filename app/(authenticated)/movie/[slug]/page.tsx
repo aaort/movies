@@ -24,15 +24,21 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
   return (
     <section className='space-y-10 mb-10'>
-      <div
-        style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
-        className='bg-center bg-no-repeat h-[80svh] bg-cover grid place-items-center after:content-[" "] after:inset-0 after:absolute after:h-[80svh] after:opacity-60 after:bg-slate-950 after:z-10'
-      >
-        <div className='flex text-white gap-4 md:gap-8 lg:gap-16 w-[85%] mx-auto z-20'>
-          <div className='relative w-[100%] min-w-[200px] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
-            <Image alt='Poster' fill src={imagePaths.poster} priority />
+      <div className='bg-center bg-no-repeat h-[80svh] bg-cover grid place-items-center'>
+        <div className='absolute top-0 w-full h-[80svh] after:content-[" "] after:inset-0 after:absolute after:h-[80svh] after:opacity-60 after:bg-slate-950 after:z-10'>
+          <div className='relative w-full h-full'>
+            <Image
+              alt='Movie poster background'
+              fill
+              src={imagePaths.backdrop}
+              priority
+            />
           </div>
-
+        </div>
+        <div className='flex text-white gap-4 md:gap-8 lg:gap-16 mx-4 md:mx-10 lg:mx-16 xl:mx-22 z-20'>
+          <div className='relative w-full min-w-[20vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
+            <Image alt='Movie poster' fill src={imagePaths.poster} priority />
+          </div>
           <div className='flex flex-col gap-10 justify-between'>
             <div className='space-y-8'>
               <div className='flex justify-between items-center'>
