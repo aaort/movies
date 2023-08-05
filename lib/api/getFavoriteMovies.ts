@@ -5,6 +5,7 @@ export default async function getFavoriteMovies(): Promise<ResultType<Movie>> {
   const response = await fetch(
     `${apiBaseUrl}account/{account_id}/favorite/movies`,
     {
+      cache: 'no-cache',
       headers: {
         Authorization: `Bearer ${readApiKey}`,
       },
