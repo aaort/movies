@@ -20,8 +20,8 @@ export default function MovieItem({ movie, index, favorite }: Props) {
 
   return (
     <Link href={`/movie/${movie.id}`}>
-      <div className='flex group relative flex-col gap-4 bg-slate-300 text-slate-900 rounded-md overflow-clip cursor-pointer'>
-        <div className="relative w-full aspect-[1/1.5] after:content-[' '] after:absolute after:w-full after:h-full after:bg-slate-900 after:bg-opacity-0 hover:after:bg-opacity-40 after:duration-300">
+      <div className='flex group relative flex-col gap-4 bg-slate-300 text-slate-900 rounded-md overflow-clip'>
+        <div className="relative w-full aspect-[1/1.5] after:content-[' '] after:absolute after:w-full after:h-full after:bg-slate-900 after:bg-opacity-0 group-hover:after:bg-opacity-40 after:duration-300">
           <div className='hidden absolute top-4 right-4 z-10 hover:scale-110 group-hover:block'>
             <FavoriteButton
               checked={favorite}
