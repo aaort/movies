@@ -46,15 +46,12 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
             </div>
             <div className='flex flex-col gap-10 justify-between'>
               <div className='space-y-8'>
-                <div className='flex justify-between items-center'>
-                  <h1>
-                    {movie.title}
-                    <span className='text-neutral-200 text-sm ml-4'>
-                      {movie.release_date}
-                    </span>
-                  </h1>
-                  <span>Play Trailer</span>
-                </div>
+                <h1>
+                  {movie.title}
+                  <span className='text-neutral-200 text-sm ml-4 align-middle'>
+                    {movie.release_date}
+                  </span>
+                </h1>
                 <p>{movie.tagline}</p>
               </div>
 
