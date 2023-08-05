@@ -10,6 +10,8 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/login')) {
     return NextResponse.rewrite(appUrl);
   }
+
+  return NextResponse.next();
 }
 
 export const config = {

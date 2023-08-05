@@ -10,13 +10,14 @@ export async function GET(req: NextRequest) {
   if (!requestToken) return undefined;
   const sessionId = await getSessionId(requestToken);
 
-  cookies().set({
+  const res = NextResponse.redirect(`${appUrl}/trending/movies`);
+  res.cookies.set({
     name: 'session_id',
     value: sessionId,
     httpOnly: true,
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'lax',
   });
 
-  return NextResponse.redirect(`${appUrl}/trending/movies`);
+  return res;
 }
