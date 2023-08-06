@@ -2,8 +2,10 @@ import Back from '@/app/components/Back';
 import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
 import getMovieCredits from '@/lib/api/getMovieCredits';
 import getMovieDetails from '@/lib/api/getMovieDetails';
+import getMovieVideos from '@/lib/api/getMovieVideos';
 import getTrendingMovies from '@/lib/api/getTrendingMovies';
 import Image from 'next/image';
+import TrailerPlayer from './components/TrailerPlayur';
 import Cast from './sections/Cast';
 
 type Props = {
@@ -19,6 +21,7 @@ export async function generateStaticParams() {
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
   const movie = await getMovieDetails(Number(movieId));
   const crew = (await getMovieCredits(Number(movieId))).crew;
+  const videos = (await getMovieVideos(movieId)).results;
 
   const imagePaths = {
     backdrop: generateImageUrlByFilename(movie.backdrop_path),
@@ -27,6 +30,8 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
   const director = crew.find((person) => person.job === 'Director');
   const writer = crew.find((person) => (person.job = 'Writer'));
+
+  const video = videos.find((video) => video.type === 'Trailer');
 
   return (
     <>
@@ -50,14 +55,17 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
               <Image alt='Movie poster' fill src={imagePaths.poster} priority />
             </div>
             <div className='flex flex-col gap-10 justify-between'>
-              <div className='space-y-8'>
-                <h1>
-                  {movie.title}
-                  <span className='text-neutral-200 text-sm ml-4 align-middle'>
-                    {movie.release_date}
-                  </span>
-                </h1>
-                <p>{movie.tagline}</p>
+              <div className='flex flex-row justify-between'>
+                <div className='space-y-8'>
+                  <h1>
+                    {movie.title}
+                    <span className='text-neutral-200 text-sm ml-4 align-middle'>
+                      {movie.release_date}
+                    </span>
+                  </h1>
+                  <p>{movie.tagline}</p>
+                  {video && <TrailerPlayer videoKey={video?.key} />}
+                </div>
               </div>
 
               <div className='space-y-4'>
