@@ -1,10 +1,10 @@
-import getExternalIds from '@/lib/api/getExternalIds';
+import get from '@/lib/api/get';
 import Link from 'next/link';
 import {
-  BsWikipedia,
   BsFacebook,
   BsInstagram,
   BsTwitter,
+  BsWikipedia,
 } from 'react-icons/bs';
 import { SiImdb } from 'react-icons/si';
 
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default async function ExternalLinks({ movieId }: Props) {
-  const externalIds = await getExternalIds(movieId);
+  const externalIds = await get<ExternalIds>(`movie/${movieId}/external_ids`);
 
   // Remove "id" itself
   const externalLinks = [];

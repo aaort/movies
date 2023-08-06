@@ -1,5 +1,5 @@
 import { toggleFavorite } from '@/app/actions';
-import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
+import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import Image from 'next/image';
 import Link from 'next/link';
 import FavoriteButton from './FavoriteButton';

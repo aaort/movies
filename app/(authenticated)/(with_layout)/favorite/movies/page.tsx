@@ -1,9 +1,13 @@
 import GridList from '@/app/components/GridList';
 import MovieItem from '@/app/components/MovieItem';
-import getFavoriteMovies from '@/lib/api/getFavoriteMovies';
+import get from '@/lib/api/get';
 
 export default async function FavoriteMovies() {
-  const movies = (await getFavoriteMovies()).results;
+  const movies = (
+    await get<ResultType<Movie>>(`account/{}/favorite/movies`, {
+      cache: 'no-cache',
+    })
+  ).results;
 
   return (
     <GridList>

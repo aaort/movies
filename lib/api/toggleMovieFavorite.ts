@@ -1,4 +1,4 @@
-import getAccount from './getAccount';
+import get from './get';
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
@@ -14,7 +14,7 @@ export default async function toggleMovieFavorite({
   sessionId,
   value,
 }: Props) {
-  const account = await getAccount();
+  const account = await get<Account>('account', { cache: 'no-cache' });
 
   const response = await fetch(
     `${apiBaseUrl}account/${account.id}/favorite?session_id=${sessionId}`,
@@ -33,7 +33,5 @@ export default async function toggleMovieFavorite({
     }
   );
 
-  const data = await response.json();
-  console.log(data);
-  return data;
+  return await response.json();
 }

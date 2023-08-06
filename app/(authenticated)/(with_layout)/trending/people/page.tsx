@@ -1,9 +1,11 @@
 import GridList from '@/app/components/GridList';
 import PersonItem from '@/app/components/PersonItem';
-import getTrendingPeople from '@/lib/api/getTrendingPeople';
+import get from '@/lib/api/get';
 
 export default async function TrendingPeople() {
-  const people = (await getTrendingPeople()).results;
+  const people = (
+    await get<ResultType<Person>>(`trending/person/week`, {}, true)
+  ).results;
 
   return (
     <GridList>

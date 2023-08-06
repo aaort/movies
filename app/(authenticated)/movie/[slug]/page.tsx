@@ -1,9 +1,6 @@
 import Back from '@/app/components/Back';
-import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
-import getMovieCredits from '@/lib/api/getMovieCredits';
-import getMovieDetails from '@/lib/api/getMovieDetails';
-import getMovieVideos from '@/lib/api/getMovieVideos';
-import getTrendingMovies from '@/lib/api/getTrendingMovies';
+import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
+import get from '@/lib/api/get';
 import Image from 'next/image';
 import TrailerPlayer from './components/TrailerPlayur';
 import Cast from './sections/Cast';
@@ -14,15 +11,23 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const movies = (await getTrendingMovies()).results;
+  const movies = (await get<ResultType<Movie>>('trending/movie/week', {}, true))
+    .results;
 
   return movies.map((movie) => ({ slug: `${movie.id}` }));
 }
 
+export type Credits = {
+  id: number;
+  cast: CastPerson[];
+  crew: CrewPerson[];
+};
+
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
-  const movie = await getMovieDetails(Number(movieId));
-  const crew = (await getMovieCredits(Number(movieId))).crew;
-  const videos = (await getMovieVideos(movieId)).results;
+  const movie = await get<MovieDetails>(`movie/${movieId}`);
+  const crew = (await get<Credits>(`movie/${movieId}/credits`)).crew;
+  const videos = (await get<ResultType<Video>>(`movie/${movieId}/videos`))
+    .results;
 
   const imagePaths = {
     backdrop: generateImageUrlByFilename(movie.backdrop_path),
