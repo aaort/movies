@@ -10,7 +10,7 @@ type Movie = {
   media_type: string;
   genre_ids: number[];
   popularity: number;
-  release_date: number;
+  release_date: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
@@ -67,9 +67,7 @@ type Account = {
   username: string;
 };
 
-type MovieDetails = {
-  adult: boolean;
-  backdrop_path: string;
+type MovieDetails = Movie & {
   belongs_to_collection: string;
   budget: number;
   genres: {
@@ -77,13 +75,7 @@ type MovieDetails = {
     name: string;
   }[];
   homepage: string;
-  id: number;
   imdb_id: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
   production_companies: {
     id: number;
     logo_path: string;
@@ -94,7 +86,6 @@ type MovieDetails = {
     iso_3166_1: string;
     name: string;
   }[];
-  release_date: string;
   revenue: number;
   runtime: number;
   spoken_languages: {
@@ -104,21 +95,9 @@ type MovieDetails = {
   }[];
   status: string;
   tagline: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
 };
 
-type CastPerson = {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: string;
+type CastPerson = Omit<Person, 'media_type'> & {
   cast_id: number;
   character: string;
   credit_id: string;
