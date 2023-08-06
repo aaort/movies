@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { BsArrowLeftShort } from 'react-icons/bs';
 
 type Props = {
   to?: string;
@@ -15,9 +16,10 @@ export default function Back({ to, classes }: Props) {
   const title = (to ? to.slice(to.lastIndexOf('/')) : previousRoute).slice(1);
 
   return (
-    <Link
-      className={`capitalize ${classes}`}
-      href={to ?? previousRoute}
-    >{`< ${title}`}</Link>
+    <Link className={`capitalize ${classes}`} href={to ?? previousRoute}>
+      <div className='flex gap-2 items-center'>
+        <BsArrowLeftShort className='w-6 h-6' /> <span>{title}</span>
+      </div>
+    </Link>
   );
 }
