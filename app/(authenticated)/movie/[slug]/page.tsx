@@ -3,7 +3,7 @@ import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import TrailerPlayer from './components/TrailerPlayur';
+import TrailerPlayer from './components/TrailerPlayer';
 import Cast from './sections/Cast';
 import ExternalLinks from './sections/ExternalLinks';
 
