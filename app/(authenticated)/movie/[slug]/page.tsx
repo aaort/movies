@@ -77,11 +77,11 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
               <dl className='flex gap-10'>
                 <div className='space-y-2'>
-                  <dl id='director'>{director?.name}d</dl>
+                  <dt id='director'>{director?.name}d</dt>
                   <dd className='text-neutral-300 text-sm'>Director</dd>
                 </div>
                 <div className='space-y-2'>
-                  <dl>{writer?.name}</dl>
+                  <dt>{writer?.name}</dt>
                   <dd className='text-neutral-300 text-sm'>Writer</dd>
                 </div>
               </dl>
@@ -98,6 +98,8 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
             <ExternalLinks movieId={movieId} />
           </div>
         </div>
+
+        <section></section>
       </section>
     </>
   );
