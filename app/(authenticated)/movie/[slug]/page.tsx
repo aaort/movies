@@ -30,8 +30,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
   const director = crew.find((person) => person.job === 'Director');
   const writer = crew.find((person) => (person.job = 'Writer'));
-
-  const video = videos.find((video) => video.type === 'Trailer');
+  const trailer = videos.find((video) => video.type === 'Trailer');
 
   return (
     <>
@@ -55,16 +54,18 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
               <Image alt='Movie poster' fill src={imagePaths.poster} priority />
             </div>
             <div className='flex flex-col gap-10 justify-between'>
-              <div className='flex flex-row justify-between'>
-                <div className='space-y-8'>
-                  <h1>
-                    {movie.title}
-                    <span className='text-neutral-200 text-sm ml-4 align-middle'>
-                      {movie.release_date}
-                    </span>
-                  </h1>
+              <div className='flex flex-wrap flex-row justify-between'>
+                <div className='space-y-8 w-full'>
+                  <div className='flex flex-wrap gap-y-2 justify-between items-center'>
+                    <h1>
+                      {movie.title}
+                      <span className='text-neutral-200 text-sm ml-4 align-middle'>
+                        {movie.release_date}
+                      </span>
+                    </h1>
+                    {trailer && <TrailerPlayer videoKey={trailer?.key} />}
+                  </div>
                   <p>{movie.tagline}</p>
-                  {video && <TrailerPlayer videoKey={video?.key} />}
                 </div>
               </div>
 
