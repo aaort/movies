@@ -22,4 +22,8 @@ h1 {
   .grid-card {
     @apply flex flex-col gap-4 bg-slate-700 text-slate-100 rounded-md overflow-clip;
   }
+
+  .modal {
+    @apply absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] w-[80%] aspect-video drop-shadow-2xl rounded-md overflow-clip;
+  }
 }
