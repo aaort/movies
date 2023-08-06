@@ -1,6 +1,7 @@
 import Back from '@/app/components/Back';
-import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import get from '@/lib/api/get';
+import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import TrailerPlayer from './components/TrailerPlayur';
 import Cast from './sections/Cast';
@@ -9,6 +10,17 @@ import ExternalLinks from './sections/ExternalLinks';
 type Props = {
   params: { slug: string };
 };
+
+export async function generateMetadata({
+  params: { slug: movieId },
+}: Props): Promise<Metadata> {
+  const movie = await get<Movie>(`movie/${movieId}`);
+
+  return {
+    title: movie.title,
+    description: `Details page for ${movie.title} movie`,
+  };
+}
 
 export async function generateStaticParams() {
   const movies = (await get<ResultType<Movie>>('trending/movie/week', {}, true))
