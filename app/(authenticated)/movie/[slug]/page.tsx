@@ -90,7 +90,10 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
         </div>
 
         <div className='flex gap-10 mx-10 justify-between'>
-          <Cast movieId={movie.id} />
+          <div className='space-y-10 overflow-scroll'>
+            <h3 className='text-xl font-bold'>Cast</h3>
+            <Cast movieId={movie.id} />
+          </div>
           <ExternalLinks movieId={movieId} />
         </div>
       </section>

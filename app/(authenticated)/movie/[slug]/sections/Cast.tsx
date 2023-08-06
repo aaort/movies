@@ -10,7 +10,7 @@ export default async function Cast({ movieId }: Props) {
   const cast = (await getMovieCredits(movieId)).cast;
 
   return (
-    <ul className='flex gap-10 overflow-scroll'>
+    <ul className='flex gap-10'>
       {cast.map((person) => {
         const profilePath = person.profile_path
           ? generateImageUrlByFilename(person.profile_path)
