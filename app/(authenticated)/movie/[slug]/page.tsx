@@ -50,7 +50,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
               />
             </div>
           </div>
-          <div className='flex flex-col sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 md:mx-10 lg:mx-16 xl:mx-22 z-20'>
+          <div className='flex flex-col sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
             <div className='relative w-full min-w-[15vw] max-w-[25vw] aspect-[1/1.3] overflow-clip rounded-md drop-shadow-2xl'>
               <Image alt='Movie poster' fill src={imagePaths.poster} priority />
             </div>
@@ -99,7 +99,42 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           </div>
         </div>
 
-        <section></section>
+        <section>
+          <dl className='flex flex-wrap gap-[10%] gap-y-10 mx-10'>
+            <div className='space-y-2'>
+              <dt>Status</dt>
+              <dd className='text-neutral-500 text-sm'>{movie.status}</dd>
+            </div>
+            <div className='space-y-2'>
+              <dt>Original Language</dt>
+              <dd className='text-neutral-500 text-sm'>
+                {movie.original_language}
+              </dd>
+            </div>
+            <div className='space-y-2'>
+              <dt>Genres</dt>
+              <dd className='text-neutral-500 text-sm'>
+                <ul className='space-y-2'>
+                  {movie.genres.map((genre) => (
+                    <li key={genre.id}>{genre.name}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+            <div className='space-y-2'>
+              <dt>Popularity</dt>
+              <dd className='text-neutral-500 text-sm'>{movie.popularity}</dd>
+            </div>
+            <div className='space-y-2'>
+              <dt>Budget</dt>
+              <dd className='text-neutral-500 text-sm'>{movie.budget}</dd>
+            </div>
+            <div className='space-y-2'>
+              <dt>Revenue</dt>
+              <dd className='text-neutral-500 text-sm'>{movie.revenue}</dd>
+            </div>
+          </dl>
+        </section>
       </section>
     </>
   );
