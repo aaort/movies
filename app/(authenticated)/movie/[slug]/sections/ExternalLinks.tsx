@@ -1,5 +1,12 @@
 import getExternalIds from '@/lib/api/getExternalIds';
 import Link from 'next/link';
+import {
+  BsWikipedia,
+  BsFacebook,
+  BsInstagram,
+  BsTwitter,
+} from 'react-icons/bs';
+import { SiImdb } from 'react-icons/si';
 
 type Props = {
   movieId: string | number;
@@ -19,43 +26,73 @@ export default async function ExternalLinks({ movieId }: Props) {
   const links = getLinks(externalLinks);
 
   return (
-    <div className='flex flex-col gap-2'>
-      {Object.entries(links).map((entry) => (
-        <Link key={entry['0']} href={`${entry['1']}`} target='_blank'>
-          {entry['0']}
+    <div className='flex flex-col gap-10'>
+      {Object.keys(links).map((key) => (
+        <Link
+          key={links[key].url}
+          href={`${links[key].url}`}
+          target='_blank'
+          className='[&>svg]:w-7 [&>svg]:h-7'
+        >
+          {links[key].icon}
         </Link>
       ))}
     </div>
   );
 }
 
-const getLinks = (externalLinks: { [key: string]: string | number }[]) => {
+type ResultType = {
+  [key: string]: {
+    url: string;
+    icon: React.ReactNode;
+  };
+};
+
+const getLinks = (
+  externalLinks: { [key: string]: string | number }[]
+): ResultType => {
+  //@ts-ignore
   return externalLinks.reduce((total, link) => {
     switch (Object.keys(link)[0]) {
       case 'imdb':
         return {
           ...total,
-          imdb: `https://www.imdb.com/title/${Object.values(link)[0]}/`,
+          imdb: {
+            url: `https://www.imdb.com/title/${Object.values(link)[0]}/`,
+            icon: <SiImdb />,
+          },
         };
       case 'wikidata':
         return {
           ...total,
-          wikidata: `https://www.wikidata.org/wiki/${Object.values(link)[0]}`,
+          wikidata: {
+            url: `https://www.wikidata.org/wiki/${Object.values(link)[0]}`,
+            icon: <BsWikipedia />,
+          },
         };
       case 'facebook':
         return {
           ...total,
-          facebook: `https://www.facebook.com/${Object.values(link)[0]}/`,
+          facebook: {
+            url: `https://www.facebook.com/${Object.values(link)[0]}/`,
+            icon: <BsFacebook />,
+          },
         };
       case 'instagram':
         return {
           ...total,
-          instagram: `https://www.instagram.com/${Object.values(link)[0]}/`,
+          instagram: {
+            url: `https://www.instagram.com/${Object.values(link)[0]}/`,
+            icon: <BsInstagram />,
+          },
         };
       case 'twitter':
         return {
           ...total,
-          twitter: `https://twitter.com/${Object.values(link)[0]}/`,
+          twitter: {
+            url: `https://twitter.com/${Object.values(link)[0]}/`,
+            icon: <BsTwitter />,
+          },
         };
       default:
         return total;
