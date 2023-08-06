@@ -124,3 +124,8 @@ type CastPerson = {
   credit_id: string;
   order: number;
 };
+
+type CrewPerson = Omit<CastPerson, 'cast_id' | 'character'> & {
+  department: string;
+  job: string;
+};
