@@ -1,5 +1,6 @@
 import Back from '@/app/components/Back';
 import generateImageUrlByFilename from '@/lib/api/generateImageUrlByFilename';
+import getMovieCredits from '@/lib/api/getMovieCredits';
 import getMovieDetails from '@/lib/api/getMovieDetails';
 import getTrendingMovies from '@/lib/api/getTrendingMovies';
 import Image from 'next/image';
@@ -17,11 +18,15 @@ export async function generateStaticParams() {
 
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
   const movie = await getMovieDetails(Number(movieId));
+  const crew = (await getMovieCredits(Number(movieId))).crew;
 
   const imagePaths = {
     backdrop: generateImageUrlByFilename(movie.backdrop_path),
     poster: generateImageUrlByFilename(movie.poster_path),
   };
+
+  const director = crew.find((person) => person.job === 'Director');
+  const writer = crew.find((person) => (person.job = 'Writer'));
 
   return (
     <>
@@ -59,6 +64,17 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
                 <p className='text-xl text-neutral-200'>Overview</p>
                 <p className='text-lg'>{movie.overview}</p>
               </div>
+
+              <dl className='flex gap-10'>
+                <div className='space-y-2'>
+                  <dl id='director'>{director?.name}d</dl>
+                  <dd className='text-neutral-300 text-sm'>Director</dd>
+                </div>
+                <div className='space-y-2'>
+                  <dl>{writer?.name}</dl>
+                  <dd className='text-neutral-300 text-sm'>Writer</dd>
+                </div>
+              </dl>
             </div>
           </div>
         </div>
