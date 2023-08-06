@@ -7,6 +7,7 @@ import getTrendingMovies from '@/lib/api/getTrendingMovies';
 import Image from 'next/image';
 import TrailerPlayer from './components/TrailerPlayur';
 import Cast from './sections/Cast';
+import ExternalLinks from './sections/ExternalLinks';
 
 type Props = {
   params: { slug: string };
@@ -88,7 +89,10 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           </div>
         </div>
 
-        <Cast movieId={movie.id} />
+        <div className='flex gap-10 mx-10 justify-between'>
+          <Cast movieId={movie.id} />
+          <ExternalLinks movieId={movieId} />
+        </div>
       </section>
     </>
   );
