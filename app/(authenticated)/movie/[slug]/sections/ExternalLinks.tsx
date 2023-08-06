@@ -26,7 +26,7 @@ export default async function ExternalLinks({ movieId }: Props) {
   const links = getLinks(externalLinks);
 
   return (
-    <div className='flex flex-col gap-10'>
+    <div className='flex flex-row md:flex-col gap-10'>
       {Object.keys(links).map((key) => (
         <Link
           key={links[key].url}
