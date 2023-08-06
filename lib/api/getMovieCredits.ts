@@ -4,6 +4,7 @@ const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
 type ResultType = {
   id: number;
   cast: CastPerson[];
+  crew: CrewPerson[];
 };
 
 export default async function getMovieCredits(
