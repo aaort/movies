@@ -1,5 +1,6 @@
 import get from '@/lib/api/get';
 import Review from '../components/Review';
+import Link from 'next/link';
 
 type Props = {
   movieId: string | number;
@@ -17,14 +18,31 @@ export async function getReviews(
   return await get<GetReviewsResultType>(`movie/${movieId}/reviews`);
 }
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
 export default async function Reviews({ movieId }: Props) {
   const reviews = (await getReviews(movieId)).results;
 
+  if (!reviews.length) {
+    return <h3>No Reviews so far</h3>;
+  }
+
   return (
-    <ul className='max-w-full inline-flex gap-10 overflow-x-auto'>
-      {reviews.map((review, i) => (
-        <Review review={review} key={i} />
-      ))}
-    </ul>
+    <div className='space-y-8'>
+      <ul className='max-w-full inline-flex gap-10 overflow-x-auto'>
+        {reviews.map((review, i) => (
+          <Review review={review} key={i} />
+        ))}
+      </ul>
+      <Link
+        className='inline-block underline'
+        href={{
+          pathname: `${appUrl}movie/${movieId}/reviews`,
+          query: { movieId },
+        }}
+      >
+        View All Reviews
+      </Link>
+    </div>
   );
 }
