@@ -2,14 +2,13 @@ import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import get from '@/lib/api/get';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Credits } from '../movie/[slug]/page';
 
 type Props = {
-  movieId: number;
+  forPath: string;
 };
 
-export default async function Cast({ movieId }: Props) {
-  const cast = (await get<Credits>(`movie/${movieId}/credits`)).cast;
+export default async function Cast({ forPath }: Props) {
+  const cast = (await get<Credits>(forPath)).cast;
 
   return (
     <ul className='flex gap-10 overflow-scroll'>

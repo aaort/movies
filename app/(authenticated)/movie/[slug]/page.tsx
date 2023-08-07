@@ -32,12 +32,6 @@ export async function generateStaticParams() {
 
 export const dynamicParams = true;
 
-export type Credits = {
-  id: number;
-  cast: CastPerson[];
-  crew: CrewPerson[];
-};
-
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
   const movie = await get<MovieDetails>(`movie/${movieId}`);
   const crew = (await get<Credits>(`movie/${movieId}/credits`)).crew;
@@ -112,7 +106,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
         <div className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
           <div className='space-y-10 overflow-hidden order-last md:order-first'>
             <h2 className='text-xl font-bold'>Cast</h2>
-            <Cast movieId={movie.id} />
+            <Cast forPath={`movie/${movieId}/credits`} />
           </div>
           <div className='order-first md:order-last'>
             <ExternalLinks movieId={movieId} />

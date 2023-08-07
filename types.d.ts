@@ -229,3 +229,9 @@ type TVDetails = {
   vote_average: number;
   vote_count: number;
 };
+
+type Credits = {
+  id: number;
+  cast: CastPerson[];
+  crew: CrewPerson[];
+};
