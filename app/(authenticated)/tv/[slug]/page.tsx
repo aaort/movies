@@ -39,7 +39,6 @@ export type Credits = {
 
 export default async function TVPage({ params: { slug: tvId } }: Props) {
   const tv = await get<TVDetails>(`tv/${tvId}`);
-  const crew = (await get<Credits>(`tv/${tvId}/credits`)).crew;
   const videos = (await get<ResultType<Video>>(`tv/${tvId}/videos`)).results;
 
   const imagePaths = {
@@ -47,8 +46,6 @@ export default async function TVPage({ params: { slug: tvId } }: Props) {
     poster: generateImageUrlByFilename(tv.poster_path),
   };
 
-  const director = crew.find((person) => person.job === 'Director');
-  const writer = crew.find((person) => (person.job = 'Writer'));
   const trailer = videos.find((video) => video.type === 'Trailer');
 
   return (
@@ -91,17 +88,6 @@ export default async function TVPage({ params: { slug: tvId } }: Props) {
                   <p className='text-xl text-neutral-200'>Overview</p>
                   <p className='text-lg'>{tv.overview}</p>
                 </div>
-
-                <dl className='flex gap-10'>
-                  <div className='space-y-2'>
-                    <dt id='director'>{director?.name}</dt>
-                    <dd className='text-neutral-300 text-sm'>Director</dd>
-                  </div>
-                  <div className='space-y-2'>
-                    <dt>{writer?.name}</dt>
-                    <dd className='text-neutral-300 text-sm'>Writer</dd>
-                  </div>
-                </dl>
               </div>
             </div>
           </div>
