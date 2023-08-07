@@ -3,6 +3,7 @@ import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import TrailerPlayer from './components/TrailerPlayer';
 import Cast from './sections/Cast';
 import ExternalLinks from './sections/ExternalLinks';
@@ -35,6 +36,8 @@ export type Credits = {
   cast: CastPerson[];
   crew: CrewPerson[];
 };
+
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
   const movie = await get<MovieDetails>(`movie/${movieId}`);
@@ -159,6 +162,16 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
           <h2 className='text-xl font-bold'>Reviews</h2>
           <Reviews movieId={movieId} />
+
+          <Link
+            className='inline-block underline'
+            href={{
+              pathname: `${appUrl}movie/${movieId}/reviews`,
+              query: { movieId },
+            }}
+          >
+            View All Reviews
+          </Link>
         </div>
       </section>
     </>
