@@ -1,6 +1,6 @@
 import Back from '@/app/components/Back';
-import Review from '../components/Review';
-import { getReviews } from '../sections/Reviews';
+import Review from '../../../components/Review';
+import { getReviews } from '../../../sections/Reviews';
 
 type Props = {
   searchParams: { movieId: string };

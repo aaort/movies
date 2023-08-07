@@ -2,7 +2,7 @@ import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import get from '@/lib/api/get';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Credits } from '../page';
+import type { Credits } from '../movie/[slug]/page';
 
 type Props = {
   movieId: number;

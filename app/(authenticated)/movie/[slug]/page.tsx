@@ -3,10 +3,10 @@ import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import TrailerPlayer from './components/TrailerPlayer';
-import Cast from './sections/Cast';
-import ExternalLinks from './sections/ExternalLinks';
-import Reviews from './sections/Reviews';
+import TrailerPlayer from '../../components/TrailerPlayer';
+import Cast from '../../sections/Cast';
+import ExternalLinks from '../../sections/ExternalLinks';
+import Reviews from '../../sections/Reviews';
 
 type Props = {
   params: { slug: string };
@@ -63,7 +63,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
           className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center'
         >
-          <div className='w-full h-full flex  justify-center items-center backdrop-brightness-50 p-4 md:p-10'>
+          <div className='w-full h-full flex  justify-center items-center backdrop-brightness-[0.4] p-4 md:p-10'>
             <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
               <div className='relative w-full min-w-[15vw] max-w-[30vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
                 <Image
