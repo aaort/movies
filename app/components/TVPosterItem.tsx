@@ -11,7 +11,7 @@ const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 export default function TVItem({ tv, index }: Props) {
   return (
     <Link href='#'>
-      <div className='grid-card'>
+      <div className='grid-card h-full'>
         <div className='relative w-full aspect-[1/1.5]'>
           <Image
             fill
