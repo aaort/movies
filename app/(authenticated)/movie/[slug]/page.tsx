@@ -70,8 +70,8 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
               />
             </div>
           </div>
-          <div className='flex flex-col sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
-            <div className='relative w-full min-w-[15vw] max-w-[25vw] aspect-[1/1.3] overflow-clip rounded-md drop-shadow-2xl'>
+          <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
+            <div className='relative w-full min-w-[15vw] max-w-[30vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
               <Image alt='Movie poster' fill src={imagePaths.poster} priority />
             </div>
             <div className='flex flex-col gap-10 justify-between bg-slate-950 bg-opacity-60 md:bg-transparent p-2'>
