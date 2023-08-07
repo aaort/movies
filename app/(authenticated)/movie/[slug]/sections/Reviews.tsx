@@ -7,6 +7,8 @@ type Props = {
 
 type GetResultType = ResultType<Review> & {
   id: number;
+  total_pages: number;
+  total_results: number;
 };
 
 export default async function Reviews({ movieId }: Props) {
@@ -14,7 +16,7 @@ export default async function Reviews({ movieId }: Props) {
     .results;
 
   return (
-    <ul className='inline-flex gap-10 overflow-x-auto'>
+    <ul className='max-w-full inline-flex gap-10 overflow-x-auto'>
       {reviews.map((review, i) => (
         <Review review={review} key={i} />
       ))}
