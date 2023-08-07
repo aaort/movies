@@ -7,7 +7,11 @@ export default async function FavoriteMovies() {
     await get<ResultType<Movie>>(`account/{}/favorite/movies`, {
       cache: 'no-cache',
     })
-  ).results;
+  )?.results;
+
+  if (!movies) {
+    throw new Error('Sorry, request cannot be satisfied');
+  }
 
   return (
     <GridList>

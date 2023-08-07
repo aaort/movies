@@ -6,7 +6,7 @@ export default async function get<T>(
   endpoint: string,
   options?: RequestInit,
   includeApiKey: boolean = false
-): Promise<T> {
+): Promise<T | undefined | null> {
   const url =
     apiBaseUrl + endpoint + (includeApiKey ? `?api_key=${apiKey}` : '');
   const response = await fetch(url, {

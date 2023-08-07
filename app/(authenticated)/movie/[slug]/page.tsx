@@ -18,34 +18,38 @@ export async function generateMetadata({
   const movie = await get<Movie>(`movie/${movieId}`);
 
   return {
-    title: movie.title,
-    description: `Details page for ${movie.title} movie`,
+    title: movie ? movie.title : 'Movie',
+    description: movie && `Details page for ${movie.title} movie`,
   };
 }
 
 export async function generateStaticParams() {
   const movies = (await get<ResultType<Movie>>('trending/movie/week', {}, true))
-    .results;
+    ?.results;
 
-  return movies.map((movie) => ({ slug: `${movie.id}` }));
+  return movies ? movies.map((movie) => ({ slug: `${movie.id}` })) : [];
 }
 
 export const dynamicParams = true;
 
 export default async function MoviePage({ params: { slug: movieId } }: Props) {
   const movie = await get<MovieDetails>(`movie/${movieId}`);
-  const crew = (await get<Credits>(`movie/${movieId}/credits`)).crew;
+  const crew = (await get<Credits>(`movie/${movieId}/credits`))?.crew;
   const videos = (await get<ResultType<Video>>(`movie/${movieId}/videos`))
-    .results;
+    ?.results;
+
+  if (!movie) {
+    throw new Error('Sorry, unable to find requested data');
+  }
 
   const imagePaths = {
     backdrop: generateImageUrlByFilename(movie.backdrop_path),
     poster: generateImageUrlByFilename(movie.poster_path),
   };
 
-  const director = crew.find((person) => person.job === 'Director');
-  const writer = crew.find((person) => (person.job = 'Writer'));
-  const trailer = videos.find((video) => video.type === 'Trailer');
+  const director = crew?.find((person) => person.job === 'Director');
+  const writer = crew?.find((person) => (person.job = 'Writer'));
+  const trailer = videos?.find((video) => video.type === 'Trailer');
 
   return (
     <>
@@ -89,14 +93,18 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
                 </div>
 
                 <dl className='flex gap-10'>
-                  <div className='space-y-2'>
-                    <dt id='director'>{director?.name}</dt>
-                    <dd className='text-neutral-300 text-sm'>Director</dd>
-                  </div>
-                  <div className='space-y-2'>
-                    <dt>{writer?.name}</dt>
-                    <dd className='text-neutral-300 text-sm'>Writer</dd>
-                  </div>
+                  {director && (
+                    <div className='space-y-2'>
+                      <dt id='director'>{director?.name}</dt>
+                      <dd className='text-neutral-300 text-sm'>Director</dd>
+                    </div>
+                  )}
+                  {writer && (
+                    <div className='space-y-2'>
+                      <dt>{writer?.name}</dt>
+                      <dd className='text-neutral-300 text-sm'>Writer</dd>
+                    </div>
+                  )}
                 </dl>
               </div>
             </div>

@@ -16,6 +16,8 @@ export default async function toggleMovieFavorite({
 }: Props) {
   const account = await get<Account>('account', { cache: 'no-cache' });
 
+  if (!account) return;
+
   const response = await fetch(
     `${apiBaseUrl}account/${account.id}/favorite?session_id=${sessionId}`,
     {

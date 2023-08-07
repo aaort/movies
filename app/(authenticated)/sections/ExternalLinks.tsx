@@ -17,7 +17,7 @@ export default async function ExternalLinks({ movieId }: Props) {
 
   // Remove "id" itself
   const externalLinks = [];
-  for (let [key, value] of Object.entries(externalIds).slice(1)) {
+  for (let [key, value] of Object.entries(externalIds ?? []).slice(1)) {
     externalLinks.push({
       [key.slice(0, key.lastIndexOf('_'))]: value,
     });

@@ -3,15 +3,23 @@ import MovieItem from '@/app/components/MovieItem';
 import get from '@/lib/api/get';
 
 export default async function UpcomingMovies() {
-  const movies = (await get<ResultType<Movie>>('/movie/upcoming')).results;
+  const movies = (await get<ResultType<Movie>>('/movie/upcoming'))?.results;
   const favoriteMovies = (
     await get<ResultType<Movie>>(`account/{}/favorite/movies`, {
       cache: 'no-cache',
     })
-  ).results;
+  )?.results;
+
+  if (!movies) {
+    throw new Error(
+      'Sorry, request cannot be satisfied at the moment, try later'
+    );
+  }
 
   const isFavorite = (movieId: number) => {
-    return favoriteMovies.some((favoriteMovie) => favoriteMovie.id === movieId);
+    return favoriteMovies?.some(
+      (favoriteMovie) => favoriteMovie.id === movieId
+    );
   };
 
   return (
@@ -21,7 +29,7 @@ export default async function UpcomingMovies() {
           key={movie.id}
           movie={movie}
           index={index}
-          favorite={isFavorite(movie.id)}
+          favorite={isFavorite(movie.id) ?? false}
         />
       ))}
     </GridList>

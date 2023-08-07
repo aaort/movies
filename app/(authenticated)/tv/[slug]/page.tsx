@@ -15,32 +15,42 @@ type Props = {
 export async function generateMetadata({
   params: { slug: tvId },
 }: Props): Promise<Metadata> {
-  const movie = await get<Movie>(`tv/${tvId}`);
+  console.log(tvId);
+  const movie = await get<TVDetails>(`tv/${tvId}`);
+
+  console.log(movie);
 
   return {
-    title: movie.title,
-    description: `Details page for ${movie.title} TV series`,
+    title: movie ? movie.original_name : 'Movie',
+    description: movie
+      ? `Details page for ${movie.original_name} TV series`
+      : '',
   };
 }
 
 export async function generateStaticParams() {
-  const tvs = (await get<ResultType<TV>>('trending/tv/week', {}, true)).results;
+  const tvs = (await get<ResultType<TV>>('trending/tv/week', {}, true))
+    ?.results;
 
-  return tvs.map((tv) => ({ slug: `${tv.id}` }));
+  return tvs ? tvs.map((tv) => ({ slug: `${tv.id}` })) : [];
 }
 
 export const dynamicParams = true;
 
 export default async function TVPage({ params: { slug: tvId } }: Props) {
   const tv = await get<TVDetails>(`tv/${tvId}`);
-  const videos = (await get<ResultType<Video>>(`tv/${tvId}/videos`)).results;
+  const videos = (await get<ResultType<Video>>(`tv/${tvId}/videos`))?.results;
+
+  if (!tv) {
+    throw new Error('Sorry, unable to find details');
+  }
 
   const imagePaths = {
     backdrop: generateImageUrlByFilename(tv.backdrop_path),
     poster: generateImageUrlByFilename(tv.poster_path),
   };
 
-  const trailer = videos.find((video) => video.type === 'Trailer');
+  const trailer = videos?.find((video) => video.type === 'Trailer');
 
   return (
     <>

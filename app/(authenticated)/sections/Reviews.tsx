@@ -6,11 +6,14 @@ type Props = {
   movieId: string | number;
 };
 
-type GetReviewsResultType = ResultType<Review> & {
-  id: number;
-  total_pages: number;
-  total_results: number;
-};
+type GetReviewsResultType =
+  | (ResultType<Review> & {
+      id: number;
+      total_pages: number;
+      total_results: number;
+    })
+  | undefined
+  | null;
 
 export async function getReviews(
   movieId: string | number
@@ -21,9 +24,9 @@ export async function getReviews(
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export default async function Reviews({ movieId }: Props) {
-  const reviews = (await getReviews(movieId)).results;
+  const reviews = (await getReviews(movieId))?.results;
 
-  if (!reviews.length) {
+  if (!reviews || !reviews?.length) {
     return <h3>No Reviews so far</h3>;
   }
 
