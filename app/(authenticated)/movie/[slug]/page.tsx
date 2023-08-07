@@ -59,52 +59,52 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
         <Back classes='text-white' to='/trending/movies' />
       </div>
       <section className='space-y-10 mb-10'>
-        <div className='relative bg-center aspect-video bg-no-repeat bg-cover grid place-items-center p-4 md:p-10'>
-          <div className='absolute aspect-video top-0 w-full after:content-[" "] after:aspect-video after:inset-0 after:absolute after:opacity-60 after:bg-slate-950 after:z-10'>
-            <div className='relative aspect-video'>
-              <Image
-                alt='Movie poster background'
-                fill
-                src={imagePaths.backdrop}
-                priority
-              />
-            </div>
-          </div>
-          <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
-            <div className='relative w-full min-w-[15vw] max-w-[30vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
-              <Image alt='Movie poster' fill src={imagePaths.poster} priority />
-            </div>
-            <div className='flex flex-col gap-10 justify-between bg-slate-950 bg-opacity-60 md:bg-transparent p-2'>
-              <div className='flex flex-wrap flex-row justify-between'>
-                <div className='space-y-8 w-full'>
-                  <div className='flex flex-wrap gap-y-2 justify-between items-center'>
-                    <h1>
-                      {movie.title}
-                      <span className='text-neutral-200 text-sm ml-4 align-middle'>
-                        {movie.release_date}
-                      </span>
-                    </h1>
-                    {trailer && <TrailerPlayer videoKey={trailer?.key} />}
+        <div
+          style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
+          className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center'
+        >
+          <div className='w-full h-full flex  justify-center items-center backdrop-brightness-50 p-4 md:p-10'>
+            <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
+              <div className='relative w-full min-w-[15vw] max-w-[30vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
+                <Image
+                  alt='Movie poster'
+                  fill
+                  src={imagePaths.poster}
+                  priority
+                />
+              </div>
+              <div className='flex flex-col gap-10 justify-between p-2'>
+                <div className='flex flex-wrap flex-row justify-between'>
+                  <div className='space-y-8 w-full'>
+                    <div className='flex flex-wrap gap-y-2 justify-between items-center'>
+                      <h1>
+                        {movie.title}
+                        <span className='text-neutral-200 text-sm ml-4 align-middle'>
+                          {movie.release_date}
+                        </span>
+                      </h1>
+                      {trailer && <TrailerPlayer videoKey={trailer?.key} />}
+                    </div>
+                    <p>{movie.tagline}</p>
                   </div>
-                  <p>{movie.tagline}</p>
                 </div>
-              </div>
 
-              <div className='space-y-4'>
-                <p className='text-xl text-neutral-200'>Overview</p>
-                <p className='text-lg'>{movie.overview}</p>
-              </div>
+                <div className='space-y-4'>
+                  <p className='text-xl text-neutral-200'>Overview</p>
+                  <p className='text-lg'>{movie.overview}</p>
+                </div>
 
-              <dl className='flex gap-10'>
-                <div className='space-y-2'>
-                  <dt id='director'>{director?.name}</dt>
-                  <dd className='text-neutral-300 text-sm'>Director</dd>
-                </div>
-                <div className='space-y-2'>
-                  <dt>{writer?.name}</dt>
-                  <dd className='text-neutral-300 text-sm'>Writer</dd>
-                </div>
-              </dl>
+                <dl className='flex gap-10'>
+                  <div className='space-y-2'>
+                    <dt id='director'>{director?.name}</dt>
+                    <dd className='text-neutral-300 text-sm'>Director</dd>
+                  </div>
+                  <div className='space-y-2'>
+                    <dt>{writer?.name}</dt>
+                    <dd className='text-neutral-300 text-sm'>Writer</dd>
+                  </div>
+                </dl>
+              </div>
             </div>
           </div>
         </div>
