@@ -37,7 +37,7 @@ export default function Review({ review }: Props) {
             <AiFillStar className='fill-slate-100' />
             {review.author_details.rating}
           </span>
-          <span>Written at - {writtenStr}</span>
+          <span className='text-slate-700'>Written at - {writtenStr}</span>
         </div>
       </div>
       <span className='overflow-ellipsis'>{review.content}</span>
