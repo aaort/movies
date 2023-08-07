@@ -30,6 +30,8 @@ export async function generateStaticParams() {
   return movies.map((movie) => ({ slug: `${movie.id}` }));
 }
 
+export const dynamicParams = true;
+
 export type Credits = {
   id: number;
   cast: CastPerson[];
@@ -95,7 +97,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
               <dl className='flex gap-10'>
                 <div className='space-y-2'>
-                  <dt id='director'>{director?.name}d</dt>
+                  <dt id='director'>{director?.name}</dt>
                   <dd className='text-neutral-300 text-sm'>Director</dd>
                 </div>
                 <div className='space-y-2'>
