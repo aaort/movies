@@ -19,7 +19,7 @@ export default async function Cast({ movieId }: Props) {
           : null;
         return (
           <Link key={person.id} href='#'>
-            <li className='flex flex-col gap-4 bg-slate-600 text-slate-100 rounded-md'>
+            <li className='flex flex-col h-full gap-4 bg-slate-600 text-slate-100 rounded-md'>
               <div className='relative max-w-[300px] min-w-[180px] aspect-[1/1.5] rounded-tl-md rounded-tr-md overflow-clip'>
                 {profilePath ? (
                   <Image
@@ -29,7 +29,7 @@ export default async function Cast({ movieId }: Props) {
                   />
                 ) : null}
               </div>
-              <div className='flex flex-col justify-between mx-4 mb-4 flex-1'>
+              <div className='flex flex-col justify-between mx-4 mb-4'>
                 <h3>{person.name}</h3>
                 <p className='text-slate-300'>{person.known_for_department}</p>
               </div>
