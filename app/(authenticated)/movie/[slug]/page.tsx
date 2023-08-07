@@ -6,6 +6,7 @@ import Image from 'next/image';
 import TrailerPlayer from './components/TrailerPlayer';
 import Cast from './sections/Cast';
 import ExternalLinks from './sections/ExternalLinks';
+import Reviews from './sections/Reviews';
 
 type Props = {
   params: { slug: string };
@@ -152,6 +153,12 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
             </div>
           </dl>
         </section>
+
+        <div className='mx-10 space-y-10'>
+          <div className='w-full h-[2px] bg-slate-100'></div>
+
+          <Reviews movieId={movieId} />
+        </div>
       </section>
     </>
   );
