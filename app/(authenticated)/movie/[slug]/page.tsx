@@ -109,7 +109,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
 
         <div className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
           <div className='space-y-10 overflow-hidden order-last md:order-first'>
-            <h3 className='text-xl font-bold'>Cast</h3>
+            <h2 className='text-xl font-bold'>Cast</h2>
             <Cast movieId={movie.id} />
           </div>
           <div className='order-first md:order-last'>
@@ -157,6 +157,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
         <div className='mx-10 space-y-10'>
           <div className='w-full h-[2px] bg-slate-100'></div>
 
+          <h2 className='text-xl font-bold'>Reviews</h2>
           <Reviews movieId={movieId} />
         </div>
       </section>
