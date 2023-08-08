@@ -32,7 +32,7 @@ export default async function Reviews({ movieId }: Props) {
 
   return (
     <div className='space-y-8'>
-      <ul className='max-w-full inline-flex gap-10 overflow-x-auto'>
+      <ul className='max-w-full inline-flex gap-10 overflow-x-auto pb-4'>
         {reviews.map((review, i) => (
           <Review review={review} key={i} />
         ))}
