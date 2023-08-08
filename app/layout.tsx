@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Roboto_Mono } from 'next/font/google';
 import './globals.css';
 
-const inter = Roboto_Mono({
+const RobotoMono = Roboto_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
 });
@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body className={RobotoMono.className}>{children}</body>
     </html>
   );
 }
