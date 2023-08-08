@@ -8,7 +8,7 @@ type Props = {
 
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 
-export default function PersonItem({ person, index }: Props) {
+export default function PersonGridCard({ person, index }: Props) {
   return (
     <Link href='#'>
       <div className='grid-card h-full'>

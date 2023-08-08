@@ -1,5 +1,5 @@
 import GridList from '@/app/components/GridList';
-import MovieItem from '@/app/components/MovieItem';
+import MovieGridCard from '@/app/components/cards/MovieGridCard';
 import get from '@/lib/api/get';
 
 export default async function UpcomingMovies() {
@@ -16,21 +16,10 @@ export default async function UpcomingMovies() {
     );
   }
 
-  const isFavorite = (movieId: number) => {
-    return favoriteMovies?.some(
-      (favoriteMovie) => favoriteMovie.id === movieId
-    );
-  };
-
   return (
     <GridList>
       {movies?.map((movie, index) => (
-        <MovieItem
-          key={movie.id}
-          movie={movie}
-          index={index}
-          favorite={isFavorite(movie.id) ?? false}
-        />
+        <MovieGridCard key={movie.id} movie={movie} index={index} />
       ))}
     </GridList>
   );

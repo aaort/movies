@@ -1,18 +1,18 @@
 import get from '@/lib/api/get';
+import toggleMovieMetadata from '@/lib/api/toggleMovieMetadata';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import FavoriteButton from './FavoriteButton';
-import WatchlistButton from './WatchlistButton';
-import toggleMovieMetadata from '@/lib/api/toggleMovieMetadata';
-import { cookies } from 'next/headers';
+import FavoriteButton from '../FavoriteButton';
+import WatchlistButton from '../WatchlistButton';
 
 type Props = {
   movie: Movie;
   index: number;
 };
 
-export default async function MovieItem({ movie, index }: Props) {
+export default async function MovieGridCard({ movie, index }: Props) {
   const posterPath = generateImageUrlByFilename(movie.poster_path);
   const favoriteMovies = (
     await get<ResultType<Movie>>(`account/{}/favorite/movies`, {

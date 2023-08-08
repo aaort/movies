@@ -1,5 +1,5 @@
 import GridList from '@/app/components/GridList';
-import TVItem from '@/app/components/TVPosterItem';
+import TVGridCard from '@/app/components/cards/TVGridCard';
 import get from '@/lib/api/get';
 
 export default async function TrendingTV() {
@@ -15,7 +15,7 @@ export default async function TrendingTV() {
   return (
     <GridList>
       {tvs.map((tv, index) => (
-        <TVItem key={tv.id} tv={tv} index={index} />
+        <TVGridCard key={tv.id} tv={tv} index={index} />
       ))}
     </GridList>
   );

@@ -1,5 +1,5 @@
 import GridList from '@/app/components/GridList';
-import PersonItem from '@/app/components/PersonItem';
+import PersonGridCard from '@/app/components/cards/PersonGridCard';
 import get from '@/lib/api/get';
 
 export default async function TrendingPeople() {
@@ -16,7 +16,7 @@ export default async function TrendingPeople() {
   return (
     <GridList>
       {people.map((person, index) => (
-        <PersonItem key={person.id} person={person} index={index} />
+        <PersonGridCard key={person.id} person={person} index={index} />
       ))}
     </GridList>
   );

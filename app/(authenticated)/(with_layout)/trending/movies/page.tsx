@@ -1,5 +1,5 @@
 import GridList from '@/app/components/GridList';
-import MovieItem from '@/app/components/MovieItem';
+import MovieGridCard from '@/app/components/cards/MovieGridCard';
 import get from '@/lib/api/get';
 
 export default async function TrendingMovies() {
@@ -13,7 +13,7 @@ export default async function TrendingMovies() {
   return (
     <GridList>
       {movies?.map((movie, index) => (
-        <MovieItem key={movie.id} movie={movie} index={index} />
+        <MovieGridCard key={movie.id} movie={movie} index={index} />
       ))}
     </GridList>
   );

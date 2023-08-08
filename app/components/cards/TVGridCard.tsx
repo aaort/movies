@@ -8,7 +8,7 @@ type Props = {
 
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 
-export default function TVItem({ tv, index }: Props) {
+export default function TVGridCard({ tv, index }: Props) {
   return (
     <Link href={`/tv/${tv.id}`}>
       <div className='grid-card h-full'>
