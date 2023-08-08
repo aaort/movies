@@ -12,17 +12,10 @@ export default async function Options() {
   return (
     <section aria-label='auth-options-section'>
       <div className='flex flex-col absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] gap-10'>
-        <Link
-          className='bg-slate-700 text-slate-100 px-4 py-2 rounded-md text-center'
-          href={loginUrl}
-          aria-disabled={!requestToken}
-        >
+        <Link className='button' href={loginUrl} aria-disabled={!requestToken}>
           Login
         </Link>
-        <Link
-          className='bg-slate-700 text-slate-100 px-4 py-2 rounded-md'
-          href='/api/setGuestSessionId'
-        >
+        <Link className='button' href='/api/setGuestSessionId'>
           Login As Guest
         </Link>
       </div>
