@@ -11,7 +11,7 @@ export default async function Cast({ forPath }: Props) {
   const cast = (await get<Credits>(forPath))?.cast;
 
   return (
-    <ul className='flex gap-10 overflow-scroll'>
+    <ul className='flex gap-10 overflow-scroll pb-4'>
       {cast?.map((person) => {
         const profilePath = person.profile_path
           ? generateImageUrlByFilename(person.profile_path)
