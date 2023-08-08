@@ -56,7 +56,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
       <div className='absolute left-2 top-2 z-50'>
         <Back classes='text-white' to='/trending/movies' />
       </div>
-      <section className='space-y-10 mb-10'>
+      <main className='space-y-10 mb-10'>
         <div
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
           className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center'
@@ -111,7 +111,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           </div>
         </div>
 
-        <div className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
+        <aside className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
           <div className='space-y-10 overflow-hidden order-last md:order-first'>
             <h2 className='text-xl font-bold'>Cast</h2>
             <Cast forPath={`movie/${movieId}/credits`} />
@@ -119,10 +119,13 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           <div className='order-first md:order-last'>
             <ExternalLinks movieId={movieId} />
           </div>
-        </div>
+        </aside>
 
-        <section>
-          <dl className='flex flex-wrap gap-[10%] gap-y-10 mx-10'>
+        <section className='mx-10 space-y-10'>
+          <h2 className='text-xl font-bold mb-4 inline-block'>
+            General information
+          </h2>
+          <dl className='flex flex-wrap gap-[10%] gap-y-10'>
             <div className='space-y-2'>
               <dt>Status</dt>
               <dd className='text-neutral-500 text-sm'>{movie.status}</dd>
@@ -158,13 +161,13 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
           </dl>
         </section>
 
-        <div className='mx-10 space-y-10'>
-          <div className='w-full h-[2px] bg-slate-100'></div>
+        <div className='w-full h-[2px] bg-slate-100 mx-10' />
 
-          <h2 className='text-xl font-bold'>Reviews</h2>
+        <section className='mx-10'>
+          <h2 className='text-xl font-bold mb-10'>Reviews</h2>
           <Reviews movieId={movieId} />
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   );
 }
