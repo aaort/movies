@@ -15,10 +15,7 @@ type Props = {
 export async function generateMetadata({
   params: { slug: tvId },
 }: Props): Promise<Metadata> {
-  console.log(tvId);
   const movie = await get<TVDetails>(`tv/${tvId}`);
-
-  console.log(movie);
 
   return {
     title: movie ? movie.original_name : 'Movie',
