@@ -10,7 +10,7 @@ export default async function ReviewsPage({ searchParams }: Props) {
   const reviews = (await getReviews(searchParams.movieId))?.results;
 
   return (
-    <section>
+    <main>
       <div className='absolute top-2 left-2'>
         <Back title={'Movie'} />
       </div>
@@ -21,6 +21,6 @@ export default async function ReviewsPage({ searchParams }: Props) {
           ))}
         </div>
       )}
-    </section>
+    </main>
   );
 }
