@@ -48,6 +48,7 @@ export default async function TVPage({ params: { slug: tvId } }: Props) {
   };
 
   const trailer = videos?.find((video) => video.type === 'Trailer');
+  const creators = tv.created_by;
 
   return (
     <>
@@ -89,6 +90,11 @@ export default async function TVPage({ params: { slug: tvId } }: Props) {
                   <p className='text-xl text-neutral-200'>Overview</p>
                   <p className='text-lg'>{tv.overview}</p>
                 </div>
+
+                <dl>
+                  <dt>{`Creator${creators.length > 1 ? 's' : ''}`}</dt>
+                  <dd>{creators.map((creator) => creator.name).join(', ')}</dd>
+                </dl>
               </div>
             </div>
           </div>
