@@ -18,8 +18,8 @@ export default async function toggleMovieFavorite({
 
   if (!account) return;
 
-  const response = await fetch(
-    `${apiBaseUrl}account/${account.id}/favorite?session_id=${sessionId}`,
+  const response = await get<Response>(
+    `account/${account.id}/favorite?session_id=${sessionId}`,
     {
       cache: 'no-cache',
       method: 'POST',
@@ -35,5 +35,5 @@ export default async function toggleMovieFavorite({
     }
   );
 
-  return await response.json();
+  return await response?.json();
 }
