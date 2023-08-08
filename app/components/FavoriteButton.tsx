@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { useMemo, useState } from 'react';
+import { IconType } from 'react-icons';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 type Props = {
   checked: boolean;
@@ -17,15 +18,27 @@ export default function FavoriteButton({ checked, onToggle }: Props) {
     onToggle(!isChecked);
   };
 
+  const icons = {
+    filled: AiFillHeart,
+    outlined: AiOutlineHeart,
+  };
+
+  const Children: IconType = icons[isChecked ? 'filled' : 'outlined'];
+  const props = useMemo(
+    () => ({
+      'aria-checked': isChecked,
+      className:
+        'w-6 h-6 stroke-current aria-checked:fill-red-400 aria-checked:stroke-red-400',
+    }),
+    [isChecked]
+  );
+
   return (
     <button
       className='p-2 bg-slate-700 rounded-full hover:scale-110'
       onClick={handleToggle}
     >
-      <AiOutlineHeart
-        aria-checked={isChecked}
-        className='w-6 h-6 stroke-current aria-checked:fill-red-400 aria-checked:stroke-red-400'
-      />
+      <Children {...props} />
     </button>
   );
 }
