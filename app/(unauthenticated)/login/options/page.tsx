@@ -17,7 +17,10 @@ export default async function Options() {
             <h1>Movies</h1>
           </b>
           <p>
-            Login to your <Link href='https://www.themoviedb.org/'>TMDB</Link>{' '}
+            Login to your{' '}
+            <Link href='https://www.themoviedb.org/' className='underline'>
+              TMDB
+            </Link>{' '}
             account (or create one) to access the full range of capabilities of
             the website
           </p>
