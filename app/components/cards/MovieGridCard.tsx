@@ -76,10 +76,11 @@ export default async function MovieGridCard({ movie, index }: Props) {
             priority={index < 6}
           />
         </div>
-        <div className='mx-4 mb-4'>
-          <p>{movie.title}</p>
-          <p>{movie.release_date}</p>
-        </div>
+        <p className='mx-4 mb-4'>
+          {movie.title}
+          <br />
+          {movie.release_date}
+        </p>
       </div>
     </Link>
   );
