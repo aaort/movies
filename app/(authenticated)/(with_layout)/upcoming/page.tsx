@@ -4,11 +4,6 @@ import get from '@/lib/api/get';
 
 export default async function UpcomingMovies() {
   const movies = (await get<ResultType<Movie>>('/movie/upcoming'))?.results;
-  const favoriteMovies = (
-    await get<ResultType<Movie>>(`account/{}/favorite/movies`, {
-      cache: 'no-cache',
-    })
-  )?.results;
 
   if (!movies) {
     throw new Error(
