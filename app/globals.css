@@ -24,7 +24,7 @@ a {
   }
 
   .grid-card {
-    @apply flex flex-col gap-4 bg-slate-700 text-slate-100 rounded-md overflow-clip drop-shadow-2xl;
+    @apply flex flex-col gap-4 bg-slate-700 text-slate-100 rounded-md overflow-clip drop-shadow-xl;
   }
 
   .modal {
