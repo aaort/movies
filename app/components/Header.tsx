@@ -3,12 +3,16 @@ import Search from './Search';
 
 type Props = {
   includeSearch?: boolean;
+  leftComponent?: React.ReactNode;
 };
 
-export default async function Header({ includeSearch = false }: Props) {
+export default async function Header({
+  includeSearch = false,
+  leftComponent,
+}: Props) {
   return (
     <header className='flex flex-wrap justify-between gap-4 items-center py-10 px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32'>
-      {includeSearch && <Search />}
+      {leftComponent ?? (includeSearch && <Search />)}
       <nav>
         <ul className='flex flex-wrap gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
           <li className='relative inline-block group'>
