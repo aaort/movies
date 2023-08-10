@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 export default async function Home() {
   if (cookies().has('session_id')) {
-    redirect('/trending/movies');
+    redirect('/general');
   }
 
   redirect('/login/options');
