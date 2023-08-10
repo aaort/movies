@@ -57,7 +57,7 @@ export default async function MovieGridCard({ movie, index }: Props) {
   };
 
   return (
-    <Link href={`/movie/${movie.id}`}>
+    <Link href={`/movie/${movie.id}`} className='min-w-[20vw]'>
       <div className='grid-card group h-full'>
         <div className="relative w-full aspect-[1/1.5] after:content-[' '] after:absolute after:w-full after:h-full after:bg-slate-900 after:bg-opacity-0 group-hover:after:bg-opacity-40 after:duration-300">
           <div className='hidden absolute top-4 right-4 z-10 group-hover:block space-x-4'>
@@ -76,7 +76,7 @@ export default async function MovieGridCard({ movie, index }: Props) {
             priority={index < 6}
           />
         </div>
-        <p className='mx-4 mb-4'>
+        <p className='mx-4 mb-4 break-normal'>
           {movie.title}
           <br />
           {movie.release_date}
