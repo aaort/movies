@@ -46,31 +46,35 @@ export default async function Search({ searchParams }: Props) {
               </GridList>
             </section>
           ) : null}
-          <hr className='border-slate-400' />
           {tvs?.length ? (
-            <section className='space-y-10'>
-              <h2 className='font-bold text-xl'>TVs</h2>
-              <GridList>
-                {tvs?.map((tv, i) => (
-                  <li key={tv.id}>
-                    <TVGridCard tv={tv} index={i} />
-                  </li>
-                ))}
-              </GridList>
-            </section>
+            <>
+              <hr className='border-slate-400' />
+              <section className='space-y-10'>
+                <h2 className='font-bold text-xl'>TVs</h2>
+                <GridList>
+                  {tvs?.map((tv, i) => (
+                    <li key={tv.id}>
+                      <TVGridCard tv={tv} index={i} />
+                    </li>
+                  ))}
+                </GridList>
+              </section>
+            </>
           ) : null}
-          <hr className='border-slate-400' />
           {people?.length ? (
-            <section className='space-y-10'>
-              <h2 className='font-bold text-xl'>People</h2>
-              <GridList>
-                {people?.map((person, i) => (
-                  <li key={person.id}>
-                    <PersonGridCard person={person} index={i} />
-                  </li>
-                ))}
-              </GridList>
-            </section>
+            <>
+              <hr className='border-slate-400' />
+              <section className='space-y-10'>
+                <h2 className='font-bold text-xl'>People</h2>
+                <GridList>
+                  {people?.map((person, i) => (
+                    <li key={person.id}>
+                      <PersonGridCard person={person} index={i} />
+                    </li>
+                  ))}
+                </GridList>
+              </section>
+            </>
           ) : null}
         </>
       ) : null}
