@@ -1,6 +1,7 @@
 import get from '@/lib/api/get';
 import toggleMovieMetadata from '@/lib/api/toggleMovieMetadata';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
+import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,11 +15,6 @@ type Props = {
 
 export default async function MovieGridCard({ movie, index }: Props) {
   const posterPath = generateImageUrlByFilename(movie.poster_path);
-  const favoriteMovies = (
-    await get<ResultType<Movie>>(`account/{}/favorite/movies`, {
-      cache: 'no-cache',
-    })
-  )?.results;
 
   const watchlistMovies = (
     await get<ResultType<Movie>>(`account/{}/watchlist/movies`, {
@@ -26,9 +22,7 @@ export default async function MovieGridCard({ movie, index }: Props) {
     })
   )?.results;
 
-  const isFavorite =
-    favoriteMovies?.some((favoriteMovie) => favoriteMovie.id === movie.id) ??
-    false;
+  const isFavorite = await isMovieFavorite(movie.id);
   const isInWatchList =
     watchlistMovies?.some((listMovie) => listMovie.id === movie.id) ?? false;
 
