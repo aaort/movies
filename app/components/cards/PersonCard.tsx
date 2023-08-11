@@ -9,7 +9,7 @@ type Props = {
 
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 
-export default function PersonGridCard({ person, index }: Props) {
+export default function PersonCard({ person, index }: Props) {
   const fullProfilePath = person.profile_path
     ? `${imagesBaseUrl}${person.profile_path}`
     : null;

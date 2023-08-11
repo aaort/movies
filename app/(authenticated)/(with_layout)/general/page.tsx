@@ -1,5 +1,5 @@
-import MovieGridCard from '@/app/components/cards/MovieGridCard';
-import TVGridCard from '@/app/components/cards/TVGridCard';
+import MovieCard from '@/app/components/cards/MovieCard';
+import TVCard from '@/app/components/cards/TVCard';
 import get from '@/lib/api/get';
 
 export default async function GeneralPage() {
@@ -12,7 +12,7 @@ export default async function GeneralPage() {
         <h2 className='mb-8 text-xl'>Trending - Movies</h2>
         <ul className='flex gap-14 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
-            <MovieGridCard key={movie.id} movie={movie} index={i} />
+            <MovieCard key={movie.id} movie={movie} index={i} />
           ))}
         </ul>
       </section>
@@ -21,7 +21,7 @@ export default async function GeneralPage() {
         <h2 className='mb-8 text-xl'>Trending - TVs</h2>
         <ul className='flex gap-14 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
-            <TVGridCard key={tv.id} tv={tv} index={i} />
+            <TVCard key={tv.id} tv={tv} index={i} />
           ))}
         </ul>
       </section>

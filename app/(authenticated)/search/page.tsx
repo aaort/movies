@@ -1,8 +1,8 @@
 import GridList from '@/app/components/GridList';
 import SearchInput from '@/app/components/Search';
-import MovieGridCard from '@/app/components/cards/MovieGridCard';
-import PersonGridCard from '@/app/components/cards/PersonGridCard';
-import TVGridCard from '@/app/components/cards/TVGridCard';
+import MovieCard from '@/app/components/cards/MovieCard';
+import PersonCard from '@/app/components/cards/PersonCard';
+import TVCard from '@/app/components/cards/TVCard';
 import get from '@/lib/api/get';
 
 type Props = {
@@ -40,7 +40,7 @@ export default async function Search({ searchParams }: Props) {
               <GridList>
                 {movies?.map((movie, i) => (
                   <li key={movie.id}>
-                    <MovieGridCard movie={movie} index={i} />
+                    <MovieCard movie={movie} index={i} />
                   </li>
                 ))}
               </GridList>
@@ -54,7 +54,7 @@ export default async function Search({ searchParams }: Props) {
                 <GridList>
                   {tvs?.map((tv, i) => (
                     <li key={tv.id}>
-                      <TVGridCard tv={tv} index={i} />
+                      <TVCard tv={tv} index={i} />
                     </li>
                   ))}
                 </GridList>
@@ -69,7 +69,7 @@ export default async function Search({ searchParams }: Props) {
                 <GridList>
                   {people?.map((person, i) => (
                     <li key={person.id}>
-                      <PersonGridCard person={person} index={i} />
+                      <PersonCard person={person} index={i} />
                     </li>
                   ))}
                 </GridList>

@@ -12,7 +12,7 @@ type Props = {
   index: number;
 };
 
-export default async function MovieGridCard({ movie, index }: Props) {
+export default async function MovieCard({ movie, index }: Props) {
   const posterPath = generateImageUrlByFilename(movie.poster_path);
 
   const watchlistMovies = (

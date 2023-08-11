@@ -1,4 +1,4 @@
-import PersonGridCard from '@/app/components/cards/PersonGridCard';
+import PersonCard from '@/app/components/cards/PersonCard';
 import get from '@/lib/api/get';
 
 type Props = {
@@ -12,7 +12,7 @@ export default async function Cast({ forPath }: Props) {
     <ul className='flex gap-10 overflow-x-auto pb-8'>
       {cast?.map((person, i) => (
         <li key={person.id} className='min-w-[15vw]'>
-          <PersonGridCard person={person} index={i} />
+          <PersonCard person={person} index={i} />
         </li>
       ))}
     </ul>

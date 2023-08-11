@@ -1,5 +1,5 @@
 import GridList from '@/app/components/GridList';
-import TVGridCard from '@/app/components/cards/TVGridCard';
+import TVCard from '@/app/components/cards/TVCard';
 import get from '@/lib/api/get';
 
 type Props = {
@@ -20,7 +20,7 @@ export default async function TrendingTV({ searchParams }: Props) {
   return (
     <GridList>
       {tvs.map((tv, index) => (
-        <TVGridCard key={tv.id} tv={tv} index={index} />
+        <TVCard key={tv.id} tv={tv} index={index} />
       ))}
     </GridList>
   );

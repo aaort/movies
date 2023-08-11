@@ -1,5 +1,5 @@
 import GridList from '@/app/components/GridList';
-import PersonGridCard from '@/app/components/cards/PersonGridCard';
+import PersonCard from '@/app/components/cards/PersonCard';
 import get from '@/lib/api/get';
 
 type Props = {
@@ -22,7 +22,7 @@ export default async function TrendingPeople({ searchParams }: Props) {
   return (
     <GridList>
       {people.map((person, index) => (
-        <PersonGridCard key={person.id} person={person} index={index} />
+        <PersonCard key={person.id} person={person} index={index} />
       ))}
     </GridList>
   );
