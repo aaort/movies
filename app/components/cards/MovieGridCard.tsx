@@ -1,13 +1,11 @@
+import { toggleMovieFavorite, toggleMovieWatchlist } from '@/app/actions';
 import get from '@/lib/api/get';
-import toggleMovieMetadata from '@/lib/api/toggleMovieMetadata';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
-import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton';
 import WatchlistButton from '../WatchlistButton';
-import { toggleFavoriteMovie, toggleMovieWatchlist } from '@/app/actions';
 
 type Props = {
   movie: Movie;
@@ -34,7 +32,7 @@ export default async function MovieGridCard({ movie, index }: Props) {
 
   const handleToggleFavorite = async (value: boolean) => {
     'use server';
-    await toggleFavoriteMovie({ movieId: movie.id, value });
+    await toggleMovieFavorite({ movieId: movie.id, value });
   };
 
   return (

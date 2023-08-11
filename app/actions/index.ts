@@ -8,7 +8,7 @@ type Props = {
   value: boolean;
 };
 
-export const toggleFavoriteMovie = async ({ movieId, value }: Props) => {
+export const toggleMovieFavorite = async ({ movieId, value }: Props) => {
   const sessionId = cookies().get('session_id')?.value;
   if (!sessionId) return;
 
