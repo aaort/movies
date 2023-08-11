@@ -10,7 +10,7 @@ export default async function GeneralPage() {
     <div className='space-y-10'>
       <section>
         <h2 className='mb-8 text-xl'>Trending - Movies</h2>
-        <ul className='flex gap-14 overflow-x-auto pb-4'>
+        <ul className='flex gap-14 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
             <MovieGridCard key={movie.id} movie={movie} index={i} />
           ))}
@@ -19,7 +19,7 @@ export default async function GeneralPage() {
 
       <section>
         <h2 className='mb-8 text-xl'>Trending - TVs</h2>
-        <ul className='flex gap-14 overflow-x-auto pb-4'>
+        <ul className='flex gap-14 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
             <TVGridCard key={tv.id} tv={tv} index={i} />
           ))}
