@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton';
 import WatchlistButton from '../WatchlistButton';
+import { toggleFavoriteMovie, toggleMovieWatchlist } from '@/app/actions';
 
 type Props = {
   movie: Movie;
@@ -26,28 +27,14 @@ export default async function MovieGridCard({ movie, index }: Props) {
   const isInWatchList =
     watchlistMovies?.some((listMovie) => listMovie.id === movie.id) ?? false;
 
-  const onToggleFavorite = async (value: boolean) => {
+  const handleToggleWatchlist = async (value: boolean) => {
     'use server';
-    const sessionId = cookies().get('session_id')?.value;
-    if (!sessionId) return;
-
-    await toggleMovieMetadata({
-      movieId: movie.id,
-      sessionId,
-      data: { favorite: value },
-    });
+    await toggleMovieWatchlist({ movieId: movie.id, value });
   };
 
-  const onToggleWatchlist = async (value: boolean) => {
+  const handleToggleFavorite = async (value: boolean) => {
     'use server';
-    const sessionId = cookies().get('session_id')?.value;
-    if (!sessionId) return;
-
-    await toggleMovieMetadata({
-      movieId: movie.id,
-      sessionId,
-      data: { watchlist: value },
-    });
+    await toggleFavoriteMovie({ movieId: movie.id, value });
   };
 
   return (
@@ -55,10 +42,13 @@ export default async function MovieGridCard({ movie, index }: Props) {
       <div className='grid-card group h-full'>
         <div className="relative w-full aspect-[1/1.5] after:content-[' '] after:absolute after:w-full after:h-full after:bg-slate-900 after:bg-opacity-0 group-hover:after:bg-opacity-40 after:duration-300">
           <div className='hidden absolute top-4 right-4 z-10 group-hover:block space-x-4'>
-            <FavoriteButton checked={isFavorite} onToggle={onToggleFavorite} />
+            <FavoriteButton
+              checked={isFavorite}
+              onToggle={handleToggleFavorite}
+            />
             <WatchlistButton
               checked={isInWatchList}
-              onToggle={onToggleWatchlist}
+              onToggle={handleToggleWatchlist}
             />
           </div>
           <Image
