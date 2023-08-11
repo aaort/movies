@@ -10,7 +10,7 @@ const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 
 export default function TVGridCard({ tv, index }: Props) {
   return (
-    <Link href={`/tv/${tv.id}`}>
+    <Link href={`/tv/${tv.id}`} className='min-w-[20vw]'>
       <div className='grid-card h-full'>
         <div className='relative w-full aspect-[1/1.5]'>
           <Image
