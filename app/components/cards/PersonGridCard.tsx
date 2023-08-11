@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { BsFillPersonFill } from 'react-icons/bs';
 
 type Props = {
-  person: Person;
+  person: Person | CastPerson;
   index: number;
 };
 
