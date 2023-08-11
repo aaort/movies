@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   if (!requestToken) return undefined;
   const sessionId = await getSessionId(requestToken);
 
-  const res = NextResponse.redirect(`${appUrl}/trending/movies`);
+  const res = NextResponse.redirect(`${appUrl}general`);
   res.cookies.set({
     name: 'session_id',
     value: sessionId,

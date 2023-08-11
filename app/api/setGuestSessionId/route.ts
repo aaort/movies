@@ -17,5 +17,5 @@ export async function GET() {
     sameSite: 'strict',
   });
 
-  return NextResponse.redirect(`${appUrl}trending/movies`);
+  return NextResponse.redirect(`${appUrl}general`);
 }
