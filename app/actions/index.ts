@@ -1,3 +1,5 @@
+'use server';
+
 import toggleMovieMetadata from '@/lib/api/toggleMovieMetadata';
 import { cookies } from 'next/headers';
 
@@ -7,7 +9,6 @@ type Props = {
 };
 
 export const toggleFavoriteMovie = async ({ movieId, value }: Props) => {
-  'use server';
   const sessionId = cookies().get('session_id')?.value;
   if (!sessionId) return;
 
@@ -19,7 +20,6 @@ export const toggleFavoriteMovie = async ({ movieId, value }: Props) => {
 };
 
 export const toggleMovieWatchlist = async ({ movieId, value }: Props) => {
-  'use server';
   const sessionId = cookies().get('session_id')?.value;
   if (!sessionId) return;
 
