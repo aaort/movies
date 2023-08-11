@@ -54,7 +54,7 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
   return (
     <>
       <div className='absolute left-2 top-2 z-50'>
-        <Back classes='text-white' to='/trending/movies' />
+        <Back classes='text-white' />
       </div>
       <main className='space-y-10 mb-10'>
         <div
