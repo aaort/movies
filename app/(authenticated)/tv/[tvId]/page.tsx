@@ -9,54 +9,53 @@ import ExternalLinks from '../../sections/ExternalLinks';
 import Reviews from '../../sections/Reviews';
 
 type Props = {
-  params: { slug: string };
+  params: { tvId: string };
 };
 
 export async function generateMetadata({
-  params: { slug: movieId },
+  params: { tvId },
 }: Props): Promise<Metadata> {
-  const movie = await get<Movie>(`movie/${movieId}`);
+  const movie = await get<TVDetails>(`tv/${tvId}`);
 
   return {
-    title: movie ? movie.title : 'Movie',
-    description: movie && `Details page for ${movie.title} movie`,
+    title: movie ? movie.original_name : 'Movie',
+    description: movie
+      ? `Details page for ${movie.original_name} TV series`
+      : '',
   };
 }
 
 export async function generateStaticParams() {
-  const movies = (await get<ResultType<Movie>>('trending/movie/week', {}, true))
+  const tvs = (await get<ResultType<TV>>('trending/tv/week', {}, true))
     ?.results;
 
-  return movies ? movies.map((movie) => ({ slug: `${movie.id}` })) : [];
+  return tvs ? tvs.map((tv) => ({ slug: `${tv.id}` })) : [];
 }
 
 export const dynamicParams = true;
 
-export default async function MoviePage({ params: { slug: movieId } }: Props) {
-  const movie = await get<MovieDetails>(`movie/${movieId}`);
-  const crew = (await get<Credits>(`movie/${movieId}/credits`))?.crew;
-  const videos = (await get<ResultType<Video>>(`movie/${movieId}/videos`))
-    ?.results;
+export default async function TVPage({ params: { tvId } }: Props) {
+  const tv = await get<TVDetails>(`tv/${tvId}`);
+  const videos = (await get<ResultType<Video>>(`tv/${tvId}/videos`))?.results;
 
-  if (!movie) {
-    throw new Error('Sorry, unable to find requested data');
+  if (!tv) {
+    throw new Error('Sorry, unable to find details');
   }
 
   const imagePaths = {
-    backdrop: generateImageUrlByFilename(movie.backdrop_path),
-    poster: generateImageUrlByFilename(movie.poster_path),
+    backdrop: generateImageUrlByFilename(tv.backdrop_path),
+    poster: generateImageUrlByFilename(tv.poster_path),
   };
 
-  const director = crew?.find((person) => person.job === 'Director');
-  const writer = crew?.find((person) => (person.job = 'Writer'));
   const trailer = videos?.find((video) => video.type === 'Trailer');
+  const creators = tv.created_by;
 
   return (
     <>
       <div className='absolute left-2 top-2 z-50'>
-        <Back classes='text-white' />
+        <Back classes='text-white' to='/trending/tv' title='TVs' />
       </div>
-      <main className='space-y-10 mb-10'>
+      <section className='space-y-10 mb-10'>
         <div
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
           className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center'
@@ -76,71 +75,58 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
                   <div className='space-y-8 w-full'>
                     <div className='flex flex-wrap gap-y-2 justify-between items-center'>
                       <h1>
-                        {movie.title}
+                        {tv.original_name}
                         <span className='text-neutral-200 text-sm ml-4 align-middle'>
-                          {movie.release_date}
+                          {tv.first_air_date}
                         </span>
                       </h1>
                       {trailer && <TrailerPlayer videoKey={trailer?.key} />}
                     </div>
-                    <p>{movie.tagline}</p>
+                    <p>{tv.tagline}</p>
                   </div>
                 </div>
 
                 <div className='space-y-4'>
                   <p className='text-xl text-neutral-200'>Overview</p>
-                  <p className='text-lg'>{movie.overview}</p>
+                  <p className='text-lg'>{tv.overview}</p>
                 </div>
 
-                <dl className='flex gap-10'>
-                  {director && (
-                    <div className='space-y-2'>
-                      <dt id='director'>{director?.name}</dt>
-                      <dd className='text-neutral-300 text-sm'>Director</dd>
-                    </div>
-                  )}
-                  {writer && (
-                    <div className='space-y-2'>
-                      <dt>{writer?.name}</dt>
-                      <dd className='text-neutral-300 text-sm'>Writer</dd>
-                    </div>
-                  )}
+                <dl>
+                  <dt>{`Creator${creators.length > 1 ? 's' : ''}`}</dt>
+                  <dd>{creators.map((creator) => creator.name).join(', ')}</dd>
                 </dl>
               </div>
             </div>
           </div>
         </div>
 
-        <aside className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
+        <div className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
           <div className='space-y-10 overflow-hidden order-last md:order-first'>
             <h2 className='text-xl font-bold'>Cast</h2>
-            <Cast forPath={`movie/${movieId}/credits`} />
+            <Cast forPath={`tv/${tvId}/credits`} />
           </div>
           <div className='order-first md:order-last'>
-            <ExternalLinks movieId={movieId} />
+            <ExternalLinks movieId={tvId} />
           </div>
-        </aside>
+        </div>
 
-        <section className='mx-10 space-y-10'>
-          <h2 className='text-xl font-bold mb-4 inline-block'>
-            General information
-          </h2>
-          <dl className='flex flex-wrap gap-[10%] gap-y-10'>
+        <section>
+          <dl className='flex flex-wrap gap-[10%] gap-y-10 mx-10'>
             <div className='space-y-2'>
               <dt>Status</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.status}</dd>
+              <dd className='text-neutral-500 text-sm'>{tv.status}</dd>
             </div>
             <div className='space-y-2'>
               <dt>Original Language</dt>
               <dd className='text-neutral-500 text-sm'>
-                {movie.original_language}
+                {tv.original_language}
               </dd>
             </div>
             <div className='space-y-2'>
               <dt>Genres</dt>
               <dd className='text-neutral-500 text-sm'>
                 <ul className='space-y-2'>
-                  {movie.genres.map((genre) => (
+                  {tv.genres.map((genre) => (
                     <li key={genre.id}>{genre.name}</li>
                   ))}
                 </ul>
@@ -148,26 +134,18 @@ export default async function MoviePage({ params: { slug: movieId } }: Props) {
             </div>
             <div className='space-y-2'>
               <dt>Popularity</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.popularity}</dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Budget</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.budget}</dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Revenue</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.revenue}</dd>
+              <dd className='text-neutral-500 text-sm'>{tv.popularity}</dd>
             </div>
           </dl>
         </section>
 
-        <hr className='border-slate-100 mx-10' />
+        <div className='mx-10 space-y-10'>
+          <div className='w-full h-[2px] bg-slate-100'></div>
 
-        <section className='mx-10'>
-          <h2 className='text-xl font-bold mb-10'>Reviews</h2>
-          <Reviews movieId={movieId} />
-        </section>
-      </main>
+          <h2 className='text-xl font-bold'>Reviews</h2>
+          <Reviews movieId={tvId} />
+        </div>
+      </section>
     </>
   );
 }
