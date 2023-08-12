@@ -1,4 +1,4 @@
-import { toggleMovieFavorite, toggleMovieWatchlist } from '@/app/actions';
+import { toggleFavorite, toggleWatchlist } from '@/app/actions';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton';
 import WatchlistButton from '../WatchlistButton';
+import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
 
 type Props = {
   movie: Movie;
@@ -15,24 +16,17 @@ type Props = {
 export default async function MovieCard({ movie, index }: Props) {
   const posterPath = generateImageUrlByFilename(movie.poster_path);
 
-  const watchlistMovies = (
-    await get<ResultType<Movie>>(`account/{}/watchlist/movies`, {
-      cache: 'no-cache',
-    })
-  )?.results;
-
   const isFavorite = await isMovieFavorite(movie.id);
-  const isInWatchList =
-    watchlistMovies?.some((listMovie) => listMovie.id === movie.id) ?? false;
+  const isInWatchlist = await isMovieInWatchlist(movie.id);
 
   const handleToggleWatchlist = async (value: boolean) => {
     'use server';
-    await toggleMovieWatchlist({ movieId: movie.id, value });
+    await toggleWatchlist({ movieId: movie.id, media_type: 'movie', value });
   };
 
   const handleToggleFavorite = async (value: boolean) => {
     'use server';
-    await toggleMovieFavorite({ movieId: movie.id, value });
+    await toggleFavorite({ movieId: movie.id, media_type: 'movie', value });
   };
 
   return (
@@ -45,7 +39,7 @@ export default async function MovieCard({ movie, index }: Props) {
               onToggle={handleToggleFavorite}
             />
             <WatchlistButton
-              checked={isInWatchList}
+              checked={isInWatchlist}
               onToggle={handleToggleWatchlist}
             />
           </div>

@@ -1,0 +1,13 @@
+import get from '../api/get';
+
+export default async function isTVInWatchlist(
+  tvId: string | number
+): Promise<boolean> {
+  const watchlistTVs = (
+    await get<ResultType<Movie>>(`account/{}/watchlist/tv`, {
+      cache: 'no-cache',
+    })
+  )?.results;
+
+  return !!watchlistTVs?.some((movie) => movie.id === tvId);
+}

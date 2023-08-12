@@ -9,15 +9,13 @@ type Props = {
 };
 
 export type ToggleMovieData = {
+  media_type: 'movie' | 'tv';
+  media_id: string | number;
   favorite?: boolean;
   watchlist?: boolean;
 };
 
-export default async function toggleMovieMetadata({
-  movieId,
-  sessionId,
-  data,
-}: Props) {
+export default async function toggleMovieMetadata({ sessionId, data }: Props) {
   const account = await get<Account>('account', { cache: 'no-cache' });
 
   if (!account) return;
@@ -34,11 +32,7 @@ export default async function toggleMovieMetadata({
           Authorization: `Bearer ${readApiKey}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          media_type: 'movie',
-          media_id: movieId,
-          ...data,
-        }),
+        body: JSON.stringify(data),
       }
     );
   } catch (e) {
