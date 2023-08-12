@@ -27,7 +27,7 @@ export async function generateStaticParams() {
   const movies = (await get<ResultType<Movie>>('trending/movie/week', {}, true))
     ?.results;
 
-  return movies ? movies.map((movie) => ({ slug: `${movie.id}` })) : [];
+  return movies ? movies.map((movie) => ({ movieId: `${movie.id}` })) : [];
 }
 
 export const dynamicParams = true;

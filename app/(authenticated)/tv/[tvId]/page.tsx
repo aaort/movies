@@ -29,7 +29,7 @@ export async function generateStaticParams() {
   const tvs = (await get<ResultType<TV>>('trending/tv/week', {}, true))
     ?.results;
 
-  return tvs ? tvs.map((tv) => ({ slug: `${tv.id}` })) : [];
+  return tvs ? tvs.map((tv) => ({ tvId: `${tv.id}` })) : [];
 }
 
 export const dynamicParams = true;
