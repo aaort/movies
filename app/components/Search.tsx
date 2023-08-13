@@ -63,7 +63,7 @@ const Search = () => {
         onChange={(e) => {
           setInputValue(e.target.value);
         }}
-        placeholder='Search movies'
+        placeholder='Search movies, tvs and people'
         className='text-base px-4 py-2 rounded-md w-full border-[1px] border-slate-300'
       />
       {isPending && <div className='absolute top-2 right-2'>loading...</div>}
