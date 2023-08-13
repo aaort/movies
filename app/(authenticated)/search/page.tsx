@@ -26,8 +26,6 @@ export default async function Search({ searchParams }: Props) {
     (item): item is Person => item.media_type === 'person'
   );
 
-  console.log(data);
-
   return (
     <main className='m-10 space-y-20'>
       <SearchInput />
