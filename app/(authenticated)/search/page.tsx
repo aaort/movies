@@ -1,3 +1,4 @@
+import Back from '@/app/components/Back';
 import GridList from '@/app/components/GridList';
 import SearchInput from '@/app/components/Search';
 import MovieCard from '@/app/components/cards/MovieCard';
@@ -27,55 +28,60 @@ export default async function Search({ searchParams }: Props) {
   );
 
   return (
-    <main className='m-10 space-y-20'>
-      <SearchInput />
+    <>
+      <aside>
+        <Back classes='text-black' />
+      </aside>
+      <main className='m-10 space-y-20'>
+        <SearchInput />
 
-      {data?.length ? (
-        <>
-          {movies?.length ? (
-            <section className='space-y-10'>
-              <h2 className='font-bold text-xl'>Movies</h2>
-              <GridList>
-                {movies?.map((movie, i) => (
-                  <li key={movie.id}>
-                    <MovieCard movie={movie} index={i} />
-                  </li>
-                ))}
-              </GridList>
-            </section>
-          ) : null}
-          {tvs?.length ? (
-            <>
-              <hr className='border-slate-400' />
+        {data?.length ? (
+          <>
+            {movies?.length ? (
               <section className='space-y-10'>
-                <h2 className='font-bold text-xl'>TVs</h2>
+                <h2 className='font-bold text-xl'>Movies</h2>
                 <GridList>
-                  {tvs?.map((tv, i) => (
-                    <li key={tv.id}>
-                      <TVCard tv={tv} index={i} />
+                  {movies?.map((movie, i) => (
+                    <li key={movie.id}>
+                      <MovieCard movie={movie} index={i} />
                     </li>
                   ))}
                 </GridList>
               </section>
-            </>
-          ) : null}
-          {people?.length ? (
-            <>
-              <hr className='border-slate-400' />
-              <section className='space-y-10'>
-                <h2 className='font-bold text-xl'>People</h2>
-                <GridList>
-                  {people?.map((person, i) => (
-                    <li key={person.id}>
-                      <PersonCard person={person} index={i} />
-                    </li>
-                  ))}
-                </GridList>
-              </section>
-            </>
-          ) : null}
-        </>
-      ) : null}
-    </main>
+            ) : null}
+            {tvs?.length ? (
+              <>
+                <hr className='border-slate-400' />
+                <section className='space-y-10'>
+                  <h2 className='font-bold text-xl'>TVs</h2>
+                  <GridList>
+                    {tvs?.map((tv, i) => (
+                      <li key={tv.id}>
+                        <TVCard tv={tv} index={i} />
+                      </li>
+                    ))}
+                  </GridList>
+                </section>
+              </>
+            ) : null}
+            {people?.length ? (
+              <>
+                <hr className='border-slate-400' />
+                <section className='space-y-10'>
+                  <h2 className='font-bold text-xl'>People</h2>
+                  <GridList>
+                    {people?.map((person, i) => (
+                      <li key={person.id}>
+                        <PersonCard person={person} index={i} />
+                      </li>
+                    ))}
+                  </GridList>
+                </section>
+              </>
+            ) : null}
+          </>
+        ) : null}
+      </main>
+    </>
   );
 }
