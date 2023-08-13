@@ -18,7 +18,6 @@ export default function Back({ to, classes, title }: Props) {
     title ?? (to ? to.slice(to.lastIndexOf('/')) : previousRoute).slice(1);
 
   const handleBack = () => {
-    console.log(to);
     if (!to) return back();
     push(to);
   };
