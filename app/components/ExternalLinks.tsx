@@ -36,7 +36,9 @@ export default async function ExternalLinks({
   }`;
 
   return (
-    <div className={`flex flex-row ${flexDirection} gap-10`}>
+    <div
+      className={`flex flex-row ${flexDirection} gap-2 md:gap-4 lg:gap-8 xl:gap-10`}
+    >
       {Object.keys(links).map((key) => (
         <Link
           key={links[key].url}
