@@ -8,11 +8,17 @@ import {
 } from 'react-icons/bs';
 import { SiImdb } from 'react-icons/si';
 
+type Axis = 'horizontal' | 'vertical';
+
 type Props = {
   path: string;
+  axis?: Axis;
 };
 
-export default async function ExternalLinks({ path }: Props) {
+export default async function ExternalLinks({
+  path,
+  axis = 'vertical',
+}: Props) {
   const externalIds = await get<ExternalIds>(path);
 
   // Remove "id" itself
@@ -25,8 +31,12 @@ export default async function ExternalLinks({ path }: Props) {
 
   const links = getLinks(externalLinks);
 
+  const flexDirection = `${
+    axis === 'horizontal' ? 'md:flex-row' : 'md:flex-col'
+  }`;
+
   return (
-    <div className='flex flex-row md:flex-col gap-10'>
+    <div className={`flex flex-row ${flexDirection} gap-10`}>
       {Object.keys(links).map((key) => (
         <Link
           key={links[key].url}
