@@ -1,5 +1,5 @@
-import MovieCard from '@/app/components/cards/MovieCard';
-import TVCard from '@/app/components/cards/TVCard';
+import MovieCard from '@/app/_components/cards/MovieCard';
+import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 
 export default async function GeneralPage() {

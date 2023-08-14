@@ -1,4 +1,4 @@
-import PersonCard from '@/app/components/cards/PersonCard';
+import PersonCard from '@/app/_components/cards/PersonCard';
 import get from '@/lib/api/get';
 
 type Props = {

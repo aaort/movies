@@ -1,9 +1,9 @@
-import Back from '@/app/components/Back';
-import GridList from '@/app/components/GridList';
-import SearchInput from '@/app/components/Search';
-import MovieCard from '@/app/components/cards/MovieCard';
-import PersonCard from '@/app/components/cards/PersonCard';
-import TVCard from '@/app/components/cards/TVCard';
+import Back from '@/app/_components/Back';
+import GridList from '@/app/_components/GridList';
+import SearchInput from '@/app/_components/Search';
+import MovieCard from '@/app/_components/cards/MovieCard';
+import PersonCard from '@/app/_components/cards/PersonCard';
+import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 
 type Props = {

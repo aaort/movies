@@ -1,5 +1,5 @@
 import get from '@/lib/api/get';
-import Review from '../components/Review';
+import Review from '../_components/Review';
 import Link from 'next/link';
 
 type Props = {

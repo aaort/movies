@@ -1,5 +1,5 @@
-import GridList from '@/app/components/GridList';
-import MovieCard from '@/app/components/cards/MovieCard';
+import GridList from '@/app/_components/GridList';
+import MovieCard from '@/app/_components/cards/MovieCard';
 import get from '@/lib/api/get';
 
 export default async function UpcomingMovies() {

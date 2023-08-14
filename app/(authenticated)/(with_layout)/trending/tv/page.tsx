@@ -1,5 +1,5 @@
-import GridList from '@/app/components/GridList';
-import TVCard from '@/app/components/cards/TVCard';
+import GridList from '@/app/_components/GridList';
+import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 
 type Props = {

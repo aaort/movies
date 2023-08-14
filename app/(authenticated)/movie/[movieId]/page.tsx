@@ -1,10 +1,10 @@
-import Back from '@/app/components/Back';
-import ExternalLinks from '@/app/components/ExternalLinks';
+import Back from '@/app/_components/Back';
+import ExternalLinks from '@/app/_components/ExternalLinks';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import TrailerPlayer from '../../components/TrailerPlayer';
+import TrailerPlayer from '../../_components/TrailerPlayer';
 import Cast from '../../sections/Cast';
 import Reviews from '../../sections/Reviews';
 

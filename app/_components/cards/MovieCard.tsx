@@ -1,34 +1,36 @@
-import isTVFavorite from '@/lib/helpers/isTVFavorite';
+import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
+import get from '@/lib/api/get';
+import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
+import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
 import Image from 'next/image';
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton';
 import WatchlistButton from '../WatchlistButton';
-import isTVInWatchlist from '@/lib/helpers/isTVInWatchlist';
-import { toggleFavorite, toggleWatchlist } from '@/app/actions';
+import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
 
 type Props = {
-  tv: TV;
+  movie: Movie;
   index: number;
 };
 
-const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
+export default async function MovieCard({ movie, index }: Props) {
+  const posterPath = generateImageUrlByFilename(movie.poster_path);
 
-export default async function TVCard({ tv, index }: Props) {
-  const isFavorite = await isTVFavorite(tv.id);
-  const isInWatchlist = await isTVInWatchlist(tv.id);
+  const isFavorite = await isMovieFavorite(movie.id);
+  const isInWatchlist = await isMovieInWatchlist(movie.id);
 
   const handleToggleWatchlist = async (value: boolean) => {
     'use server';
-    await toggleWatchlist({ movieId: tv.id, media_type: 'tv', value });
+    await toggleWatchlist({ movieId: movie.id, media_type: 'movie', value });
   };
 
   const handleToggleFavorite = async (value: boolean) => {
     'use server';
-    await toggleFavorite({ movieId: tv.id, media_type: 'tv', value });
+    await toggleFavorite({ movieId: movie.id, media_type: 'movie', value });
   };
 
   return (
-    <Link href={`/tv/${tv.id}`} className='min-w-[20vw] grid-card group'>
+    <Link href={`/movie/${movie.id}`} className='min-w-[20vw] grid-card group'>
       <div className='grid-card-overlay'>
         <div className='hidden absolute top-4 right-4 z-10 group-hover:block space-x-4'>
           <FavoriteButton
@@ -43,17 +45,17 @@ export default async function TVCard({ tv, index }: Props) {
         <Image
           fill
           alt=''
-          src={`${imagesBaseUrl}${tv.poster_path}`}
+          src={posterPath}
           sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
           className='object-fill'
           priority={index < 6}
         />
-      </div>
-      <div className='grid-card-text-box'>
-        <p className='overflow-ellipsis break-words line-clamp-2'>
-          {tv.original_name}
-        </p>
-        <p>{tv.first_air_date}</p>
+        <div className='grid-card-text-box'>
+          <p className='overflow-ellipsis break-words line-clamp-2'>
+            {movie.title}
+          </p>
+          <p> {movie.release_date}</p>
+        </div>
       </div>
     </Link>
   );

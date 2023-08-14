@@ -1,4 +1,4 @@
-import Header from '@/app/components/Header';
+import Header from '@/app/_components/Header';
 import Link from 'next/link';
 import { BsArrowRightShort } from 'react-icons/bs';
 

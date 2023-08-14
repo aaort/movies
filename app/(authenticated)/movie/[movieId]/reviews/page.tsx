@@ -1,5 +1,5 @@
-import Back from '@/app/components/Back';
-import Review from '../../../components/Review';
+import Back from '@/app/_components/Back';
+import Review from '../../../_components/Review';
 import { getReviews } from '../../../sections/Reviews';
 
 type Props = {

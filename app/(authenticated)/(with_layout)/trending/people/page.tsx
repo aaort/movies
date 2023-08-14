@@ -1,5 +1,5 @@
-import GridList from '@/app/components/GridList';
-import PersonCard from '@/app/components/cards/PersonCard';
+import GridList from '@/app/_components/GridList';
+import PersonCard from '@/app/_components/cards/PersonCard';
 import get from '@/lib/api/get';
 
 type Props = {
