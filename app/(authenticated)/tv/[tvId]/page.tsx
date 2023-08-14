@@ -100,15 +100,15 @@ export default async function TVPage({ params: { tvId } }: Props) {
           </div>
         </div>
 
-        <div className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
-          <div className='space-y-10 overflow-hidden order-last md:order-first'>
+        <section className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
+          <section className='space-y-10 overflow-hidden order-last md:order-first'>
             <h2 className='text-xl font-bold'>Cast</h2>
             <Cast forPath={`tv/${tvId}/credits`} />
-          </div>
-          <div className='order-first md:order-last'>
+          </section>
+          <aside className='order-first md:order-last'>
             <ExternalLinks movieId={tvId} />
-          </div>
-        </div>
+          </aside>
+        </section>
 
         <section>
           <dl className='flex flex-wrap gap-[10%] gap-y-10 mx-10'>
