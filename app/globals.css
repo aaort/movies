@@ -28,7 +28,7 @@ a {
   }
 
   .grid-card-text-box {
-    @apply absolute z-50 bottom-0 w-full h-[20%] bg-gradient-to-b from-slate-900/60 from-10% via-slate-700/50 via-50% to-slate-700/30 to-90%;
+    @apply absolute z-50 bottom-0 w-full h-[20%] bg-gradient-to-b from-slate-950/80 from-10% via-slate-950/60 via-50% to-slate-950/40 to-90%;
   }
 
   .modal {
