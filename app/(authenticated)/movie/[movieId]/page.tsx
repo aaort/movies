@@ -120,15 +120,16 @@ export default async function MoviePage({ params: { movieId } }: Props) {
           </div>
         </div>
 
-        <aside className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
+        <section className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
           <div className='space-y-10 overflow-hidden order-last md:order-first'>
             <h2 className='text-xl font-bold'>Cast</h2>
             <Cast forPath={`movie/${movieId}/credits`} />
           </div>
-          <div className='order-first md:order-last'>
+
+          <aside className='order-first md:order-last'>
             <ExternalLinks movieId={movieId} />
-          </div>
-        </aside>
+          </aside>
+        </section>
 
         <section className='mx-10 space-y-10'>
           <h2 className='text-xl font-bold mb-4 inline-block'>
