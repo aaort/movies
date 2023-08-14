@@ -52,9 +52,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
 
   return (
     <>
-      <div className='absolute left-2 top-2 z-50'>
-        <Back classes='text-white' to='/trending/tv' title='TVs' />
-      </div>
+      <Back classes='text-white absolute left-2 top-2 z-50' title='TVs' />
       <section className='space-y-10 mb-10'>
         <div
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
