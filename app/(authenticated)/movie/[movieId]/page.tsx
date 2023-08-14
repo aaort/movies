@@ -62,7 +62,9 @@ export default async function MoviePage({ params: { movieId } }: Props) {
 
   return (
     <>
-      <Back classes='text-white absolute left-2 top-2 z-50' />
+      <aside>
+        <Back classes='text-white absolute left-2 top-2 z-50' />
+      </aside>
       <main className='space-y-10 mb-10'>
         <div
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
