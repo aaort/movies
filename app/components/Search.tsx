@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
+// Copied from https://github.com/batuhanbilginn/search-nextjs13
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const [debouncedValue, setDebouncedValue] = useState<string>('');
