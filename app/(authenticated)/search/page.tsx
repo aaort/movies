@@ -30,7 +30,7 @@ export default async function Search({ searchParams }: Props) {
   return (
     <>
       <aside>
-        <Back classes='text-black' />
+        <Back classes='text-black' title='General' />
       </aside>
       <main className='m-10 space-y-20'>
         <SearchInput />
