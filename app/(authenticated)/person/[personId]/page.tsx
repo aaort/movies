@@ -26,9 +26,9 @@ export default async function PersonPage({ params: { personId } }: Props) {
 
   const avatarPath = generateImageUrlByFilename(person?.profile_path);
 
-  const credits: (Movie | TV)[] = [
-    ...(movies?.cast ?? []),
-    ...(tvs?.cast ?? []),
+  const credits: ((Movie | TV) & { type: string })[] = [
+    ...(movies?.cast.map((movie) => ({ ...movie, type: 'movie' })) ?? []),
+    ...(tvs?.cast.map((tv) => ({ ...tv, type: 'tv' })) ?? []),
   ];
 
   return (
@@ -99,11 +99,11 @@ export default async function PersonPage({ params: { personId } }: Props) {
 
           <section className='overflow-hidden max-w-full'>
             <h3 className='font-bold text-lg mb-2'>Known for</h3>
-            <ul className='max-w-full inline-flex gap-10 overflow-x-auto pb-10'>
+            <ul className='max-w-full inline-flex gap-10 overflow-x-auto pb-10 text-white'>
               {credits?.map((item, i) => {
                 return (
                   <li key={i}>
-                    {item.media_type === 'movie' ? (
+                    {item.type === 'movie' ? (
                       <MovieCard movie={item as Movie} index={i} />
                     ) : (
                       <TVCard tv={item as TV} index={i} />
