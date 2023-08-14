@@ -18,7 +18,7 @@ export async function generateMetadata({
   const movie = await get<TVDetails>(`tv/${tvId}`);
 
   return {
-    title: movie ? movie.original_name : 'Movie',
+    title: movie ? movie.original_name : 'TV series',
     description: movie
       ? `Details page for ${movie.original_name} TV series`
       : '',
