@@ -29,6 +29,25 @@ type Person = {
   profile_path: string;
 };
 
+type PersonDetails = Pick<
+  Person,
+  | 'id'
+  | 'adult'
+  | 'gender'
+  | 'name'
+  | 'profile_path'
+  | 'popularity'
+  | 'known_for_department'
+> & {
+  also_known_as: string[];
+  biography: string;
+  birthday: string;
+  deathday: string | null;
+  homepage: string | null;
+  imdb_id: string;
+  place_of_birth: string;
+};
+
 type TV = Pick<
   Movie,
   | 'adult'
