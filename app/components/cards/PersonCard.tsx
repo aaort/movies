@@ -17,7 +17,7 @@ export default function PersonCard({ person, index }: Props) {
   return (
     <Link href='#' className='min-w-[20vw] grid-card group'>
       <div
-        className={`relative w-full aspect-[1/1.5] grid place-items-center ${
+        className={`grid-card-overlay ${
           !fullProfilePath ? 'border-b-[1px] border-slate-400' : ''
         }`}
       >
