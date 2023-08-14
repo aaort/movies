@@ -51,11 +51,10 @@ export default async function MovieCard({ movie, index }: Props) {
           priority={index < 6}
         />
         <div className='grid-card-text-box'>
-          <p className='mx-4 mb-4 break-normal'>
+          <p className='overflow-ellipsis break-words line-clamp-2'>
             {movie.title}
-            <br />
-            {movie.release_date}
           </p>
+          <p> {movie.release_date}</p>
         </div>
       </div>
     </Link>

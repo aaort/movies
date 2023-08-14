@@ -33,8 +33,10 @@ export default function PersonCard({ person, index }: Props) {
         ) : (
           <BsFillPersonFill className='w-[80%] h-[80%] ' />
         )}
-        <div className='px-4 pb-4 grid-card-text-box'>
-          <p>{person.name}</p>
+        <div className='grid-card-text-box'>
+          <p className='overflow-ellipsis break-words line-clamp-2'>
+            {person.name}
+          </p>
           <p>{person.known_for_department}</p>
         </div>
       </div>

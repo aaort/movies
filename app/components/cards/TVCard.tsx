@@ -49,8 +49,8 @@ export default async function TVCard({ tv, index }: Props) {
           priority={index < 6}
         />
       </div>
-      <div className='px-4 pb-4 grid-card-text-box'>
-        <p>{tv.name}</p>
+      <div className='grid-card-text-box'>
+        <p className='overflow-ellipsis break-words line-clamp-2'>{tv.name}</p>
         <p>{tv.first_air_date}</p>
       </div>
     </Link>
