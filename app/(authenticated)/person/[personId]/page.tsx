@@ -16,8 +16,6 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const person = await get<PersonDetails>(`person/${personId}`);
 
-  console.log(person);
-
   return {
     title: person ? person.name : 'person',
     description: person && `Details page for ${person.name}`,
