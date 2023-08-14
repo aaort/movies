@@ -31,6 +31,10 @@ a {
     @apply absolute z-50 bottom-0 w-full h-[20%] bg-gradient-to-b from-slate-950/80 from-10% via-slate-950/60 via-50% to-slate-950/40 to-90%;
   }
 
+  .grid-card-overlay {
+    @apply relative w-full aspect-[1/1.5] after:content-[''] after:absolute after:w-full after:h-full after:bg-slate-950 after:bg-opacity-0 group-hover:after:bg-opacity-40 after:duration-300;
+  }
+
   .modal {
     @apply absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] w-[80%] aspect-video drop-shadow-2xl rounded-md overflow-clip;
   }
