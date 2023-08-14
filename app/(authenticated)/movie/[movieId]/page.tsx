@@ -8,6 +8,8 @@ import Cast from '../../sections/Cast';
 import ExternalLinks from '../../sections/ExternalLinks';
 import Reviews from '../../sections/Reviews';
 
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
 type Props = {
   params: { movieId: string };
 };
@@ -32,15 +34,22 @@ export async function generateStaticParams() {
 
 export const dynamicParams = true;
 
+type ResponseType = MovieDetails & {
+  videos: { results: Video[] };
+  credits: Pick<Credits, 'cast' | 'crew'>;
+};
+
 export default async function MoviePage({ params: { movieId } }: Props) {
-  const movie = await get<MovieDetails>(`movie/${movieId}`);
-  const crew = (await get<Credits>(`movie/${movieId}/credits`))?.crew;
-  const videos = (await get<ResultType<Video>>(`movie/${movieId}/videos`))
-    ?.results;
+  const movie = await get<ResponseType>(
+    `movie/${movieId}?api_key=${apiKey}&append_to_response=videos,credits`
+  );
 
   if (!movie) {
     throw new Error('Sorry, unable to find requested data');
   }
+
+  const videos = movie?.videos.results;
+  const crew = movie?.credits.crew;
 
   const imagePaths = {
     backdrop: generateImageUrlByFilename(movie.backdrop_path),
