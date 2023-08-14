@@ -4,11 +4,26 @@ import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import getGenderByNumber from '@/lib/helpers/getGenderByNumber';
+import { type Metadata } from 'next';
 import Image from 'next/image';
 
 type Props = {
   params: { personId: string };
 };
+
+export async function generateMetadata({
+  params: { personId },
+}: Props): Promise<Metadata> {
+  const person = await get<PersonDetails>(`person/${personId}`);
+
+  console.log(person);
+
+  return {
+    title: person ? person.name : 'person',
+    description: person && `Details page for ${person.name}`,
+  };
+}
+
 
 export default async function PersonPage({ params: { personId } }: Props) {
   const person = await get<PersonDetails>(`person/${personId}`);
