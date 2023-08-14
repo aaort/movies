@@ -1,11 +1,11 @@
 import Back from '@/app/components/Back';
+import ExternalLinks from '@/app/components/ExternalLinks';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import TrailerPlayer from '../../components/TrailerPlayer';
 import Cast from '../../sections/Cast';
-import ExternalLinks from '../../sections/ExternalLinks';
 import Reviews from '../../sections/Reviews';
 
 type Props = {
@@ -106,7 +106,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
             <Cast forPath={`tv/${tvId}/credits`} />
           </section>
           <aside className='order-first md:order-last'>
-            <ExternalLinks movieId={tvId} />
+            <ExternalLinks path={`tv/${tvId}/external_ids`} />
           </aside>
         </section>
 

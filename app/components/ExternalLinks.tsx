@@ -9,11 +9,11 @@ import {
 import { SiImdb } from 'react-icons/si';
 
 type Props = {
-  movieId: string | number;
+  path: string;
 };
 
-export default async function ExternalLinks({ movieId }: Props) {
-  const externalIds = await get<ExternalIds>(`movie/${movieId}/external_ids`);
+export default async function ExternalLinks({ path }: Props) {
+  const externalIds = await get<ExternalIds>(path);
 
   // Remove "id" itself
   const externalLinks = [];

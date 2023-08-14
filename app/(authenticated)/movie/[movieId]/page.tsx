@@ -1,11 +1,11 @@
 import Back from '@/app/components/Back';
+import ExternalLinks from '@/app/components/ExternalLinks';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import TrailerPlayer from '../../components/TrailerPlayer';
 import Cast from '../../sections/Cast';
-import ExternalLinks from '../../sections/ExternalLinks';
 import Reviews from '../../sections/Reviews';
 
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -127,7 +127,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
           </div>
 
           <aside className='order-first md:order-last'>
-            <ExternalLinks movieId={movieId} />
+            <ExternalLinks path={`movie/${movieId}/external_ids`} />
           </aside>
         </section>
 
