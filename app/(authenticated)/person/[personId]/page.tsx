@@ -23,8 +23,9 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const people = (await get<ResultType<TV>>('trending/people/week', {}, true))
-    ?.results;
+  const people = (
+    await get<ResultType<Person>>('trending/person/week', {}, true)
+  )?.results;
 
   return people ? people.map((person) => ({ personId: `${person.id}` })) : [];
 }
