@@ -50,7 +50,9 @@ export default async function TVCard({ tv, index }: Props) {
         />
       </div>
       <div className='grid-card-text-box'>
-        <p className='overflow-ellipsis break-words line-clamp-2'>{tv.name}</p>
+        <p className='overflow-ellipsis break-words line-clamp-2'>
+          {tv.original_name}
+        </p>
         <p>{tv.first_air_date}</p>
       </div>
     </Link>
