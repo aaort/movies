@@ -7,11 +7,8 @@ type Props = {
 };
 
 export default async function TrendingMovies({ searchParams }: Props) {
-  const searchText = searchParams.search ?? '';
-  const url = searchText
-    ? `search/movie?query=${searchText}`
-    : 'trending/movie/week';
-  const movies = (await get<ResultType<Movie>>(url, {}, !searchText))?.results;
+  const url = 'trending/movie/week';
+  const movies = (await get<ResultType<Movie>>(url, {}, true))?.results;
 
   if (!movies) {
     throw new Error('Sorry, unable to satisfy the request');

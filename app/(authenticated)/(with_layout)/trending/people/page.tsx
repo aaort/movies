@@ -7,11 +7,8 @@ type Props = {
 };
 
 export default async function TrendingPeople({ searchParams }: Props) {
-  const searchText = searchParams.search ?? '';
-  const url = searchText
-    ? `search/person?query=${searchText}`
-    : 'trending/person/week';
-  const people = (await get<ResultType<Person>>(url, {}, !searchText))?.results;
+  const url = 'trending/person/week';
+  const people = (await get<ResultType<Person>>(url, {}, true))?.results;
 
   if (!people) {
     throw new Error(

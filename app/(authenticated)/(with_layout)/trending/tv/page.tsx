@@ -7,9 +7,8 @@ type Props = {
 };
 
 export default async function TrendingTV({ searchParams }: Props) {
-  const searchText = searchParams.search ?? '';
-  const url = searchText ? `search/tv?query=${searchText}` : 'trending/tv/week';
-  const tvs = (await get<ResultType<TV>>(url, {}, !searchText))?.results;
+  const url = 'trending/tv/week';
+  const tvs = (await get<ResultType<TV>>(url, {}, true))?.results;
 
   if (!tvs) {
     throw new Error(
