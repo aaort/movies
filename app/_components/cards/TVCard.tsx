@@ -13,8 +13,6 @@ type Props = {
   index: number;
 };
 
-const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
-
 export default async function TVCard({ tv, index }: Props) {
   const isFavorite = await isTVFavorite(tv.id);
   const isInWatchlist = await isTVInWatchlist(tv.id);
