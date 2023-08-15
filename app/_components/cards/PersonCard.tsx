@@ -34,7 +34,7 @@ export default function PersonCard({ person, index }: Props) {
             priority={index < 6}
           />
         ) : (
-          <BsFillPersonFill className='w-[80%] h-[80%] ' />
+          <BsFillPersonFill className='w-full h-full' />
         )}
         <div className='grid-card-text-box'>
           <p className='overflow-ellipsis break-words line-clamp-2'>
