@@ -1,10 +1,12 @@
+import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
+import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isTVFavorite from '@/lib/helpers/isTVFavorite';
+import isTVInWatchlist from '@/lib/helpers/isTVInWatchlist';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BiMoviePlay } from 'react-icons/bi';
 import FavoriteButton from '../FavoriteButton';
 import WatchlistButton from '../WatchlistButton';
-import isTVInWatchlist from '@/lib/helpers/isTVInWatchlist';
-import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
 
 type Props = {
   tv: TV;
@@ -27,6 +29,10 @@ export default async function TVCard({ tv, index }: Props) {
     await toggleFavorite({ movieId: tv.id, media_type: 'tv', value });
   };
 
+  const posterPath = tv.poster_path
+    ? generateImageUrlByFilename(tv.poster_path)
+    : null;
+
   return (
     <Link href={`/tv/${tv.id}`} className='min-w-[20vw] grid-card group'>
       <div className='grid-card-overlay'>
@@ -40,14 +46,18 @@ export default async function TVCard({ tv, index }: Props) {
             onToggle={handleToggleWatchlist}
           />
         </div>
-        <Image
-          fill
-          alt=''
-          src={`${imagesBaseUrl}${tv.poster_path}`}
-          sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
-          className='object-fill'
-          priority={index < 6}
-        />
+        {posterPath ? (
+          <Image
+            fill
+            alt=''
+            src={posterPath}
+            sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
+            className='object-fill'
+            priority={index < 6}
+          />
+        ) : (
+          <BiMoviePlay className='h-full w-full' />
+        )}
       </div>
       <div className='grid-card-text-box'>
         <p className='overflow-ellipsis break-words line-clamp-2'>

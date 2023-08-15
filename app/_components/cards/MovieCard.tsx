@@ -1,12 +1,12 @@
 import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
-import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
+import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BiMoviePlay } from 'react-icons/bi';
 import FavoriteButton from '../FavoriteButton';
 import WatchlistButton from '../WatchlistButton';
-import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
 
 type Props = {
   movie: Movie;
@@ -14,7 +14,9 @@ type Props = {
 };
 
 export default async function MovieCard({ movie, index }: Props) {
-  const posterPath = generateImageUrlByFilename(movie.poster_path);
+  const posterPath = movie.poster_path
+    ? generateImageUrlByFilename(movie.poster_path)
+    : null;
 
   const isFavorite = await isMovieFavorite(movie.id);
   const isInWatchlist = await isMovieInWatchlist(movie.id);
@@ -42,14 +44,18 @@ export default async function MovieCard({ movie, index }: Props) {
             onToggle={handleToggleWatchlist}
           />
         </div>
-        <Image
-          fill
-          alt=''
-          src={posterPath}
-          sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
-          className='object-fill'
-          priority={index < 6}
-        />
+        {posterPath ? (
+          <Image
+            fill
+            alt=''
+            src={posterPath}
+            sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
+            className='object-fill'
+            priority={index < 6}
+          />
+        ) : (
+          <BiMoviePlay className='h-full w-full' />
+        )}
         <div className='grid-card-text-box'>
           <p className='overflow-ellipsis break-words line-clamp-2'>
             {movie.title}
