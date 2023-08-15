@@ -1,4 +1,5 @@
 import GridList from '@/app/_components/GridList';
+import Pagination from '@/app/_components/Pagination';
 import MovieCard from '@/app/_components/cards/MovieCard';
 import get from '@/lib/api/get';
 
@@ -7,18 +8,31 @@ type Props = {
 };
 
 export default async function TrendingMovies({ searchParams }: Props) {
-  const url = 'trending/movie/week';
-  const movies = (await get<ResultType<Movie>>(url, {}, true))?.results;
+  const page = searchParams.page ?? 1;
+  const parsedPage = Number(page);
+
+  const url = `trending/movie/week?page=${!isNaN(parsedPage) ? page : 1}`;
+  const data = await get<ResultType<Movie>>(url, {}, true);
+
+  const movies = data?.results;
+  const totalPages = data?.total_pages;
 
   if (!movies) {
     throw new Error('Sorry, unable to satisfy the request');
   }
 
   return (
-    <GridList>
-      {movies?.map((movie, index) => (
-        <MovieCard key={movie.id} movie={movie} index={index} />
-      ))}
-    </GridList>
+    <section className='flex flex-col gap-y-10'>
+      <GridList>
+        {movies?.map((movie, index) => (
+          <MovieCard key={movie.id} movie={movie} index={index} />
+        ))}
+      </GridList>
+      <div className='self-end'>
+        {!isNaN(parsedPage) && totalPages ? (
+          <Pagination page={parsedPage} totalPages={totalPages} />
+        ) : null}
+      </div>
+    </section>
   );
 }

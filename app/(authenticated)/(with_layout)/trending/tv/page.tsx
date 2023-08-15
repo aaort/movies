@@ -1,4 +1,5 @@
 import GridList from '@/app/_components/GridList';
+import Pagination from '@/app/_components/Pagination';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 
@@ -7,8 +8,14 @@ type Props = {
 };
 
 export default async function TrendingTV({ searchParams }: Props) {
-  const url = 'trending/tv/week';
-  const tvs = (await get<ResultType<TV>>(url, {}, true))?.results;
+  const page = searchParams.page ?? 1;
+  const parsedPage = Number(page);
+
+  const url = `trending/tv/week?page=${!isNaN(parsedPage) ? page : 1}`;
+  const data = await get<ResultType<TV>>(url, {}, true);
+
+  const tvs = data?.results;
+  const totalPages = data?.total_pages;
 
   if (!tvs) {
     throw new Error(
@@ -17,10 +24,17 @@ export default async function TrendingTV({ searchParams }: Props) {
   }
 
   return (
-    <GridList>
-      {tvs.map((tv, index) => (
-        <TVCard key={tv.id} tv={tv} index={index} />
-      ))}
-    </GridList>
+    <section className='flex flex-col gap-y-10'>
+      <GridList>
+        {tvs.map((tv, index) => (
+          <TVCard key={tv.id} tv={tv} index={index} />
+        ))}
+      </GridList>
+      <div className='self-end'>
+        {!isNaN(parsedPage) && totalPages ? (
+          <Pagination page={parsedPage} totalPages={totalPages} />
+        ) : null}
+      </div>
+    </section>
   );
 }
