@@ -11,7 +11,7 @@ export default async function Options() {
 
   return (
     <section aria-label='auth-options-section'>
-      <div className='flex flex-col gap-10 absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] shadow-lg shadow-gray-200/90 rounded-xl p-10'>
+      <div className='flex flex-col gap-10 mx-4 absolute top-[50%] md:left-[50%] translate-y-[-50%] md:translate-x-[-50%] shadow-lg shadow-gray-200/40 border-slate-100 border-[1px] rounded-xl p-10'>
         <section className='mx-auto text-center space-y-4'>
           <b>
             <h1>Movies</h1>
