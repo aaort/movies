@@ -1,5 +1,6 @@
 import Back from '@/app/_components/Back';
 import ExternalLinks from '@/app/_components/ExternalLinks';
+import ReadMore from '@/app/_components/ReadMore';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import { Metadata } from 'next';
@@ -96,10 +97,12 @@ export default async function MoviePage({ params: { movieId } }: Props) {
                   </div>
                 </div>
 
-                <div className='space-y-4'>
-                  <p className='text-xl text-neutral-200'>Overview</p>
-                  <p className='text-lg'>{movie.overview}</p>
-                </div>
+                <dl className='space-y-4'>
+                  <dt className='text-xl text-neutral-200'>Overview</dt>
+                  <dd className='text-lg'>
+                    <ReadMore>{movie.overview}</ReadMore>
+                  </dd>
+                </dl>
 
                 <dl className='flex gap-10'>
                   {director && (

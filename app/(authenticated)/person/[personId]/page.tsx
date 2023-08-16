@@ -1,4 +1,5 @@
 import ExternalLinks from '@/app/_components/ExternalLinks';
+import ReadMore from '@/app/_components/ReadMore';
 import MovieCard from '@/app/_components/cards/MovieCard';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
@@ -116,7 +117,9 @@ export default async function PersonPage({ params: { personId } }: Props) {
           <h1>{person.name}</h1>
           <dl>
             <dt className='font-bold text-lg mb-2'>Biography</dt>
-            <dd className='break-normal'>{person.biography}</dd>
+            <dd className='break-normal'>
+              <ReadMore>{person.biography}</ReadMore>
+            </dd>
           </dl>
 
           <section className='overflow-hidden max-w-full'>
