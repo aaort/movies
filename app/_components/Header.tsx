@@ -15,6 +15,11 @@ export default async function Header({
       {leftComponent ?? (includeSearch && <Search />)}
       <nav>
         <ul className='flex flex-wrap gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
+          <li>
+            <Link href='/general' className='navbar-link'>
+              General
+            </Link>
+          </li>
           <li className='relative inline-block group'>
             <button className='text-xl'>Trending</button>
             <ul className='hidden group-hover:flex flex-col gap-4 p-4 z-50 absolute bg-white border border-gray-300 rounded-md shadow-2xl'>
