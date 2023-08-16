@@ -171,7 +171,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
           </dl>
         </section>
 
-        <hr className='border-slate-100 mx-10' />
+        <hr />
 
         <section className='mx-10'>
           <h2 className='text-xl font-bold mb-10'>Reviews</h2>

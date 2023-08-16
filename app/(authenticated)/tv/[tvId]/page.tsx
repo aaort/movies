@@ -140,7 +140,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
         </section>
 
         <div className='mx-10 space-y-10'>
-          <div className='w-full h-[2px] bg-slate-100'></div>
+          <hr />
 
           <h2 className='text-xl font-bold'>Reviews</h2>
           <Reviews movieId={tvId} />

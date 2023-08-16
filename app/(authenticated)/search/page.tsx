@@ -51,7 +51,7 @@ export default async function Search({ searchParams }: Props) {
             ) : null}
             {tvs?.length ? (
               <>
-                <hr className='border-slate-400' />
+                <hr />
                 <section className='space-y-10'>
                   <h2 className='font-bold text-xl'>TVs</h2>
                   <GridList>
@@ -66,7 +66,7 @@ export default async function Search({ searchParams }: Props) {
             ) : null}
             {people?.length ? (
               <>
-                <hr className='border-slate-400' />
+                <hr />
                 <section className='space-y-10'>
                   <h2 className='font-bold text-xl'>People</h2>
                   <GridList>
