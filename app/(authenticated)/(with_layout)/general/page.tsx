@@ -12,7 +12,10 @@ export default async function GeneralPage() {
         <h2 className='mb-8 text-xl'>Trending - Movies</h2>
         <ul className='flex gap-14 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
-            <li key={movie.id} className='min-w-[50vw]'>
+            <li
+              key={movie.id}
+              className='min-w-[50vw] md:min-w-[30vw] lg:min-w-[20vw]'
+            >
               <MovieCard movie={movie} index={i} />
             </li>
           ))}
@@ -23,7 +26,10 @@ export default async function GeneralPage() {
         <h2 className='mb-8 text-xl'>Trending - TVs</h2>
         <ul className='flex gap-14 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
-            <li key={tv.id} className='min-w-[50vw]'>
+            <li
+              key={tv.id}
+              className='min-w-[50vw] md:min-w-[30vw] lg:min-w-[20vw]'
+            >
               <TVCard tv={tv} index={i} />
             </li>
           ))}

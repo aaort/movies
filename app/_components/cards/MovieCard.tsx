@@ -56,12 +56,12 @@ export default async function MovieCard({ movie, index }: Props) {
         ) : (
           <BiMoviePlay className='h-full w-full' />
         )}
-      </div>
-      <div className='grid-card-text-box'>
-        <p className='overflow-ellipsis break-words line-clamp-2'>
-          {movie.title}
-        </p>
-        <p> {movie.release_date}</p>
+        <div className='grid-card-text-box'>
+          <p className='overflow-ellipsis break-words line-clamp-2'>
+            {movie.title}
+          </p>
+          <p> {movie.release_date}</p>
+        </div>
       </div>
     </Link>
   );

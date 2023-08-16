@@ -24,11 +24,11 @@ a {
   }
 
   .grid-card {
-    @apply flex flex-col gap-4 bg-slate-700 text-slate-100 rounded-md overflow-clip drop-shadow-xl;
+    @apply text-slate-100 rounded-md overflow-clip drop-shadow-xl;
   }
 
   .grid-card-text-box {
-    @apply px-4 pb-4 absolute z-50 py-2 bottom-0 w-full bg-gradient-to-b from-slate-950 from-10% via-slate-950/80 via-50% to-slate-950/60 to-90%;
+    @apply px-4 py-2 z-50 absolute bottom-0 w-full bg-gradient-to-b from-slate-950 from-10% via-slate-950/80 via-50% to-slate-950/60 to-90%;
   }
 
   .grid-card-overlay {

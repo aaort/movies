@@ -56,12 +56,12 @@ export default async function TVCard({ tv, index }: Props) {
         ) : (
           <BiMoviePlay className='h-full w-full' />
         )}
-      </div>
-      <div className='grid-card-text-box'>
-        <p className='overflow-ellipsis break-words line-clamp-2'>
-          {tv.original_name}
-        </p>
-        <p>{tv.first_air_date}</p>
+        <div className='grid-card-text-box'>
+          <p className='overflow-ellipsis break-words line-clamp-2'>
+            {tv.original_name}
+          </p>
+          <p>{tv.first_air_date}</p>
+        </div>
       </div>
     </Link>
   );
