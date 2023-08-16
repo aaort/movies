@@ -90,7 +90,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
                 <dl className='space-y-4'>
                   <dt className='text-xl text-neutral-200'>Overview</dt>
                   <dd className='text-lg'>
-                    <ReadMore> {tv.overview}</ReadMore>
+                    <ReadMore>{tv.overview}</ReadMore>
                   </dd>
                 </dl>
 
