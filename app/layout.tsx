@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Roboto_Mono } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import './globals.css';
 
-const RobotoMono = Roboto_Mono({
+const lato = Lato({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={RobotoMono.className}>{children}</body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }
