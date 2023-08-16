@@ -24,7 +24,7 @@ a {
   }
 
   .grid-card {
-    @apply text-slate-100 rounded-md overflow-clip drop-shadow-xl;
+    @apply text-slate-100 drop-shadow-xl;
   }
 
   .grid-card-text-box {
@@ -32,7 +32,7 @@ a {
   }
 
   .grid-card-overlay {
-    @apply relative w-full aspect-[1/1.5] after:content-[''] after:absolute after:w-full after:h-full after:bg-slate-950 after:bg-opacity-0 group-hover:after:bg-opacity-40 after:duration-300;
+    @apply relative w-full aspect-[1/1.5] after:content-[''] after:absolute after:w-full after:h-full after:bg-slate-950 after:bg-opacity-0 group-hover:after:bg-opacity-40 after:duration-300 rounded-md overflow-clip;
   }
 
   .modal {
