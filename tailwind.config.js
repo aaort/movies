@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        base: '1.1rem',
+      },
+      fontFamily: {
+        helvetica: ['helvetica', 'system-ui'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -15,4 +21,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
