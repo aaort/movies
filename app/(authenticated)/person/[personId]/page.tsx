@@ -124,7 +124,10 @@ export default async function PersonPage({ params: { personId } }: Props) {
             <ul className='max-w-full inline-flex gap-10 overflow-x-auto pb-10 text-white'>
               {credits?.map((item, i) => {
                 return (
-                  <li key={i}>
+                  <li
+                    key={i}
+                    className='min-w-[50vw] md:min-w-[30vw] lg:min-w-[20vw]'
+                  >
                     {item.type === 'movie' ? (
                       <MovieCard movie={item as Movie} index={i} />
                     ) : (
