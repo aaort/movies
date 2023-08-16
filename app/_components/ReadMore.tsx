@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Props = React.PropsWithChildren & {};
 
@@ -9,22 +9,41 @@ export default function ReadMore({ children }: Props) {
     throw new Error('children must a be a string component');
   }
 
-  const text = children as string;
-
   const [isExpanded, setIsExpanded] = useState(false);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    const contentHeight = contentRef.current.clientHeight;
+    const lineHeight = parseInt(
+      getComputedStyle(contentRef.current).lineHeight,
+      10
+    );
+
+    // Check if the content is taller than 4 lines
+    if (contentHeight > lineHeight * 4) {
+      setIsExpanded(true);
+    }
+  }, []);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const contentClass = isExpanded ? 'line-clamp-none' : 'line-clamp-4';
-  const buttonText = isExpanded ? 'Read less' : 'Read more';
+  const contentClass = isExpanded ? 'max-h-none' : 'max-h-[4em]';
+  const buttonText = isExpanded ? 'Read Less' : 'Read More';
 
   return (
     <>
-      <p className={`overflow-hidden ${contentClass}`}>{children}</p>
-      {text.split('\n').length > 4 && (
-        <button className='underline font-bold' onClick={toggleExpand}>
+      <span
+        ref={contentRef}
+        className={`line-clamp-4 ${contentClass} text-ellipsis`}
+      >
+        {children}
+      </span>
+      {children.split('\n').length > 4 && (
+        <button className='text-blue-500' onClick={toggleExpand}>
           {buttonText}
         </button>
       )}
