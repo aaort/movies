@@ -1,50 +1,40 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 type Props = React.PropsWithChildren & {};
 
-export default function ReadMore({ children }: Props) {
-  if (typeof children !== 'string') {
-    throw new Error('children must a be a string component');
-  }
-
-  const [isExpanded, setIsExpanded] = useState(false);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+export default function ShowMoreLess({ children }: Props) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [isExpandable, setIsExpandable] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!contentRef.current) return;
+    if (!ref.current) return;
+    const element = ref.current;
 
-    const contentHeight = contentRef.current.clientHeight;
-    const lineHeight = parseInt(
-      getComputedStyle(contentRef.current).lineHeight,
-      10
-    );
-
-    // Check if the content is taller than 4 lines
-    if (contentHeight > lineHeight * 4) {
-      setIsExpanded(true);
+    if (element.scrollHeight > element.clientHeight) {
+      setIsExpandable(true);
     }
   }, []);
 
-  const toggleExpand = () => {
+  const toggle = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const contentClass = isExpanded ? 'max-h-none' : 'max-h-[4em]';
-  const buttonText = isExpanded ? 'Read Less' : 'Read More';
+  const classes = isExpanded ? 'line-clamp-none' : 'line-clamp-4';
 
   return (
     <>
-      <span
-        ref={contentRef}
-        className={`line-clamp-4 ${contentClass} text-ellipsis`}
+      <p
+        ref={ref}
+        className={`line-clamp-5 ${classes} transition duration-300 paragraph`}
       >
         {children}
-      </span>
-      {children.split('\n').length > 4 && (
-        <button className='text-blue-500' onClick={toggleExpand}>
-          {buttonText}
+      </p>
+      {isExpandable && (
+        <button onClick={toggle} className='underline my-2'>
+          {isExpanded ? 'Read less' : 'Read more'}
         </button>
       )}
     </>
