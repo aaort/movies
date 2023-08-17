@@ -123,63 +123,68 @@ export default async function MoviePage({ params: { movieId } }: Props) {
           </div>
         </div>
 
-        <section className='flex flex-col md:flex-row gap-10 mx-10 justify-between'>
-          <div className='space-y-10 overflow-hidden order-last md:order-first'>
-            <h2 className='text-xl font-bold'>Cast</h2>
-            <Cast forPath={`movie/${movieId}/credits`} />
-          </div>
+        <div className='mx-10 space-y-10 [&_h2]:text-xl [&_h2]:font-bold'>
+          <section className='flex flex-col md:flex-row gap-10 justify-between'>
+            <div className='space-y-10 overflow-hidden order-last md:order-first'>
+              <h2>Cast</h2>
+              <Cast forPath={`movie/${movieId}/credits`} />
+            </div>
+          </section>
 
-          <aside className='order-first md:order-last'>
-            <ExternalLinks path={`movie/${movieId}/external_ids`} />
-          </aside>
-        </section>
+          <section className='space-y-10'>
+            <h2 className='mb-4 inline-block'>General information</h2>
+            <dl className='flex flex-wrap gap-[10%] gap-y-1 justify-between'>
+              <div className='space-y-2'>
+                <dt>Status</dt>
+                <dd className='text-neutral-500 text-sm'>{movie.status}</dd>
+              </div>
+              <div className='space-y-2'>
+                <dt>Original Language</dt>
+                <dd className='text-neutral-500 text-sm'>
+                  {movie.original_language}
+                </dd>
+              </div>
+              <div className='space-y-2'>
+                <dt>Genres</dt>
+                <dd className='text-neutral-500 text-sm'>
+                  <ul className='space-y-2'>
+                    {movie.genres.map((genre) => (
+                      <li key={genre.id}>{genre.name}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
 
-        <section className='mx-10 space-y-10'>
-          <h2 className='text-xl font-bold mb-4 inline-block'>
-            General information
-          </h2>
-          <dl className='flex flex-wrap gap-[10%] gap-y-10'>
-            <div className='space-y-2'>
-              <dt>Status</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.status}</dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Original Language</dt>
-              <dd className='text-neutral-500 text-sm'>
-                {movie.original_language}
-              </dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Genres</dt>
-              <dd className='text-neutral-500 text-sm'>
-                <ul className='space-y-2'>
-                  {movie.genres.map((genre) => (
-                    <li key={genre.id}>{genre.name}</li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Popularity</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.popularity}</dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Budget</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.budget}</dd>
-            </div>
-            <div className='space-y-2'>
-              <dt>Revenue</dt>
-              <dd className='text-neutral-500 text-sm'>{movie.revenue}</dd>
-            </div>
-          </dl>
-        </section>
+              <div className='space-y-2'>
+                <dt>Popularity</dt>
+                <dd className='text-neutral-500 text-sm'>{movie.popularity}</dd>
+              </div>
+              <div className='space-y-2'>
+                <dt>Budget</dt>
+                <dd className='text-neutral-500 text-sm'>{movie.budget}</dd>
+              </div>
+              <div className='space-y-2'>
+                <dt>Revenue</dt>
+                <dd className='text-neutral-500 text-sm'>{movie.revenue}</dd>
+              </div>
+            </dl>
+          </section>
 
-        <hr />
+          <hr />
 
-        <section className='mx-10'>
-          <h2 className='text-xl font-bold mb-10'>Reviews</h2>
-          <Reviews movieId={movieId} />
-        </section>
+          <section className='space-y-10'>
+            <h2>Reviews</h2>
+            <Reviews movieId={movieId} />
+          </section>
+
+          <section className='space-y-4'>
+            <h2>External links</h2>
+            <ExternalLinks
+              path={`movie/${movieId}/external_ids`}
+              axis='horizontal'
+            />
+          </section>
+        </div>
       </main>
     </>
   );
