@@ -8,7 +8,7 @@ export default function Layout({ children }: Props) {
   return (
     <div className='flex flex-col h-full justify-between'>
       <Header leftComponent={<SearchButton />} />
-      <main className='px-2 page-horizontal-space mb-10'>{children}</main>
+      <main className='horizontal-margin'>{children}</main>
       <footer></footer>
     </div>
   );

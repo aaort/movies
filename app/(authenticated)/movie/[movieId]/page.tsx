@@ -123,7 +123,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
           </div>
         </div>
 
-        <div className='page-horizontal-space space-y-10 [&_h2]:text-xl [&_h2]:font-bold'>
+        <div className='horizontal-margin space-y-10 [&_h2]:text-xl [&_h2]:font-bold'>
           <section className='flex flex-col md:flex-row gap-10 justify-between'>
             <div className='space-y-10 overflow-hidden order-last md:order-first'>
               <h2>Cast</h2>

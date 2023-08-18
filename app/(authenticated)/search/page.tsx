@@ -32,7 +32,7 @@ export default async function Search({ searchParams }: Props) {
       <aside>
         <Back classes='text-black absolute left-2 top-2 z-50' title='General' />
       </aside>
-      <main className='my-20 page-horizontal-space space-y-20'>
+      <main className='my-20 page-space space-y-20'>
         <SearchInput />
 
         {data?.length ? (
