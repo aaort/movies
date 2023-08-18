@@ -25,17 +25,17 @@
   }
 
   a {
-    text-underline-offset: 4px;
+    @apply underline-offset-[4px] text-primary-500/70 hover:text-primary-700 duration-100;
   }
 }
 
 @layer components {
   .navbar-link {
-    @apply inline-block text-xl relative after:transition-all after:duration-200 after:content-[''] after:absolute after:h-[2px] after:w-0 hover:after:w-full after:bottom-[-4px] after:left-0  after:bg-current;
+    @apply inline-block text-xl relative text-primary-500/70 hover:text-primary-700 duration-100 after:transition-all after:duration-200 after:content-[''] after:absolute after:h-[2px] after:w-0 hover:after:w-full after:bottom-[-4px] after:left-0  after:bg-current;
   }
 
   .grid-card {
-    @apply text-primary-100 drop-shadow-xl;
+    @apply text-primary-100 drop-shadow-xl hover:text-current hover:[&>*]:text-primary-100;
   }
 
   .grid-card-text-box {
