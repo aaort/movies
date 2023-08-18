@@ -56,7 +56,13 @@
 }
 
 @layer utilities {
-  .page-horizontal-space {
+  .horizontal-padding {
     @apply px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32;
+  }
+  .horizontal-margin {
+    @apply mx-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-32;
+  }
+  .page-space {
+    @apply horizontal-margin my-20;
   }
 }
