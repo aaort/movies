@@ -18,10 +18,10 @@ function SearchButton() {
   return (
     <Link
       href='/search'
-      className='inline-block align-middle group text-primary-500/70'
+      className='inline-block align-middle group text-xl text-primary-500/70'
     >
       Search
-      <BsArrowRightShort className='inline-block w-5 h-5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 duration-300' />
+      <BsArrowRightShort className='inline-block w-6 h-6 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 duration-300' />
     </Link>
   );
 }
