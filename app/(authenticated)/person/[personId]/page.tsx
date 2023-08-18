@@ -61,7 +61,7 @@ export default async function PersonPage({ params: { personId } }: Props) {
         <Back classes='absolute top-2 left-2' />
       </aside>
       <main>
-        <div className='flex gap-10 page-space overflow-hidden'>
+        <div className='flex gap-10 page-space-m overflow-hidden'>
           <div className='flex-1 space-y-10'>
             <div className='relative w-full min-w-[25vw] max-w-[40vw] aspect-[1/1.5] rounded-md overflow-clip drop-shadow-xl'>
               <Image src={avatarPath} alt={`${person.name}'s avatar`} fill />
