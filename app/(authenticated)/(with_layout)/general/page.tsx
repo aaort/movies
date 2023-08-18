@@ -1,6 +1,7 @@
 import MovieCard from '@/app/_components/cards/MovieCard';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
+import Link from 'next/link';
 
 export default async function GeneralPage() {
   const movies = (await get<ResultType<Movie>>('trending/movie/week'))?.results;
@@ -9,7 +10,12 @@ export default async function GeneralPage() {
   return (
     <div className='space-y-10'>
       <section>
-        <h2 className='mb-8 text-xl'>Trending - Movies</h2>
+        <div className='flex justify-between'>
+          <h2 className='mb-8 text-xl'>Trending - Movies</h2>
+          <Link href='/trending/movies' className='underline'>
+            View all
+          </Link>
+        </div>
         <ul className='flex gap-14 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
             <li
@@ -23,7 +29,12 @@ export default async function GeneralPage() {
       </section>
 
       <section>
-        <h2 className='mb-8 text-xl'>Trending - TVs</h2>
+        <div className='flex justify-between'>
+          <h2 className='mb-8 text-xl'>Trending - TVs</h2>
+          <Link href='/trending/tvs' className='underline'>
+            View all
+          </Link>
+        </div>
         <ul className='flex gap-14 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
             <li
