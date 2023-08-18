@@ -2,29 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-body,
-html {
-  @apply text-base;
-}
+  body,
+  html {
+    @apply text-base;
+  }
 
-img {
-  max-width: 100%;
-}
+  img {
+    max-width: 100%;
+  }
 
-h1 {
-  @apply text-3xl;
-}
+  h1 {
+    @apply text-3xl;
+  }
 
-hr {
-  @apply border-[1px] border-slate-100;
-}
+  hr {
+    @apply border-[1px] border-slate-100;
+  }
 
-a {
-  text-underline-offset: 4px;
+  a {
+    text-underline-offset: 4px;
+  }
 }
 
 @layer components {
