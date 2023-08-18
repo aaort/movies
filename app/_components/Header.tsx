@@ -21,7 +21,7 @@ export default async function Header({
             </Link>
           </li>
           <li className='relative inline-block group'>
-            <button className='text-xl'>Trending</button>
+            <button className='navbar-link after:hidden'>Trending</button>
             <ul className='hidden group-hover:flex flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
               <li className=''>
                 <Link href='/trending/movies' className='navbar-link'>
@@ -30,7 +30,7 @@ export default async function Header({
               </li>
               <li className=''>
                 <Link
-                  href='/trending/tv'
+                  href='/trending/tvs'
                   className='navbar-link whitespace-nowrap w-full'
                 >
                   TV Series
