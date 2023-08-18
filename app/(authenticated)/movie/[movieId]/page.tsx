@@ -87,7 +87,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
                     <div className='flex flex-wrap gap-y-2 justify-between items-center'>
                       <h1>
                         {movie.title}
-                        <span className='text-neutral-200 text-sm ml-4 align-middle'>
+                        <span className='text-primary-200 text-sm ml-4 align-middle'>
                           {movie.release_date}
                         </span>
                       </h1>
@@ -98,7 +98,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
                 </div>
 
                 <dl className='space-y-4'>
-                  <dt className='text-xl text-neutral-200'>Overview</dt>
+                  <dt className='text-xl text-primary-200'>Overview</dt>
                   <dd className='text-lg'>
                     <ReadMore>{movie.overview}</ReadMore>
                   </dd>
@@ -108,13 +108,13 @@ export default async function MoviePage({ params: { movieId } }: Props) {
                   {director && (
                     <div className='space-y-2'>
                       <dt id='director'>{director?.name}</dt>
-                      <dd className='text-neutral-300 text-sm'>Director</dd>
+                      <dd className='text-primary-300 text-sm'>Director</dd>
                     </div>
                   )}
                   {writer && (
                     <div className='space-y-2'>
                       <dt>{writer?.name}</dt>
-                      <dd className='text-neutral-300 text-sm'>Writer</dd>
+                      <dd className='text-primary-300 text-sm'>Writer</dd>
                     </div>
                   )}
                 </dl>
@@ -136,17 +136,17 @@ export default async function MoviePage({ params: { movieId } }: Props) {
             <dl className='flex flex-wrap gap-[10%] gap-y-1 justify-between'>
               <div className='space-y-2'>
                 <dt>Status</dt>
-                <dd className='text-neutral-500 text-sm'>{movie.status}</dd>
+                <dd className='text-primary-500 text-sm'>{movie.status}</dd>
               </div>
               <div className='space-y-2'>
                 <dt>Original Language</dt>
-                <dd className='text-neutral-500 text-sm'>
+                <dd className='text-primary-500 text-sm'>
                   {movie.original_language}
                 </dd>
               </div>
               <div className='space-y-2'>
                 <dt>Genres</dt>
-                <dd className='text-neutral-500 text-sm'>
+                <dd className='text-primary-500 text-sm'>
                   <ul className='space-y-2'>
                     {movie.genres.map((genre) => (
                       <li key={genre.id}>{genre.name}</li>
@@ -157,15 +157,15 @@ export default async function MoviePage({ params: { movieId } }: Props) {
 
               <div className='space-y-2'>
                 <dt>Popularity</dt>
-                <dd className='text-neutral-500 text-sm'>{movie.popularity}</dd>
+                <dd className='text-primary-500 text-sm'>{movie.popularity}</dd>
               </div>
               <div className='space-y-2'>
                 <dt>Budget</dt>
-                <dd className='text-neutral-500 text-sm'>{movie.budget}</dd>
+                <dd className='text-primary-500 text-sm'>{movie.budget}</dd>
               </div>
               <div className='space-y-2'>
                 <dt>Revenue</dt>
-                <dd className='text-neutral-500 text-sm'>{movie.revenue}</dd>
+                <dd className='text-primary-500 text-sm'>{movie.revenue}</dd>
               </div>
             </dl>
           </section>

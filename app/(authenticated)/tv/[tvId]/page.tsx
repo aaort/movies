@@ -77,7 +77,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
                     <div className='flex flex-wrap gap-y-2 justify-between items-center'>
                       <h1>
                         {tv.original_name}
-                        <span className='text-neutral-200 text-sm ml-4 align-middle'>
+                        <span className='text-primary-200 text-sm ml-4 align-middle'>
                           {tv.first_air_date}
                         </span>
                       </h1>
@@ -88,7 +88,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
                 </div>
 
                 <dl className='space-y-4'>
-                  <dt className='text-xl text-neutral-200'>Overview</dt>
+                  <dt className='text-xl text-primary-200'>Overview</dt>
                   <dd className='text-lg'>
                     <ReadMore>{tv.overview}</ReadMore>
                   </dd>
