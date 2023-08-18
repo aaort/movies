@@ -12,11 +12,9 @@ export const metadata: Metadata = {
   description: 'View last trending movies right now',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type Props = React.PropsWithChildren & {};
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
       <body className={lato.className}>{children}</body>
