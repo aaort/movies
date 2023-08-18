@@ -18,8 +18,9 @@ export default function Layout({ children }: Props) {
 
 function SearchButton() {
   return (
-    <Link href='/search' className='button gap-2 flex items-center'>
-      Search <BsArrowRightShort className='inline-block w-5 h-5' />
+    <Link href='/search' className='inline-block align-middle group'>
+      Search
+      <BsArrowRightShort className='inline-block w-5 h-5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 duration-300' />
     </Link>
   );
 }
