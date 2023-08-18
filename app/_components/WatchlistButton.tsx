@@ -19,7 +19,7 @@ export default function WatchlistButton({ checked, onToggle }: Props) {
 
   return (
     <button
-      className='p-2 bg-slate-700 rounded-full hover:scale-110'
+      className='p-2 bg-primary-700 rounded-full hover:scale-110'
       onClick={handleToggle}
     >
       <MdPlaylistAdd

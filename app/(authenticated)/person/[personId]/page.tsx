@@ -72,7 +72,7 @@ export default async function PersonPage({ params: { personId } }: Props) {
                 <b>
                   <dd>Known for</dd>
                 </b>
-                <dt className='text-slate-700'>
+                <dt className='text-primary-700'>
                   {person.known_for_department}
                 </dt>
               </div>
@@ -81,7 +81,7 @@ export default async function PersonPage({ params: { personId } }: Props) {
                 <b>
                   <dd>Gender</dd>
                 </b>
-                <dt className='text-slate-700'>
+                <dt className='text-primary-700'>
                   {getGenderByNumber(person.gender)}
                 </dt>
               </div>
@@ -90,21 +90,21 @@ export default async function PersonPage({ params: { personId } }: Props) {
                 <b>
                   <dd>Birthday</dd>
                 </b>
-                <dt className='text-slate-700'>{person.birthday}</dt>
+                <dt className='text-primary-700'>{person.birthday}</dt>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <b>
                   <dd>Place of birth</dd>
                 </b>
-                <dt className='text-slate-700'>{person.place_of_birth}</dt>
+                <dt className='text-primary-700'>{person.place_of_birth}</dt>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <b>
                   <dd>Also known as</dd>
                 </b>
-                <dt className='flex flex-col text-slate-700'>
+                <dt className='flex flex-col text-primary-700'>
                   {person.also_known_as.map((value, i) => (
                     <span key={i}>{value} </span>
                   ))}

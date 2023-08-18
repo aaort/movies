@@ -18,7 +18,7 @@ export default function PersonCard({ person, index }: Props) {
     <Link href={`/person/${person.id}`} className='grid-card group'>
       <div
         className={`grid-card-overlay ${
-          !fullProfilePath ? 'border-b-[1px] border-slate-400' : ''
+          !fullProfilePath ? 'border-b-[1px] border-primary-400' : ''
         }`}
       >
         {fullProfilePath ? (

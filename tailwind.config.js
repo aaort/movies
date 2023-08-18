@@ -1,4 +1,6 @@
+const colors = require('tailwindcss/colors');
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -6,6 +8,8 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: { primary: colors.slate, current: 'currentColor' },
+    borderColor: { primary: colors.slate },
     extend: {
       fontSize: {
         base: '1.1rem',

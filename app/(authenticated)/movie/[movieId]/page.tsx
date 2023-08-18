@@ -64,12 +64,12 @@ export default async function MoviePage({ params: { movieId } }: Props) {
   return (
     <>
       <aside>
-        <Back classes='text-white absolute left-2 top-2 z-50' />
+        <Back classes='text-primary-100 absolute left-2 top-2 z-50' />
       </aside>
       <main className='space-y-10 mb-10'>
         <div
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
-          className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center'
+          className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center text-primary-100'
         >
           <div className='w-full h-full flex  justify-center items-center backdrop-brightness-[0.4] p-4 md:p-10'>
             <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
