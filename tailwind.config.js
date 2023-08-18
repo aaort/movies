@@ -8,7 +8,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: { primary: colors.slate, current: 'currentColor' },
+    colors: { primary: colors.slate, red: colors.red, current: 'currentColor' },
     borderColor: { primary: colors.slate },
     extend: {
       fontSize: {
