@@ -30,13 +30,14 @@ export default async function Search({ searchParams }: Props) {
   return (
     <>
       <aside>
-        <Back classes='text-black' title='General' />
+        <Back classes='text-black absolute left-2 top-2 z-50' title='General' />
       </aside>
-      <main className='m-10 space-y-20'>
+      <main className='my-20 page-horizontal-space space-y-20'>
         <SearchInput />
 
         {data?.length ? (
           <>
+            {/* Movies grid list section */}
             {movies?.length ? (
               <section className='space-y-10'>
                 <h2 className='font-bold text-xl'>Movies</h2>
@@ -49,6 +50,7 @@ export default async function Search({ searchParams }: Props) {
                 </GridList>
               </section>
             ) : null}
+            {/* TVs grid list section */}
             {tvs?.length ? (
               <>
                 <hr />
@@ -64,6 +66,7 @@ export default async function Search({ searchParams }: Props) {
                 </section>
               </>
             ) : null}
+            {/* People grid list section */}
             {people?.length ? (
               <>
                 <hr />
