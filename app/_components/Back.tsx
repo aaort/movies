@@ -23,7 +23,7 @@ export default function Back({ to, classes, title }: Props) {
   };
 
   return (
-    <button className={`capitalize ${classes}`} onClick={handleBack}>
+    <button className={`capitalize z-50 ${classes}`} onClick={handleBack}>
       <div className='flex gap-2 items-center'>
         <BsArrowLeftShort className='w-6 h-6' /> <span>{_title}</span>
       </div>
