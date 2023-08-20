@@ -51,7 +51,7 @@
   }
 
   .button {
-    @apply bg-primary-700 text-primary-50 rounded-md px-4 py-2 drop-shadow-xl text-center hover:rounded-sm duration-300;
+    @apply bg-primary-700 text-primary-100 rounded-md px-4 py-2 drop-shadow-xl text-center hover:rounded-sm duration-300;
   }
 }
 
