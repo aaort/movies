@@ -38,17 +38,10 @@ export default async function Options() {
             </span>
           </p>
         </section>
-        <Link
-          className='button hover:text-primary-100'
-          href={loginUrl}
-          aria-disabled={!requestToken}
-        >
+        <Link className='button' href={loginUrl} aria-disabled={!requestToken}>
           Login
         </Link>
-        <Link
-          className='button hover:text-primary-100'
-          href='/api/setGuestSessionId'
-        >
+        <Link className='button' href='/api/setGuestSessionId'>
           Login As Guest
         </Link>
       </div>
