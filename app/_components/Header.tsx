@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Drawer from './Drawer';
 import Search from './Search';
 
 type Props = {
@@ -14,7 +15,10 @@ export default async function Header({
     <header className='flex flex-wrap justify-between gap-4 items-center horizontal-p py-8 bg-primary-100'>
       {leftComponent ?? (includeSearch && <Search />)}
       <nav>
-        <ul className='flex flex-wrap gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
+        <div className='block md:hidden'>
+          <Drawer />
+        </div>
+        <ul className='hidden md:flex flex-wrap gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
           <li>
             <Link href='/general' className='navbar-link'>
               General
