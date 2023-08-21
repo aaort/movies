@@ -34,7 +34,7 @@ export default function Drawer() {
         />
       )}
       <ul
-        className={`${classes} absolute block z-50 bg-primary-100 w-[30%] min-w-[200px] px-10 h-full space-y-10 duration-300`}
+        className={`${classes} absolute block z-[100] bg-primary-100 w-[30%] min-w-[200px] px-10 h-full space-y-10 duration-300`}
       >
         <li>
           <Link href='/general' className='navbar-link'>

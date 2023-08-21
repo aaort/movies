@@ -6,7 +6,7 @@ type Props = React.PropsWithChildren & {};
 
 export default function Layout({ children }: Props) {
   return (
-    <div className='flex flex-col h-full justify-between'>
+    <div className='relative overflow-x-hidden flex flex-col h-full justify-between'>
       <Header leftComponent={<SearchButton />} />
       <main className='page-space-m'>{children}</main>
       <footer></footer>
