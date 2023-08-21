@@ -4,9 +4,14 @@ import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 
 export default async function WatchlistPage() {
-  const movies = (await get<ResultType<Movie>>('account/{}/watchlist/movies'))
-    ?.results;
-  const tvs = (await get<ResultType<TV>>('account/{}/watchlist/tv'))?.results;
+  const movies = (
+    await get<ResultType<Movie>>('account/{}/watchlist/movies', {
+      cache: 'no-cache',
+    })
+  )?.results;
+  const tvs = (
+    await get<ResultType<TV>>('account/{}/watchlist/tv', { cache: 'no-cache' })
+  )?.results;
 
   return (
     <div className='space-y-20 [&_h2]:text-xl'>
