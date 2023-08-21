@@ -27,13 +27,35 @@ export default async function Search({ searchParams }: Props) {
     (item): item is Person => item.media_type === 'person'
   );
 
+  const movieCount = movies?.length ?? 0;
+  const tvCount = tvs?.length ?? 0;
+  const peopleCount = people?.length ?? 0;
+
   return (
     <>
       <aside>
         <Back classes='text-black absolute left-2 top-2 z-50' title='General' />
       </aside>
       <main className='my-20 page-space-p space-y-20'>
-        <SearchInput />
+        <div className='flex flex-col gap-4 text-xl'>
+          <div className='flex gap-4 self-center'>
+            <dl className='flex gap-1'>
+              <dt>Movies:</dt>
+              <dd className='text-primary-500'>{movieCount}</dd>
+            </dl>
+
+            <dl className='flex gap-1'>
+              <dt>TVs:</dt>
+              <dd className='text-primary-500'>{tvCount}</dd>
+            </dl>
+
+            <dl className='flex gap-1'>
+              <dt>People:</dt>
+              <dd className='text-primary-500'>{peopleCount}</dd>
+            </dl>
+          </div>
+          <SearchInput />
+        </div>
 
         {data?.length ? (
           <>
