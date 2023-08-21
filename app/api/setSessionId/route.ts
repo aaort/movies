@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     name: 'session_id',
     value: sessionId,
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV !== 'development',
     sameSite: 'lax',
   });
 
