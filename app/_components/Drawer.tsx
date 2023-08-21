@@ -6,7 +6,7 @@ import { MdOutlineClose } from 'react-icons/md';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 export default function Drawer() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
