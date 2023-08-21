@@ -2,6 +2,7 @@
 
 import toggleMetadata from '@/lib/api/toggleMetadata';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 type Props = {
   movieId: string | number;
@@ -33,4 +34,34 @@ export const toggleWatchlist = async ({
     sessionId,
     data: { media_id: movieId, media_type, watchlist: value },
   });
+};
+
+export const deleteSession = async () => {
+  'use server';
+
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const readApiToken = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
+  try {
+    const session_id = cookies().get('session_id')?.value;
+
+    if (!session_id) return;
+
+    const response = await fetch(`${apiBaseUrl}authentication/session`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${readApiToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ session_id }),
+    });
+
+    if (response.ok) {
+      cookies().delete('session_id');
+      redirect(`${appUrl}login/options`);
+    }
+  } catch (e) {
+    throw e;
+  }
 };
