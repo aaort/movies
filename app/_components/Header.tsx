@@ -1,6 +1,12 @@
+import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import Drawer from './Drawer';
 import Search from './Search';
+
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const readApiToken = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 type Props = {
   includeSearch?: boolean;
@@ -11,6 +17,32 @@ export default async function Header({
   includeSearch = false,
   leftComponent,
 }: Props) {
+  const deleteSession = async () => {
+    'use server';
+
+    try {
+      const session_id = cookies().get('session_id')?.value;
+
+      if (!session_id) return;
+
+      const response = await fetch(`${apiBaseUrl}authentication/session`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${readApiToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ session_id }),
+      });
+
+      if (response.ok) {
+        cookies().delete('session_id');
+        redirect(`${appUrl}login/options`);
+      }
+    } catch (e) {
+      throw e;
+    }
+  };
+
   return (
     <header className='flex flex-wrap justify-between gap-4 items-center horizontal-p py-8 bg-primary-100'>
       {leftComponent ?? (includeSearch && <Search />)}
@@ -66,6 +98,13 @@ export default async function Header({
             <Link href='#' className='navbar-link'>
               About
             </Link>
+          </li>
+          <li>
+            <form action={deleteSession}>
+              <button className='text-xl button' type='submit'>
+                Log out
+              </button>
+            </form>
           </li>
         </ul>
       </nav>
