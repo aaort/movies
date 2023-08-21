@@ -49,8 +49,13 @@ export default async function Header({
             </Link>
           </li>
           <li>
-            <Link href='/favorite/movies' className='navbar-link'>
+            <Link href='/favorite' className='navbar-link'>
               Favorite
+            </Link>
+          </li>
+          <li>
+            <Link href='/watchlist' className='navbar-link'>
+              Watchlist
             </Link>
           </li>
           <li>
