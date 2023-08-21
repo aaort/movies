@@ -1,12 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 export default function Drawer() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const segment = useSelectedLayoutSegment();
+
+  useEffect(() => {
+    // Close drawer on each route change
+    setIsOpen(false);
+  }, [segment]);
 
   const toggle = () => setIsOpen(!isOpen);
 
