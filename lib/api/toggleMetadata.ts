@@ -15,7 +15,7 @@ export type ToggleMovieData = {
   watchlist?: boolean;
 };
 
-export default async function toggleMovieMetadata({ sessionId, data }: Props) {
+export default async function toggleMetedata({ sessionId, data }: Props) {
   const account = await get<Account>('account', { cache: 'no-cache' });
 
   if (!account) return;

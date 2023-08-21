@@ -1,6 +1,6 @@
 'use server';
 
-import toggleMovieMetadata from '@/lib/api/toggleMovieMetadata';
+import toggleMetadata from '@/lib/api/toggleMetadata';
 import { cookies } from 'next/headers';
 
 type Props = {
@@ -13,7 +13,7 @@ export const toggleFavorite = async ({ movieId, media_type, value }: Props) => {
   const sessionId = cookies().get('session_id')?.value;
   if (!sessionId) return;
 
-  await toggleMovieMetadata({
+  await toggleMetadata({
     movieId: movieId,
     sessionId,
     data: { media_id: movieId, media_type, favorite: value },
@@ -28,7 +28,7 @@ export const toggleWatchlist = async ({
   const sessionId = cookies().get('session_id')?.value;
   if (!sessionId) return;
 
-  await toggleMovieMetadata({
+  await toggleMetadata({
     movieId: movieId,
     sessionId,
     data: { media_id: movieId, media_type, watchlist: value },
