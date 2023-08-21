@@ -29,7 +29,11 @@ export default async function ExternalLinks({
     });
   }
 
-  const links = getLinks(externalLinks);
+  const validExternalLinks = externalLinks.filter(
+    (link) => link[Object.keys(link)[0]] !== null
+  );
+
+  const links = getLinks(validExternalLinks);
 
   const flexDirection = `${
     axis === 'horizontal' ? 'md:flex-row' : 'md:flex-col'
