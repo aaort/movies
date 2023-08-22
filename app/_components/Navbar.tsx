@@ -11,7 +11,7 @@ export default async function Navbar({ classes }: Props) {
       <NavbarLink href='/general'>General</NavbarLink>
       <div className='relative inline-block group'>
         <button className='navbar-link after:hidden'>Trending</button>
-        <ul className='hidden group-hover:flex [&_a]:text-[1rem] flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
+        <ul className='scale-y-0 duration-150 group-hover:scale-y-100 flex flex-col [&_a]:text-[1rem] gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
           <NavbarLink href='/trending/movies'>Movies</NavbarLink>
           <NavbarLink href='/trending/tvs'>TV Series</NavbarLink>
           <NavbarLink href='/trending/people'>People</NavbarLink>
@@ -19,7 +19,7 @@ export default async function Navbar({ classes }: Props) {
       </div>
       <div className='relative inline-block group'>
         <button className='navbar-link after:hidden'>For You</button>
-        <ul className='hidden group-hover:flex [&_a]:text-[1rem] flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
+        <ul className='scale-y-0 duration-150 group-hover:scale-y-100 [&_a]:text-[1rem] flex flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
           <NavbarLink href='/upcoming'>Upcoming</NavbarLink>
           <NavbarLink href='/favorite'>Favorite</NavbarLink>
           <NavbarLink href='/watchlist'>Watchlist</NavbarLink>
