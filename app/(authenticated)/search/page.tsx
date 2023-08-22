@@ -33,9 +33,9 @@ export default async function Search({ searchParams }: Props) {
 
   return (
     <>
-      <aside className='flex justify-between p-4'>
-        <Back classes='text-black ' title='General' />
-        <div className='flex gap-4 '>
+      <aside className='flex justify-between p-4 items-start'>
+        <Back classes='text-black' title='General' />
+        <div className='flex flex-col gap-4 bg-primary-200 px-4 py-2 rounded-md'>
           <dl className='flex gap-1'>
             <dt>Movies:</dt>
             <dd className='text-primary-500'>{movieCount}</dd>
