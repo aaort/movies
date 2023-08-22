@@ -35,7 +35,7 @@
   }
 
   .grid-card {
-    @apply text-primary-100 drop-shadow-xl hover:text-current hover:[&>*]:text-primary-100;
+    @apply text-primary-100 drop-shadow-xl hover:text-current hover:[&>*]:text-primary-100 max-w-[280px];
   }
 
   .grid-card-text-box {
