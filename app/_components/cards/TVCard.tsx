@@ -35,7 +35,7 @@ export default async function TVCard({ tv, index }: Props) {
     <Link href={`/tv/${tv.id}`}>
       <div className='grid-card group'>
         <div className='grid-card-overlay'>
-          <div className='hidden absolute top-4 right-4 z-10 group-hover:block space-x-4'>
+          <div className='block md:hidden md:group-hover:block absolute top-4 right-4 z-10 space-x-4'>
             <FavoriteButton
               checked={isFavorite}
               onToggle={handleToggleFavorite}
