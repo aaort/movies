@@ -9,17 +9,22 @@ export default async function Navbar({ classes }: Props) {
   return (
     <ul className={classes}>
       <NavbarLink href='/general'>General</NavbarLink>
-      <ul className='relative inline-block group'>
+      <div className='relative inline-block group'>
         <button className='navbar-link after:hidden'>Trending</button>
         <ul className='hidden group-hover:flex [&_a]:text-[1rem] flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
           <NavbarLink href='/trending/movies'>Movies</NavbarLink>
           <NavbarLink href='/trending/tvs'>TV Series</NavbarLink>
           <NavbarLink href='/trending/people'>People</NavbarLink>
         </ul>
-      </ul>
-      <NavbarLink href='/upcoming'>Upcoming</NavbarLink>
-      <NavbarLink href='/favorite'>Favorite</NavbarLink>
-      <NavbarLink href='/watchlist'>Watchlist</NavbarLink>
+      </div>
+      <div className='relative inline-block group'>
+        <button className='navbar-link after:hidden'>For You</button>
+        <ul className='hidden group-hover:flex [&_a]:text-[1rem] flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
+          <NavbarLink href='/upcoming'>Upcoming</NavbarLink>
+          <NavbarLink href='/favorite'>Favorite</NavbarLink>
+          <NavbarLink href='/watchlist'>Watchlist</NavbarLink>
+        </ul>
+      </div>
       <li>
         <form action={deleteSession}>
           <button
