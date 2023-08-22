@@ -13,13 +13,13 @@ export default async function Header({
   leftComponent,
 }: Props) {
   return (
-    <header className='flex flex-wrap justify-between gap-4 items-center horizontal-p py-8 bg-primary-100'>
+    <header className='flex justify-between gap-4 items-center horizontal-p py-8 bg-primary-100'>
       {leftComponent ?? (includeSearch && <Search />)}
       <nav>
-        <div className='block md:hidden'>
+        <div className='block lg:hidden'>
           <Drawer />
         </div>
-        <ul className='hidden md:flex flex-wrap gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
+        <ul className='hidden lg:flex gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center'>
           <NavbarLink href='/general'>General</NavbarLink>
           <ul className='relative inline-block group'>
             <button className='navbar-link after:hidden'>Trending</button>
@@ -34,7 +34,10 @@ export default async function Header({
           <NavbarLink href='/watchlist'>Watchlist</NavbarLink>
           <li>
             <form action={deleteSession}>
-              <button className='text-xl button' type='submit'>
+              <button
+                className='text-xl button whitespace-nowrap w-full'
+                type='submit'
+              >
                 Log out
               </button>
             </form>
