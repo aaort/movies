@@ -46,7 +46,7 @@ type NavbarLinkProps = React.PropsWithChildren & {
 function NavbarLink({ children, href }: NavbarLinkProps) {
   return (
     <li>
-      <Link href={href} className='navbar-link whitespace-nowrap w-full'>
+      <Link href={href} className='navbar-link whitespace-nowrap w-fit'>
         {children}
       </Link>
     </li>
