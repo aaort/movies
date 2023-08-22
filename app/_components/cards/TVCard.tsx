@@ -32,37 +32,35 @@ export default async function TVCard({ tv, index }: Props) {
     : null;
 
   return (
-    <Link href={`/tv/${tv.id}`}>
-      <div className='grid-card group'>
-        <div className='grid-card-overlay'>
-          <div className='block md:hidden md:group-hover:block absolute top-4 right-4 z-10 space-x-4'>
-            <FavoriteButton
-              checked={isFavorite}
-              onToggle={handleToggleFavorite}
-            />
-            <WatchlistButton
-              checked={isInWatchlist}
-              onToggle={handleToggleWatchlist}
-            />
-          </div>
-          {posterPath ? (
-            <Image
-              fill
-              alt=''
-              src={posterPath}
-              sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
-              className='object-fill'
-              priority={index < 6}
-            />
-          ) : (
-            <BiMoviePlay className='h-full w-full' />
-          )}
-          <div className='grid-card-text-box'>
-            <p className='overflow-ellipsis break-words line-clamp-2'>
-              {tv.original_name}
-            </p>
-            <p>{tv.first_air_date}</p>
-          </div>
+    <Link href={`/tv/${tv.id}`} className='grid-card group'>
+      <div className='grid-card-overlay'>
+        <div className='block md:hidden md:group-hover:block absolute top-4 right-4 z-10 space-x-4'>
+          <FavoriteButton
+            checked={isFavorite}
+            onToggle={handleToggleFavorite}
+          />
+          <WatchlistButton
+            checked={isInWatchlist}
+            onToggle={handleToggleWatchlist}
+          />
+        </div>
+        {posterPath ? (
+          <Image
+            fill
+            alt=''
+            src={posterPath}
+            sizes='(min-width: 1280px) calc(25vw - 112px), (min-width: 1040px) calc(25vw - 80px), (min-width: 780px) calc(25vw - 64px), calc(24.13vw - 49px)'
+            className='object-fill'
+            priority={index < 6}
+          />
+        ) : (
+          <BiMoviePlay className='h-full w-full' />
+        )}
+        <div className='grid-card-text-box'>
+          <p className='overflow-ellipsis break-words line-clamp-2'>
+            {tv.original_name}
+          </p>
+          <p>{tv.first_air_date}</p>
         </div>
       </div>
     </Link>
