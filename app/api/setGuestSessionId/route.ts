@@ -14,8 +14,22 @@ export async function GET() {
     value: guestSessionId,
     httpOnly: true,
     secure: true,
+    expires: getExpirationDate(),
     sameSite: 'strict',
   });
 
   return NextResponse.redirect(`${appUrl}general`);
+}
+
+function getExpirationDate(): number {
+  const now: Date = new Date();
+  const daysInMonth = new Date(
+    now.getFullYear(),
+    now.getMonth() + 1,
+    0
+  ).getDate();
+
+  const millisInMonth = daysInMonth * 24 * 60 * 60 * 1000;
+
+  return now.getTime() + millisInMonth;
 }
