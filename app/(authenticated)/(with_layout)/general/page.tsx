@@ -16,7 +16,7 @@ export default async function GeneralPage() {
             View all
           </Link>
         </div>
-        <ul className='flex gap-14 overflow-x-auto pb-8'>
+        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
             <li
               key={movie.id}
@@ -35,7 +35,7 @@ export default async function GeneralPage() {
             View all
           </Link>
         </div>
-        <ul className='flex gap-14 overflow-x-auto pb-8'>
+        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
             <li
               key={tv.id}
