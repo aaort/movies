@@ -16,10 +16,7 @@ export default function Layout({ children }: Props) {
 
 function SearchButton() {
   return (
-    <Link
-      href='/search'
-      className='inline-block align-middle group text-xl text-primary-500/70'
-    >
+    <Link href='/search' className='inline-block group text-xl'>
       Search
       <BsArrowRightShort className='inline-block w-6 h-6 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 duration-300' />
     </Link>
