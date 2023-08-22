@@ -52,7 +52,7 @@ export default async function Search({ searchParams }: Props) {
           </dl>
         </div>
       </aside>
-      <main className='my-20 page-space-p space-y-20'>
+      <main className='my-4 mb-20 page-space-p py-0 space-y-20'>
         <div className='flex flex-col gap-4 text-xl'>
           <SearchInput />
         </div>
