@@ -25,7 +25,7 @@ export default function Pagination({ page, totalPages }: Props) {
           <Link
             href={`${pathname}?page=${_page}`}
             aria-selected={page === _page}
-            className='hover:underline p-2 aria-selected:underline'
+            className='hover:underline p-2 aria-selected:underline aria-selected:text-current'
           >
             {_page}
           </Link>
