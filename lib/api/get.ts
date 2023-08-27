@@ -9,15 +9,24 @@ const apiKey = process.env.NEXT_PUBLIC_API_KEY;
  * @param endpoint - Url that request should be made to with TMDB api base url prefixed
  * @param options - RequestInit object, headers's Authorization is included by default but can be overwritten
  * @param includeApiKey - Whether include api key as query param or not
+ * @param variables - Object of variables to be added to the request url
  * @returns Promise of either provided type or null | undefined
  */
 export default async function get<T>(
   endpoint: string,
   options?: RequestInit,
-  includeApiKey: boolean = false
+  includeApiKey: boolean = false,
+  variables: { [key: string]: string | number } = {}
 ): Promise<T | undefined | null> {
   const url =
-    apiBaseUrl + endpoint + (includeApiKey ? `?api_key=${apiKey}` : '');
+    apiBaseUrl +
+    endpoint +
+    (includeApiKey ? `?api_key=${apiKey}` : '') +
+    Object.keys(variables).reduce(
+      (allVars, key) => `${allVars}&${key}=${variables[key]}`,
+      ''
+    );
+
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${readApiKey}`,
