@@ -8,7 +8,7 @@ const apiKey = process.env.NEXT_PUBLIC_API_KEY;
  *
  * @param endpoint - Url that request should be made to with TMDB api base url prefixed
  * @param options - RequestInit object, headers's Authorization is included by default but can be overwritten
- * @param includeApiKey - Weither include api key as query param or not
+ * @param includeApiKey - Whether include api key as query param or not
  * @returns Promise of either provided type or null | undefined
  */
 export default async function get<T>(
