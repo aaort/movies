@@ -34,10 +34,7 @@ export async function generateStaticParams() {
     await get<ResultType<Movie>>('account/{}/watchlist/movies', {}, true)
   )?.results;
 
-  const movies = ([] as Movie[]).concat(
-    trendingMovies ?? [],
-    watchlistMovies ?? []
-  );
+  const movies = trendingMovies?.concat(watchlistMovies ?? []) ?? [];
 
   return movies.map((movie) => ({ movieId: `${movie.id}` }));
 }
