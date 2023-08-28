@@ -27,10 +27,21 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const movies = (await get<ResultType<Movie>>('trending/movie/week', {}, true))
-    ?.results;
+  const trendingMovies = (
+    await get<ResultType<Movie>>('trending/movie/week', {}, true)
+  )?.results;
+  const watchlistMovies = (
+    await get<ResultType<Movie>>('account/{}/watchlist/movies', {}, true)
+  )?.results;
 
-  return movies ? movies.map((movie) => ({ movieId: `${movie.id}` })) : [];
+  const movies: Movie[] = ([] as Movie[]).concat(
+    trendingMovies ?? [],
+    watchlistMovies ?? []
+  );
+
+  return movies.length
+    ? movies.map((movie) => ({ movieId: `${movie.id}` }))
+    : [];
 }
 
 export const dynamicParams = true;
