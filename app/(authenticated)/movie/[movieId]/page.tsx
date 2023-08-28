@@ -34,14 +34,12 @@ export async function generateStaticParams() {
     await get<ResultType<Movie>>('account/{}/watchlist/movies', {}, true)
   )?.results;
 
-  const movies: Movie[] = ([] as Movie[]).concat(
+  const movies = ([] as Movie[]).concat(
     trendingMovies ?? [],
     watchlistMovies ?? []
   );
 
-  return movies.length
-    ? movies.map((movie) => ({ movieId: `${movie.id}` }))
-    : [];
+  return movies.map((movie) => ({ movieId: `${movie.id}` }));
 }
 
 export const dynamicParams = true;
