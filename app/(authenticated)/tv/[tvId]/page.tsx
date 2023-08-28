@@ -27,8 +27,13 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const tvs = (await get<ResultType<TV>>('trending/tv/week', {}, true))
+  const trendingTvs = (await get<ResultType<TV>>('trending/tv/week', {}, true))
     ?.results;
+  const watchlistTvs = (
+    await get<ResultType<TV>>('account/{}/watchlist/tv', {}, true)
+  )?.results;
+
+  const tvs = trendingTvs?.concat(watchlistTvs ?? []) ?? [];
 
   return tvs ? tvs.map((tv) => ({ tvId: `${tv.id}` })) : [];
 }
