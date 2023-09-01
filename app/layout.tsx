@@ -18,10 +18,7 @@ type Props = React.PropsWithChildren & {};
 export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
-      <body className={lato.className}>
-        {children}
-        <Footer />
-      </body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }
