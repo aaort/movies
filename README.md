@@ -6,8 +6,6 @@ Movies application implemented with Next.js and Tailwindcss.
 
 First, run the development server:
 
-The project's code is concentrated within app directory as suggested in the latest version of Next.js's docs.
-
 [_actions](https://github.com/aaort/movies/tree/dev/app/_actions) - Server actions.
 
 [_components](https://github.com/aaort/movies/tree/dev/app/_components) - General components used throughout the app.
@@ -26,4 +24,4 @@ The project's code is concentrated within app directory as suggested in the late
 
 ## License
 
-The project is stated under [MIT License](https://en.wikipedia.org/wiki/MIT_License)
+The project is stated under [MIT License](https://en.wikipedia.org/wiki/MIT_License).
