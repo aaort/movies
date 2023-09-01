@@ -77,8 +77,8 @@ export default async function MoviePage({ params: { movieId } }: Props) {
           style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
           className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center text-primary-100'
         >
-          <div className='w-full h-full flex  justify-center items-center backdrop-brightness-[0.4] p-4 md:p-10'>
-            <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
+          <div className='w-full h-full flex justify-center items-center backdrop-brightness-[0.4] horizontal-p my-14'>
+            <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 z-20'>
               <div className='relative w-full min-w-[15vw] max-w-[30vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
                 <Image
                   alt='Movie poster'
@@ -87,7 +87,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
                   priority
                 />
               </div>
-              <div className='flex flex-col gap-10 justify-between p-2'>
+              <div className='flex flex-col gap-10 justify-between'>
                 <div className='flex flex-wrap flex-row justify-between'>
                   <div className='space-y-8 w-full'>
                     <div className='flex flex-wrap gap-y-2 justify-between items-center'>
