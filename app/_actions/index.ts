@@ -1,6 +1,7 @@
 'use server';
 
 import toggleMetadata from '@/lib/api/toggleMetadata';
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
@@ -19,6 +20,8 @@ export const toggleFavorite = async ({ movieId, media_type, value }: Props) => {
     sessionId,
     data: { media_id: movieId, media_type, favorite: value },
   });
+
+  revalidatePath('/favorite');
 };
 
 export const toggleWatchlist = async ({
@@ -34,6 +37,8 @@ export const toggleWatchlist = async ({
     sessionId,
     data: { media_id: movieId, media_type, watchlist: value },
   });
+
+  revalidatePath('/watchlist');
 };
 
 export const deleteSession = async () => {

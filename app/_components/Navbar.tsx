@@ -11,10 +11,7 @@ type Props = {
 export default function Navbar({ classes }: Props) {
   const segments = useSelectedLayoutSegments();
 
-  const isInForYou =
-    segments.at(-1)?.includes('upcoming') ||
-    segments.at(-1)?.includes('favorite') ||
-    segments.at(-1)?.includes('watchlist');
+  const isInForYou = /upcoming|favorite|watchlist/.test(segments?.at(-1) ?? '');
 
   return (
     <ul className={classes}>

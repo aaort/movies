@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
+import Footer from './_components/Footer';
 import './globals.css';
 
 const lato = Lato({
@@ -17,7 +18,10 @@ type Props = React.PropsWithChildren & {};
 export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
-      <body className={lato.className}>{children}</body>
+      <body className={lato.className}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
