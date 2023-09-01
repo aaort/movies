@@ -24,3 +24,6 @@ The project's code is concentrated within app directory as suggested in the late
 2. Install packages with `yarn` or `npm install`.
 3. Run `yarn dev`.
 
+## License
+
+The project is stated under [MIT License](https://en.wikipedia.org/wiki/MIT_License)
