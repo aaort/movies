@@ -1,34 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movies
 
-## Getting Started
+Movies application implemented with Next.js and Tailwindcss.
+
+## Project Structure
 
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The project's code is concentrated within app directory as suggested in the latest version of Next.js's docs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[_actions](https://github.com/aaort/movies/tree/dev/app/_actions) - Server actions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[_components](https://github.com/aaort/movies/tree/dev/app/_components) - General components used throughout the app.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[(authenticated)](https://github.com/aaort/movies/tree/dev/app/(authenticated)) - Routes for authenticated users.
 
-## Learn More
+[(unauthenticated)](https://github.com/aaort/movies/tree/dev/app/(unauthenticated)) - Routes for unauthenticated users.
 
-To learn more about Next.js, take a look at the following resources:
+[lib](https://github.com/aaort/movies/tree/dev/lib) - Utility methods.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the project.
+2. Install packages with `yarn` or `npm install`.
+3. Run `yarn dev`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
