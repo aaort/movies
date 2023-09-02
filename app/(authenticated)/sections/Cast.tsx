@@ -11,7 +11,10 @@ export default async function Cast({ forPath }: Props) {
   return (
     <ul className='max-w-full inline-flex gap-x-10 overflow-x-auto pb-8'>
       {cast?.map((person, i) => (
-        <li key={person.id} className='min-w-[20vw]'>
+        <li
+          key={person.id}
+          className='min-w-[40vw] md:min-w-[30vw] lg:min-w-[20vw]'
+        >
           <PersonCard person={person} index={i} />
         </li>
       ))}
