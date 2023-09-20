@@ -6,15 +6,15 @@ Movies application implemented with Next.js and Tailwindcss.
 
 First, run the development server:
 
-[_actions](https://github.com/aaort/movies/tree/main/app/_actions) - Server actions.
+[_actions](app/_actions) - Server actions.
 
-[_components](https://github.com/aaort/movies/tree/main/app/_components) - General components used throughout the app.
+[_components](app/_components) - General components used throughout the app.
 
-[(authenticated)](https://github.com/aaort/movies/tree/main/app/(authenticated)) - Routes for authenticated users.
+[(authenticated)](app/(authenticated)) - Routes for authenticated users.
 
-[(unauthenticated)](https://github.com/aaort/movies/tree/main/app/(unauthenticated)) - Routes for unauthenticated users.
+[(unauthenticated)](app/(unauthenticated)) - Routes for unauthenticated users.
 
-[lib](https://github.com/aaort/movies/tree/main/lib) - Utility methods.
+[lib](lib) - Utility methods.
 
 ## Installation
 
