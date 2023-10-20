@@ -4,7 +4,7 @@ import { AiOutlineLinkedin, AiFillGithub } from 'react-icons/ai';
 export default function Footer() {
   return (
     <footer className='bg-primary-700 horizontal-p py-10 text-primary-100 [&_a]:text-primary-100 [&_a]:underline'>
-      <div className='flex justify-between items-center text-sm'>
+      <div className='flex flex-wrap gap-2 justify-between items-center text-sm'>
         <span>© {new Date().getFullYear()} Artashes Sanoyan</span>
         <span>
           Maintained by{' '}
