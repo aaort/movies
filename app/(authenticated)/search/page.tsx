@@ -5,6 +5,7 @@ import MovieCard from '@/app/_components/cards/MovieCard';
 import PersonCard from '@/app/_components/cards/PersonCard';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
+import DataCounts from './_sections/DataCounts';
 
 type Props = {
   searchParams: { [key: string]: string | undefined | null };
@@ -35,22 +36,8 @@ export default async function Search({ searchParams }: Props) {
     <>
       <aside className='flex justify-between p-4 items-start'>
         <Back classes='text-black' title='General' />
-        <div className='flex flex-col gap-4 bg-primary-200 px-4 py-2 rounded-md'>
-          <dl className='flex gap-1'>
-            <dt>Movies:</dt>
-            <dd className='text-primary-500'>{movieCount}</dd>
-          </dl>
 
-          <dl className='flex gap-1'>
-            <dt>TVs:</dt>
-            <dd className='text-primary-500'>{tvCount}</dd>
-          </dl>
-
-          <dl className='flex gap-1'>
-            <dt>People:</dt>
-            <dd className='text-primary-500'>{peopleCount}</dd>
-          </dl>
-        </div>
+        <DataCounts {...{ movieCount, tvCount, peopleCount }} />
       </aside>
       <main className='my-4 mb-20 page-space-p py-0 space-y-20'>
         <div className='flex flex-col gap-4 text-xl'>
@@ -60,7 +47,7 @@ export default async function Search({ searchParams }: Props) {
         {data?.length ? (
           <>
             {/* Movies grid list section */}
-            {movies?.length ? (
+            {movieCount ? (
               <section className='space-y-10'>
                 <h2 className='font-bold text-xl'>Movies</h2>
                 <GridList>
@@ -73,7 +60,7 @@ export default async function Search({ searchParams }: Props) {
               </section>
             ) : null}
             {/* TVs grid list section */}
-            {tvs?.length ? (
+            {tvCount ? (
               <>
                 <hr />
                 <section className='space-y-10'>
@@ -89,7 +76,7 @@ export default async function Search({ searchParams }: Props) {
               </>
             ) : null}
             {/* People grid list section */}
-            {people?.length ? (
+            {peopleCount ? (
               <>
                 <hr />
                 <section className='space-y-10'>
