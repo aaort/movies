@@ -24,9 +24,7 @@ export default async function FavoriteMovies() {
           <h2>Movies</h2>
           <GridList>
             {movies.map((movie, i) => (
-              <li key={movie.id}>
-                <MovieCard movie={movie} index={i} />
-              </li>
+              <MovieCard key={movie.id} movie={movie} index={i} />
             ))}
           </GridList>
         </section>

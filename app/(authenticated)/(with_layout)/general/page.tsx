@@ -18,12 +18,12 @@ export default async function GeneralPage() {
         </div>
         <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
-            <li
+            <MovieCard
+              index={i}
+              movie={movie}
               key={movie.id}
               className='min-w-[50vw] md:min-w-[30vw] lg:min-w-[20vw]'
-            >
-              <MovieCard movie={movie} index={i} />
-            </li>
+            />
           ))}
         </ul>
       </section>
@@ -37,12 +37,12 @@ export default async function GeneralPage() {
         </div>
         <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
-            <li
+            <TVCard
+              tv={tv}
+              index={i}
               key={tv.id}
               className='min-w-[50vw] md:min-w-[30vw] lg:min-w-[20vw]'
-            >
-              <TVCard tv={tv} index={i} />
-            </li>
+            />
           ))}
         </ul>
       </section>
