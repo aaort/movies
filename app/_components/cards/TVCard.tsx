@@ -5,8 +5,7 @@ import isTVInWatchlist from '@/lib/helpers/isTVInWatchlist';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
-import FavoriteButton from '../FavoriteButton';
-import WatchlistButton from '../WatchlistButton';
+import Actions from './sections/actions';
 
 type Props = React.ComponentProps<'li'> & {
   tv: TV;
@@ -35,16 +34,13 @@ export default async function TVCard({ tv, index, ...props }: Props) {
     <li {...props}>
       <Link href={`/tv/${tv.id}`} className='grid-card group'>
         <div className='grid-card-overlay'>
-          <div className='block md:hidden md:group-hover:block absolute top-4 right-4 z-10 space-x-4'>
-            <FavoriteButton
-              checked={isFavorite}
-              onToggle={handleToggleFavorite}
-            />
-            <WatchlistButton
-              checked={isInWatchlist}
-              onToggle={handleToggleWatchlist}
-            />
-          </div>
+          <Actions
+            isFavorite={isFavorite}
+            isInWatchlist={isInWatchlist}
+            handleToggleFavorite={handleToggleFavorite}
+            handleToggleWatchlist={handleToggleWatchlist}
+          />
+
           {posterPath ? (
             <Image
               fill

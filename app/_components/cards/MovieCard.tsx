@@ -5,8 +5,7 @@ import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
-import FavoriteButton from '../FavoriteButton';
-import WatchlistButton from '../WatchlistButton';
+import Actions from './sections/actions';
 
 type Props = React.ComponentProps<'li'> & {
   movie: Movie;
@@ -35,16 +34,13 @@ export default async function MovieCard({ movie, index, ...props }: Props) {
     <li {...props}>
       <Link href={`/movie/${movie.id}`} className='grid-card group'>
         <div className='grid-card-overlay'>
-          <div className='block md:hidden md:group-hover:block absolute top-4 right-4 z-10 space-x-4'>
-            <FavoriteButton
-              checked={isFavorite}
-              onToggle={handleToggleFavorite}
-            />
-            <WatchlistButton
-              checked={isInWatchlist}
-              onToggle={handleToggleWatchlist}
-            />
-          </div>
+          <Actions
+            isFavorite={isFavorite}
+            isInWatchlist={isInWatchlist}
+            handleToggleFavorite={handleToggleFavorite}
+            handleToggleWatchlist={handleToggleWatchlist}
+          />
+
           {posterPath ? (
             <Image
               fill
