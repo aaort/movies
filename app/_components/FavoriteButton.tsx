@@ -9,6 +9,11 @@ type Props = {
   onToggle: (value: boolean) => Promise<void>;
 };
 
+const icons = {
+  filled: AiFillHeart,
+  outlined: AiOutlineHeart,
+};
+
 export default function FavoriteButton({ checked, onToggle }: Props) {
   const [isChecked, setIsChecked] = useState<boolean>(checked);
 
@@ -16,11 +21,6 @@ export default function FavoriteButton({ checked, onToggle }: Props) {
     e.preventDefault();
     setIsChecked(!isChecked);
     onToggle(!isChecked);
-  };
-
-  const icons = {
-    filled: AiFillHeart,
-    outlined: AiOutlineHeart,
   };
 
   const Children: IconType = icons[isChecked ? 'filled' : 'outlined'];
