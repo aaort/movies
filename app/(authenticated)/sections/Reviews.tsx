@@ -35,13 +35,7 @@ export default async function Reviews({ movieId }: Props) {
           <Review review={review} key={i} />
         ))}
       </ul>
-      <Link
-        className='inline-block underline'
-        href={{
-          pathname: `${movieId}/reviews`,
-          query: { movieId },
-        }}
-      >
+      <Link className='inline-block underline' href={`${movieId}/reviews`}>
         View All Reviews
       </Link>
     </div>
