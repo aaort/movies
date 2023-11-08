@@ -1,6 +1,6 @@
 import get from '@/lib/api/get';
-import Review from '../_components/Review';
 import Link from 'next/link';
+import Review from '../_components/Review';
 
 type Props = {
   movieId: string | number;
@@ -21,8 +21,6 @@ export async function getReviews(
   return await get<GetReviewsResultType>(`movie/${movieId}/reviews`);
 }
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-
 export default async function Reviews({ movieId }: Props) {
   const reviews = (await getReviews(movieId))?.results;
 
@@ -40,7 +38,7 @@ export default async function Reviews({ movieId }: Props) {
       <Link
         className='inline-block underline'
         href={{
-          pathname: `${appUrl}movie/${movieId}/reviews`,
+          pathname: `${movieId}/reviews`,
           query: { movieId },
         }}
       >
