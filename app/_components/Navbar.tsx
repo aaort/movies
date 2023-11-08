@@ -4,17 +4,15 @@ import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { deleteSession } from '../_actions';
 
-type Props = {
-  classes?: string;
-};
+type Props = React.ComponentProps<'ul'> & {};
 
-export default function Navbar({ classes }: Props) {
+export default function Navbar(props: Props) {
   const segments = useSelectedLayoutSegments();
 
   const isInForYou = /upcoming|favorite|watchlist/.test(segments?.at(-1) ?? '');
 
   return (
-    <ul className={classes}>
+    <ul className={props.className}>
       <NavbarLink href='/general' isActive={segments.at(-1) === 'general'}>
         General
       </NavbarLink>

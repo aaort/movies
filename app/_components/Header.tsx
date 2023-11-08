@@ -14,10 +14,10 @@ export default async function Header({ leftComponent }: Props) {
       <nav>
         <div className='block lg:hidden'>
           <Drawer>
-            <Navbar classes='relative w-[30%] min-w-[200px] right-0 h-full bg-primary-100 flex flex-col gap-8 z-[100] px-10 py-4 items-start' />
+            <Navbar className='relative w-[30%] min-w-[200px] right-0 h-full bg-primary-100 flex flex-col gap-8 z-[100] px-10 py-4 items-start' />
           </Drawer>
         </div>
-        <Navbar classes={classes} />
+        <Navbar className={classes} />
       </nav>
     </header>
   );
