@@ -8,10 +8,10 @@ type Props = {
 };
 
 export default async function TrendingPeople({ searchParams }: Props) {
-  const page = searchParams.page ?? 1;
-  const parsedPage = Number(page);
+  const _page = searchParams.page ?? 1;
+  const page = !isNaN(Number(_page)) ? Number(_page) : 1;
 
-  const url = `trending/person/week?page=${!isNaN(parsedPage) ? page : 1}`;
+  const url = `trending/person/week?page=${page}`;
   const data = await get<ResultType<Person>>(url, {}, true);
 
   const people = data?.results;
@@ -31,8 +31,8 @@ export default async function TrendingPeople({ searchParams }: Props) {
         ))}
       </GridList>
       <div className='self-end'>
-        {!isNaN(parsedPage) && totalPages ? (
-          <Pagination page={parsedPage} totalPages={totalPages} />
+        {!isNaN(page) && totalPages ? (
+          <Pagination page={page} totalPages={totalPages} />
         ) : null}
       </div>
     </section>
