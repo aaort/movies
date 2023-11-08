@@ -26,19 +26,6 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const trendingMovies = (
-    await get<ResultType<Movie>>('trending/movie/week', {}, true)
-  )?.results;
-  const watchlistMovies = (
-    await get<ResultType<Movie>>('account/{}/watchlist/movies', {}, true)
-  )?.results;
-
-  const movies = trendingMovies?.concat(watchlistMovies ?? []) ?? [];
-
-  return movies.map((movie) => ({ movieId: `${movie.id}` }));
-}
-
 export const dynamicParams = true;
 
 type ResponseType = MovieDetails & {

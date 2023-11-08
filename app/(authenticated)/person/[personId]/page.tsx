@@ -24,14 +24,6 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const people = (
-    await get<ResultType<Person>>('trending/person/week', {}, true)
-  )?.results;
-
-  return people ? people.map((person) => ({ personId: `${person.id}` })) : [];
-}
-
 export const dynamicParams = true;
 
 export default async function PersonPage({ params: { personId } }: Props) {
