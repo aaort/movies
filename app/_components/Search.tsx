@@ -27,21 +27,18 @@ const Search = () => {
     [pathname, router]
   );
 
-  // EFFECT: Set Initial Params
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const searchQuery = params.get('search') ?? '';
     setInputValue(searchQuery);
   }, []);
 
-  // EFFECT: Set Mounted
   useEffect(() => {
     if (debouncedValue.length > 0 && !mounted) {
       setMounted(true);
     }
   }, [debouncedValue, mounted]);
 
-  // EFFECT: Debounce Input Value
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedValue(inputValue);
@@ -52,7 +49,6 @@ const Search = () => {
     };
   }, [inputValue]);
 
-  // EFFECT: Search Params
   useEffect(() => {
     if (mounted) handleSearchParams(debouncedValue);
   }, [debouncedValue, handleSearchParams, mounted]);
