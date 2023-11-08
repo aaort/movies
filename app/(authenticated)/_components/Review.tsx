@@ -1,4 +1,5 @@
 import { AiFillStar } from 'react-icons/ai';
+import Markdown from 'react-markdown';
 
 type Props = {
   review: Review;
@@ -43,9 +44,12 @@ export default function Review({ review }: Props) {
         </div>
       </div>
       <div className='overflow-hidden'>
-        <span className='overflow-ellipsis break-words line-clamp-6'>
+        <Markdown
+          className='overflow-ellipsis break-words line-clamp-6'
+          skipHtml={false}
+        >
           {review.content}
-        </span>
+        </Markdown>
       </div>
     </li>
   );
