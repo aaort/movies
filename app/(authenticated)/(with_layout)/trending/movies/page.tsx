@@ -2,6 +2,7 @@ import GridList from '@/app/_components/GridList';
 import Pagination from '@/app/_components/Pagination';
 import MovieCard from '@/app/_components/cards/MovieCard';
 import get from '@/lib/api/get';
+import { MAX_PAGE } from '@/lib/constants';
 
 type Props = {
   searchParams: { [key: string]: string | null | undefined };
@@ -15,7 +16,6 @@ export default async function TrendingMovies({ searchParams }: Props) {
   const data = await get<ResultType<Movie>>(url, {}, true);
 
   const movies = data?.results;
-  const totalPages = data?.total_pages;
 
   if (!movies) {
     throw new Error('Sorry, unable to satisfy the request');
@@ -30,8 +30,8 @@ export default async function TrendingMovies({ searchParams }: Props) {
       </GridList>
 
       <div className='self-end'>
-        {!isNaN(page) && totalPages ? (
-          <Pagination page={page} totalPages={totalPages} />
+        {!isNaN(page) && MAX_PAGE ? (
+          <Pagination page={page} totalPages={MAX_PAGE} />
         ) : null}
       </div>
     </section>

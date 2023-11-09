@@ -2,6 +2,7 @@ import GridList from '@/app/_components/GridList';
 import Pagination from '@/app/_components/Pagination';
 import PersonCard from '@/app/_components/cards/PersonCard';
 import get from '@/lib/api/get';
+import { MAX_PAGE } from '@/lib/constants';
 
 type Props = {
   searchParams: { [key: string]: string | null | undefined };
@@ -15,7 +16,6 @@ export default async function TrendingPeople({ searchParams }: Props) {
   const data = await get<ResultType<Person>>(url, {}, true);
 
   const people = data?.results;
-  const totalPages = data?.total_pages;
 
   if (!people) {
     throw new Error(
@@ -31,8 +31,8 @@ export default async function TrendingPeople({ searchParams }: Props) {
         ))}
       </GridList>
       <div className='self-end'>
-        {!isNaN(page) && totalPages ? (
-          <Pagination page={page} totalPages={totalPages} />
+        {!isNaN(page) && MAX_PAGE ? (
+          <Pagination page={page} totalPages={MAX_PAGE} />
         ) : null}
       </div>
     </section>
