@@ -19,7 +19,7 @@ export default async function GeneralPage() {
           </Link>
         </div>
 
-        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
+        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8 text-primary-100'>
           {movies?.map((movie, i) => (
             <MovieCard
               index={i}
@@ -39,7 +39,7 @@ export default async function GeneralPage() {
           </Link>
         </div>
 
-        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
+        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8 text-primary-100'>
           {tvs?.map((tv, i) => (
             <TVCard
               tv={tv}
@@ -59,7 +59,7 @@ export default async function GeneralPage() {
           </Link>
         </div>
 
-        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
+        <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8 text-primary-100'>
           {people?.map((person, i) => (
             <PersonCard
               person={person}
