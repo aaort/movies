@@ -16,6 +16,7 @@ export default async function Options() {
           <b>
             <h1>Movies</h1>
           </b>
+
           <p>
             Login to your{' '}
             <Link href='https://www.themoviedb.org/' className='underline'>
@@ -24,9 +25,11 @@ export default async function Options() {
             account (or create one) to access the full range of capabilities of
             the website
           </p>
+
           <p>
             <strong>OR</strong>
           </p>
+
           <p>
             Login as a guest to quickly view what is going on in the cinema
             world
@@ -38,9 +41,11 @@ export default async function Options() {
             </span>
           </p>
         </section>
+
         <Link className='button' href={loginUrl} aria-disabled={!requestToken}>
           Login
         </Link>
+
         <Link className='button' href='/api/setGuestSessionId'>
           Login As Guest
         </Link>
