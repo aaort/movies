@@ -10,13 +10,9 @@ type Props = {
 
 export default function Pagination({ page, totalPages }: Props) {
   const pathname = usePathname();
-  const pages = Array.from([
-    page - 2,
-    page - 1,
-    page,
-    page + 1,
-    page + 2,
-  ]).filter((_page) => _page > 0 && _page <= totalPages);
+  const pages = Array.from({ length: 5 }, (_, i) => page - 2 + i).filter(
+    (_page) => _page > 0 && _page < totalPages
+  );
 
   return (
     <ul className='flex gap-2'>
