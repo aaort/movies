@@ -25,7 +25,7 @@
   }
 
   a {
-    @apply underline-offset-[4px] text-primary-500/70 hover:text-primary-700 duration-100;
+    @apply underline-offset-[4px] text-primary-500/70 hover:text-primary-700 duration-100 aria-disabled:pointer-events-none aria-disabled:text-primary-500/30;
   }
 }
 
