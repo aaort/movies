@@ -31,8 +31,8 @@ export default async function TVCard({ tv, index, ...props }: Props) {
     : null;
 
   return (
-    <li {...props}>
-      <Link href={`/tv/${tv.id}`} className='grid-card group'>
+    <li className='grid-card group' {...props}>
+      <Link href={`/tv/${tv.id}`} className='text-current'>
         <div className='grid-card-overlay'>
           <Actions
             isFavorite={isFavorite}

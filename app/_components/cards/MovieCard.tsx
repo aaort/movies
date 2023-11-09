@@ -31,8 +31,8 @@ export default async function MovieCard({ movie, index, ...props }: Props) {
   };
 
   return (
-    <li {...props}>
-      <Link href={`/movie/${movie.id}`} className='grid-card group'>
+    <li className='grid-card group' {...props}>
+      <Link href={`/movie/${movie.id}`} className='text-current'>
         <div className='grid-card-overlay'>
           <Actions
             isFavorite={isFavorite}
