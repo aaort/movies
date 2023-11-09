@@ -54,16 +54,21 @@ const Search = () => {
   }, [debouncedValue, handleSearchParams, mounted]);
 
   return (
-    <div className='relative grow'>
+    <div className='relative grow text-base text-primary-500'>
       <input
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
         }}
         placeholder='Search movies, tvs and people'
-        className='text-base px-4 py-2 rounded-md w-full border-[1px] border-primary-300'
+        className='px-4 py-2 rounded-md w-full border-[1px] border-primary-300'
       />
-      {isPending && <div className='absolute top-2 right-2'>loading...</div>}
+
+      {isPending && (
+        <div className='absolute top-2 right-2 italic tracking-wider'>
+          loading...
+        </div>
+      )}
     </div>
   );
 };
