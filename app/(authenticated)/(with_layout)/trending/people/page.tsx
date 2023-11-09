@@ -8,8 +8,8 @@ type Props = {
 };
 
 export default async function TrendingPeople({ searchParams }: Props) {
-  const _page = searchParams.page ?? 1;
-  const page = !isNaN(Number(_page)) ? Number(_page) : 1;
+  const _page = searchParams.page || '';
+  const page = Number(_page) || 1;
 
   const url = `trending/person/week?page=${page}`;
   const data = await get<ResultType<Person>>(url, {}, true);
