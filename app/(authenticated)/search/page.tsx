@@ -14,8 +14,8 @@ type Props = {
 type DataType = ResultType<Movie | TV | Person>;
 
 export default async function Search({ searchParams }: Props) {
-  const searchText = searchParams.search ?? '';
-  const data = (await get<DataType>(`search/multi?query=${searchText}`))
+  const queryText = searchParams.query ?? '';
+  const data = (await get<DataType>(`search/multi?query=${queryText}`))
     ?.results;
 
   const movies: Movie[] | undefined = data?.filter(
