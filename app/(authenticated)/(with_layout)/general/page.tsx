@@ -18,6 +18,7 @@ export default async function GeneralPage() {
             View all
           </Link>
         </div>
+
         <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {movies?.map((movie, i) => (
             <MovieCard
@@ -37,6 +38,7 @@ export default async function GeneralPage() {
             View all
           </Link>
         </div>
+
         <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {tvs?.map((tv, i) => (
             <TVCard
@@ -52,10 +54,11 @@ export default async function GeneralPage() {
       <section>
         <div className='flex justify-between'>
           <h2 className='mb-8 text-xl'>Trending - People</h2>
-          <Link href='/trending/tvs' className='underline'>
+          <Link href='/trending/people' className='underline'>
             View all
           </Link>
         </div>
+
         <ul className='flex gap-4 md:gap-8 overflow-x-auto pb-8'>
           {people?.map((person, i) => (
             <PersonCard
