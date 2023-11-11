@@ -2,6 +2,7 @@ import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isTVFavorite from '@/lib/helpers/isTVFavorite';
 import isTVInWatchlist from '@/lib/helpers/isTVInWatchlist';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
@@ -12,7 +13,8 @@ type Props = React.ComponentProps<'li'> & {
   index: number;
 };
 
-export default async function TVCard({ tv, index, ...props }: Props) {
+export default async function TVCard(props: Props) {
+  const { tv, index, className, ...rest } = props;
   const isFavorite = await isTVFavorite(tv.id);
   const isInWatchlist = await isTVInWatchlist(tv.id);
 
@@ -31,7 +33,7 @@ export default async function TVCard({ tv, index, ...props }: Props) {
     : null;
 
   return (
-    <li className='grid-card group' {...props}>
+    <li className={clsx('grid-card group', className)} {...rest}>
       <Link href={`/tv/${tv.id}`} className='text-current'>
         <div className='grid-card-overlay'>
           <Actions

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsFillPersonFill } from 'react-icons/bs';
@@ -9,13 +10,14 @@ type Props = React.ComponentProps<'li'> & {
 
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/original/';
 
-export default function PersonCard({ person, index, ...props }: Props) {
+export default function PersonCard(props: Props) {
+  const { person, index, className, ...rest } = props;
   const fullProfilePath = person.profile_path
     ? `${imagesBaseUrl}${person.profile_path}`
     : null;
 
   return (
-    <li className='grid-card group' {...props}>
+    <li className={clsx('grid-card group', className)} {...rest}>
       <Link href={`/person/${person.id}`} className='text-current'>
         <div
           className={`grid-card-overlay ${

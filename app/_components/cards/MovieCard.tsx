@@ -2,6 +2,7 @@ import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
 import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
@@ -12,7 +13,8 @@ type Props = React.ComponentProps<'li'> & {
   index: number;
 };
 
-export default async function MovieCard({ movie, index, ...props }: Props) {
+export default async function MovieCard(props: Props) {
+  const { movie, index, className, ...rest } = props;
   const posterPath = movie.poster_path
     ? generateImageUrlByFilename(movie.poster_path)
     : null;
@@ -31,7 +33,7 @@ export default async function MovieCard({ movie, index, ...props }: Props) {
   };
 
   return (
-    <li className='grid-card group' {...props}>
+    <li className={clsx('grid-card group', className)} {...rest}>
       <Link href={`/movie/${movie.id}`} className='text-current'>
         <div className='grid-card-overlay'>
           <Actions
