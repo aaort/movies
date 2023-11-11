@@ -1,5 +1,6 @@
 import PersonCard from '@/app/_components/cards/PersonCard';
 import get from '@/lib/api/get';
+import type { Credits } from '@/types';
 
 type Props = {
   forPath: string;

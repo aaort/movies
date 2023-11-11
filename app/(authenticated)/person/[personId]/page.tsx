@@ -6,6 +6,7 @@ import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import getGenderByNumber from '@/lib/helpers/getGenderByNumber';
+import type { Movie, PersonDetails, TV } from '@/types';
 import { type Metadata } from 'next';
 import Image from 'next/image';
 

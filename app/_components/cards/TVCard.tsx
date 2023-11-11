@@ -2,6 +2,7 @@ import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isTVFavorite from '@/lib/helpers/isTVFavorite';
 import isTVInWatchlist from '@/lib/helpers/isTVInWatchlist';
+import type { TV } from '@/types';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';

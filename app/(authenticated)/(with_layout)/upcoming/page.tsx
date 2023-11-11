@@ -3,6 +3,7 @@ import Pagination from '@/app/_components/Pagination';
 import MovieCard from '@/app/_components/cards/MovieCard';
 import get from '@/lib/api/get';
 import type { ResultType } from '@/lib/types';
+import type { Movie } from '@/types';
 
 type Props = {
   searchParams: { [key: string]: string | null | undefined };

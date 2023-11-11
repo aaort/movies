@@ -1,10 +1,13 @@
+import type { CastPerson, Person } from '@/types';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsFillPersonFill } from 'react-icons/bs';
 
+type NewType = CastPerson;
+
 type Props = React.ComponentProps<'li'> & {
-  person: Person | CastPerson;
+  person: Person | NewType;
   index: number;
 };
 

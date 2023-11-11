@@ -254,3 +254,18 @@ type Credits = {
   cast: CastPerson[];
   crew: CrewPerson[];
 };
+
+export type {
+  Account,
+  CastPerson,
+  Credits,
+  ExternalIds,
+  Movie,
+  MovieDetails,
+  Person,
+  PersonDetails,
+  Review,
+  TV,
+  TVDetails,
+  Video,
+};

@@ -3,6 +3,7 @@ import PersonCard from '@/app/_components/cards/PersonCard';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 import type { ResultType } from '@/lib/types';
+import type { Movie, Person, TV } from '@/types';
 import Link from 'next/link';
 
 export default async function GeneralPage() {

@@ -1,14 +1,15 @@
 import get from '@/lib/api/get';
+import type { ResultType } from '@/lib/types';
+import type { Review as ReviewType } from '@/types';
 import Link from 'next/link';
 import Review from '../_components/Review';
-import type { ResultType } from '@/lib/types';
 
 type Props = {
   movieId: string | number;
 };
 
 type GetReviewsResultType =
-  | (ResultType<Review> & {
+  | (ResultType<ReviewType> & {
       id: number;
       total_pages: number;
       total_results: number;

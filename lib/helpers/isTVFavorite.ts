@@ -1,3 +1,4 @@
+import type { TV } from '@/types';
 import get from '../api/get';
 import type { ResultType } from '../types';
 

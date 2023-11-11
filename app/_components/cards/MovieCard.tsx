@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
 import Actions from './sections/actions';
+import type { Movie } from '@/types';
 
 type Props = React.ComponentProps<'li'> & {
   movie: Movie;

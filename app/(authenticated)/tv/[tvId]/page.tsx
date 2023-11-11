@@ -4,6 +4,7 @@ import ReadMore from '@/app/_components/ReadMore';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import type { ResultType } from '@/lib/types';
+import type { TVDetails, Video } from '@/types';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import TrailerPlayer from '../../_components/TrailerPlayer';

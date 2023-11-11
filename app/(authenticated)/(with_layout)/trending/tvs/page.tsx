@@ -4,6 +4,7 @@ import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 import { MAX_PAGE } from '@/lib/constants';
 import type { ResultType } from '@/lib/types';
+import type { TV } from '@/types';
 
 type Props = {
   searchParams: { [key: string]: string | null | undefined };

@@ -1,3 +1,4 @@
+import type { Review } from '@/types';
 import { AiFillStar } from 'react-icons/ai';
 import Markdown from 'react-markdown';
 

@@ -1,3 +1,4 @@
+import type { Account } from '@/types';
 import get from './get';
 
 const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;

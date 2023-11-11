@@ -1,4 +1,5 @@
 import get from '@/lib/api/get';
+import type { ExternalIds } from '@/types';
 import Link from 'next/link';
 import {
   BsFacebook,
