@@ -10,7 +10,7 @@ export default async function FavoriteMovies() {
     })
   )?.results;
   const tvs = (
-    await get<ResultType<TV>>('account/{}/watchlist/tv', { cache: 'no-cache' })
+    await get<ResultType<TV>>('account/{}/favorite/tv', { cache: 'no-cache' })
   )?.results;
 
   if (!movies) {
@@ -37,9 +37,7 @@ export default async function FavoriteMovies() {
             <h2>TVs</h2>
             <GridList>
               {tvs.map((tv, i) => (
-                <li key={tv.id}>
-                  <TVCard tv={tv} index={i} />
-                </li>
+                <TVCard key={tv.id} tv={tv} index={i} />
               ))}
             </GridList>
           </section>
