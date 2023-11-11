@@ -1,4 +1,5 @@
 import get from '../api/get';
+import type { ResultType } from '../types';
 
 export default async function isTVFavorite(
   tvId: string | number

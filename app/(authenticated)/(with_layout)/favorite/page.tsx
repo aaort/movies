@@ -2,6 +2,7 @@ import GridList from '@/app/_components/GridList';
 import MovieCard from '@/app/_components/cards/MovieCard';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
+import type { ResultType } from '@/lib/types';
 
 export default async function FavoriteMovies() {
   const movies = (

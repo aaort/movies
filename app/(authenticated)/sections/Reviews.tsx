@@ -1,6 +1,7 @@
 import get from '@/lib/api/get';
 import Link from 'next/link';
 import Review from '../_components/Review';
+import type { ResultType } from '@/lib/types';
 
 type Props = {
   movieId: string | number;

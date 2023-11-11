@@ -6,6 +6,7 @@ import PersonCard from '@/app/_components/cards/PersonCard';
 import TVCard from '@/app/_components/cards/TVCard';
 import get from '@/lib/api/get';
 import DataCounts from './_sections/DataCounts';
+import type { ResultType } from '@/lib/types';
 
 type Props = {
   searchParams: { [key: string]: string | undefined | null };

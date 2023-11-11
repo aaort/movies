@@ -4,3 +4,5 @@ type ResultType<T> = {
   total_pages: number;
   total_results: number;
 };
+
+export type { ResultType };
