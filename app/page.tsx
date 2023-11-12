@@ -6,5 +6,5 @@ export default async function Home() {
     redirect('/general');
   }
 
-  redirect('/login/options');
+  redirect('/login');
 }

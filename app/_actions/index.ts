@@ -64,7 +64,7 @@ export const deleteSession = async () => {
 
     if (response.ok) {
       cookies().delete('session_id');
-      redirect(`${appUrl}login/options`);
+      redirect(`${appUrl}login`);
     }
   } catch (e) {
     throw e;
