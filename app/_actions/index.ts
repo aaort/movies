@@ -63,6 +63,7 @@ export const deleteSession = async () => {
     });
 
     cookies().delete('session_id');
+    cookies().delete('is_guest');
     redirect(`${appUrl}login`);
   } catch (e) {
     throw e;

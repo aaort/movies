@@ -18,5 +18,13 @@ export async function GET(req: NextRequest) {
     sameSite: 'lax',
   });
 
+  res.cookies.set({
+    name: 'is_guest',
+    value: 'false',
+    httpOnly: false,
+    secure: false,
+    sameSite: 'lax',
+  });
+
   return res;
 }
