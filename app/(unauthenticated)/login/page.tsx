@@ -4,7 +4,7 @@ import Link from 'next/link';
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-export default async function Options() {
+export default async function Login() {
   const requestToken = await getRequestToken();
 
   const loginUrl = `${baseUrl}authenticate/${requestToken}?redirect_to=${appUrl}api/setSessionId`;
