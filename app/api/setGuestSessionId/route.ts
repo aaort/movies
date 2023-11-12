@@ -1,4 +1,5 @@
 import getGuestSessionId from '@/lib/auth/getGuestSessionId';
+import getExpirationDate from '@/lib/helpers/getSessionExpireDate';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -19,17 +20,4 @@ export async function GET() {
   });
 
   return NextResponse.redirect(`${appUrl}general`);
-}
-
-function getExpirationDate(): number {
-  const now: Date = new Date();
-  const daysInMonth = new Date(
-    now.getFullYear(),
-    now.getMonth() + 1,
-    0
-  ).getDate();
-
-  const millisInMonth = daysInMonth * 24 * 60 * 60 * 1000;
-
-  return now.getTime() + millisInMonth;
 }
