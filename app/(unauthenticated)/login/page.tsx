@@ -47,7 +47,7 @@ export default async function Login() {
         </Link>
 
         <Link className='button' href='/api/setGuestSessionId'>
-          Login As Guest
+          Login As A Guest
         </Link>
       </div>
     </section>
