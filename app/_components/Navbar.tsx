@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { deleteSession } from '../_actions';
@@ -10,63 +11,49 @@ export default function Navbar(props: Props) {
   const segments = useSelectedLayoutSegments();
 
   const isInForYou = /upcoming|favorite|watchlist/.test(segments?.at(-1) ?? '');
+  const isActive = (route: string) => segments.at(-1) === route;
 
   return (
     <ul className={props.className}>
-      <NavbarLink href='/general' isActive={segments.at(-1) === 'general'}>
+      <NavbarLink href='/general' isActive={isActive('general')}>
         General
       </NavbarLink>
       <div className='relative inline-block group'>
         <button
-          className={`navbar-link after:hidden ${
-            segments.at(0) === 'trending' ? 'text-current' : ''
-          }`}
+          className={clsx('navbar-link after:hidden', {
+            'text-current': segments.at(0) === 'trending',
+          })}
         >
           Trending
         </button>
         <ul className='scale-y-0 duration-150 group-hover:scale-y-100 flex flex-col [&_a]:text-[1rem] gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
-          <NavbarLink
-            isActive={segments?.at(-1) === 'movies'}
-            href='/trending/movies'
-          >
+          <NavbarLink isActive={isActive('movies')} href='/trending/movies'>
             Movies
           </NavbarLink>
-          <NavbarLink isActive={segments.at(-1) === 'tvs'} href='/trending/tvs'>
+          <NavbarLink isActive={isActive('tvs')} href='/trending/tvs'>
             TV Series
           </NavbarLink>
-          <NavbarLink
-            isActive={segments.at(-1) === 'people'}
-            href='/trending/people'
-          >
+          <NavbarLink isActive={isActive('people')} href='/trending/people'>
             People
           </NavbarLink>
         </ul>
       </div>
       <div className='relative inline-block group'>
         <button
-          className={`navbar-link after:hidden ${
-            isInForYou ? 'text-current' : ''
-          }`}
+          className={clsx('navbar-link after:hidden', {
+            'text-current': isInForYou,
+          })}
         >
           For You
         </button>
         <ul className='scale-y-0 duration-150 group-hover:scale-y-100 [&_a]:text-[1rem] flex flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
-          <NavbarLink
-            isActive={segments.at(-1) === 'upcoming'}
-            href='/upcoming'
-          >
+          <NavbarLink isActive={isActive('upcoming')} href='/upcoming'>
             Upcoming
           </NavbarLink>
-          <NavbarLink
-            isActive={segments.at(-1) === 'favorite'}
-            href='/favorite'
-          >
+          <NavbarLink isActive={isActive('favorite')} href='/favorite'>
             Favorite
           </NavbarLink>
-          <NavbarLink
-            isActive={segments.at(-1) === 'watchlist'}
-            href='/watchlist'
-          >
+          <NavbarLink isActive={isActive('watchlist')} href='/watchlist'>
             Watchlist
           </NavbarLink>
         </ul>
@@ -95,9 +82,9 @@ function NavbarLink({ children, href, isActive }: NavbarLinkProps) {
     <li>
       <Link
         href={href}
-        className={`navbar-link whitespace-nowrap w-fit ${
-          isActive ? 'after:w-full text-current' : ''
-        }`}
+        className={clsx('navbar-link whitespace-nowrap w-fit', {
+          'after:w-full text-current': isActive,
+        })}
       >
         {children}
       </Link>
