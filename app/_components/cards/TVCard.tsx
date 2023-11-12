@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
 import Actions from './sections/actions';
+import isGuest from '@/lib/helpers/isGuest';
 
 type Props = React.ComponentProps<'li'> & {
   tv: TV;
@@ -37,12 +38,14 @@ export default async function TVCard(props: Props) {
     <li className={clsx('grid-card group', className)} {...rest}>
       <Link href={`/tv/${tv.id}`} className='text-current'>
         <div className='grid-card-overlay'>
-          <Actions
-            isFavorite={isFavorite}
-            isInWatchlist={isInWatchlist}
-            handleToggleFavorite={handleToggleFavorite}
-            handleToggleWatchlist={handleToggleWatchlist}
-          />
+          {!isGuest() && (
+            <Actions
+              isFavorite={isFavorite}
+              isInWatchlist={isInWatchlist}
+              handleToggleFavorite={handleToggleFavorite}
+              handleToggleWatchlist={handleToggleWatchlist}
+            />
+          )}
 
           {posterPath ? (
             <Image

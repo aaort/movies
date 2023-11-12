@@ -2,12 +2,14 @@ import { toggleFavorite, toggleWatchlist } from '@/app/_actions';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import isMovieFavorite from '@/lib/helpers/isMovieFavorite';
 import isMovieInWatchlist from '@/lib/helpers/isMovieInWatchlist';
+import type { Movie } from '@/types';
 import clsx from 'clsx';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMoviePlay } from 'react-icons/bi';
 import Actions from './sections/actions';
-import type { Movie } from '@/types';
+import isGuest from '@/lib/helpers/isGuest';
 
 type Props = React.ComponentProps<'li'> & {
   movie: Movie;
@@ -33,16 +35,20 @@ export default async function MovieCard(props: Props) {
     await toggleFavorite({ movieId: movie.id, media_type: 'movie', value });
   };
 
+  console.log(isGuest());
+
   return (
     <li className={clsx('grid-card group', className)} {...rest}>
       <Link href={`/movie/${movie.id}`} className='text-current'>
         <div className='grid-card-overlay'>
-          <Actions
-            isFavorite={isFavorite}
-            isInWatchlist={isInWatchlist}
-            handleToggleFavorite={handleToggleFavorite}
-            handleToggleWatchlist={handleToggleWatchlist}
-          />
+          {!isGuest() && (
+            <Actions
+              isFavorite={isFavorite}
+              isInWatchlist={isInWatchlist}
+              handleToggleFavorite={handleToggleFavorite}
+              handleToggleWatchlist={handleToggleWatchlist}
+            />
+          )}
 
           {posterPath ? (
             <Image
