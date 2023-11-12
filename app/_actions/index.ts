@@ -53,7 +53,7 @@ export const deleteSession = async () => {
 
     if (!session_id) return;
 
-    const response = await fetch(`${apiBaseUrl}authentication/session`, {
+    await fetch(`${apiBaseUrl}authentication/session`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${readApiToken}`,
@@ -62,10 +62,8 @@ export const deleteSession = async () => {
       body: JSON.stringify({ session_id }),
     });
 
-    if (response.ok) {
-      cookies().delete('session_id');
-      redirect(`${appUrl}login`);
-    }
+    cookies().delete('session_id');
+    redirect(`${appUrl}login`);
   } catch (e) {
     throw e;
   }
