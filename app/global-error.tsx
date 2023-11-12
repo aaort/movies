@@ -1,6 +1,7 @@
 'use client';
 
 import { Lato } from 'next/font/google';
+import { useEffect } from 'react';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -12,7 +13,11 @@ type Props = {
   reset: () => void;
 };
 
-export default function GlobalError({ reset }: Props) {
+export default function GlobalError({ error, reset }: Props) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <html lang='en'>
       <body className={lato.className}>
