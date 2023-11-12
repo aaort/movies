@@ -1,5 +1,5 @@
 import getGuestSessionId from '@/lib/auth/getGuestSessionId';
-import getExpirationDate from '@/lib/helpers/getSessionExpireDate';
+import getSessionExpireDate from '@/lib/helpers/getSessionExpireDate';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -10,14 +10,15 @@ export async function GET() {
 
   if (!guestSessionId) throw new Error('Unable to get guest session id ');
 
+  const res = NextResponse.redirect(`${appUrl}general`);
   cookies().set({
     name: 'session_id',
     value: guestSessionId,
     httpOnly: true,
-    secure: true,
-    expires: getExpirationDate(),
-    sameSite: 'strict',
+    secure: process.env.NODE_ENV !== 'development',
+    expires: getSessionExpireDate(),
+    sameSite: 'lax',
   });
 
-  return NextResponse.redirect(`${appUrl}general`);
+  return res;
 }
