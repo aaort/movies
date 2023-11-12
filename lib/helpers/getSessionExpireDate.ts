@@ -1,5 +1,5 @@
 export default function getExpirationDate(): number {
   const now = new Date();
-  now.setMonth(now.getMonth() + 1);
+  now.setHours(now.getHours() + 24);
   return now.getTime();
 }
