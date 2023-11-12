@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import FavoriteButton from '@/app/_components/FavoriteButton';
 import WatchlistButton from '@/app/_components/WatchlistButton';
@@ -14,6 +14,11 @@ type Props = {
 
 export default function Actions(props: Props) {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    // @ts-expect-error
+    setIsMobile(navigator.userAgentData.mobile);
+  }, []);
 
   const {
     isFavorite,
