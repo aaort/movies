@@ -53,6 +53,10 @@
   .button {
     @apply bg-primary-700 text-primary-100 hover:text-primary-100 rounded-md px-4 py-1.5 drop-shadow-xl text-center hover:rounded-sm duration-300;
   }
+
+  .drawer-toggle-button {
+    @apply text-primary-500/70 w-6 h-6 cursor-pointer hover:text-current duration-100;
+  }
 }
 
 @layer utilities {
