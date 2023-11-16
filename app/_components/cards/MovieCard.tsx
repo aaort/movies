@@ -35,8 +35,6 @@ export default async function MovieCard(props: Props) {
     await toggleFavorite({ movieId: movie.id, media_type: 'movie', value });
   };
 
-  console.log(isGuest());
-
   return (
     <li className={clsx('grid-card group', className)} {...rest}>
       <Link href={`/movie/${movie.id}`} className='text-current'>
