@@ -26,6 +26,7 @@ export default function Navbar(props: Props) {
         >
           Trending
         </button>
+
         <ul className='scale-y-0 duration-150 group-hover:scale-y-100 flex flex-col [&_a]:text-[1rem] gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
           <NavbarLink isActive={isActive('movies')} href='/trending/movies'>
             Movies
@@ -38,6 +39,7 @@ export default function Navbar(props: Props) {
           </NavbarLink>
         </ul>
       </div>
+
       <div className='relative inline-block group'>
         <button
           className={clsx('navbar-link after:hidden', {
@@ -46,6 +48,7 @@ export default function Navbar(props: Props) {
         >
           For You
         </button>
+
         <ul className='scale-y-0 duration-150 group-hover:scale-y-100 [&_a]:text-[1rem] flex flex-col gap-4 p-4 z-50 absolute bg-primary-50 border border-primary-300 rounded-md shadow-2xl'>
           <NavbarLink isActive={isActive('upcoming')} href='/upcoming'>
             Upcoming
@@ -58,6 +61,11 @@ export default function Navbar(props: Props) {
           </NavbarLink>
         </ul>
       </div>
+
+      <NavbarLink href='/credits' isActive={isActive('credits')}>
+        Credits
+      </NavbarLink>
+
       <li>
         <form action={deleteSession}>
           <button
