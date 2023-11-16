@@ -19,7 +19,7 @@ First, run the development server:
 ## Installation
 
 1. Clone the project.
-2. Install packages with command `yarn` or `npm install`.
+2. Install packages with command `yarn` or `yarn install`.
 3. Run command `yarn dev` to start a dev server or `yarn build` to create a production build.
 
 ## License
