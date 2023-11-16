@@ -6,6 +6,7 @@ export default function Footer() {
     <footer className='bg-primary-700 horizontal-p py-10 text-primary-100 [&_a]:text-primary-100 [&_a]:underline'>
       <div className='flex flex-wrap gap-2 justify-between items-center text-sm'>
         <span>© {new Date().getFullYear()} Artashes Sanoyan</span>
+
         <span>
           Maintained by{' '}
           <Link
@@ -15,6 +16,7 @@ export default function Footer() {
             aaort
           </Link>
         </span>
+
         <div className='flex gap-4 [&_svg]:h-6 [&_svg]:w-6'>
           <Link
             href='https://www.linkedin.com/in/artashes-sanoyan-b0a168258/'
@@ -22,6 +24,7 @@ export default function Footer() {
           >
             <AiOutlineLinkedin className='text-lg' />
           </Link>
+
           <Link
             href='https://github.com/aaort'
             className='hover:text-primary-100/40'
