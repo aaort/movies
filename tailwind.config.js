@@ -9,7 +9,14 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: { primary: colors.slate, red: colors.red, current: 'currentColor' },
+    colors: {
+      primary: colors.slate,
+      red: colors.red,
+      transparent: 'transparent',
+      current: 'currentColor',
+      'tmdb-blue': '#01b4e4',
+      'tmdb-green': '#90cea1',
+    },
     borderColor: { primary: colors.slate },
     extend: {
       fontSize: {
