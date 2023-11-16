@@ -14,7 +14,7 @@ export default async function GeneralPage() {
   return (
     <div className='space-y-10'>
       <section>
-        <div className='flex justify-between'>
+        <div className='flex justify-between items-start'>
           <h2 className='mb-8 text-xl'>Trending - Movies</h2>
           <Link href='/trending/movies' className='underline'>
             View all
@@ -34,7 +34,7 @@ export default async function GeneralPage() {
       </section>
 
       <section>
-        <div className='flex justify-between'>
+        <div className='flex justify-between items-start'>
           <h2 className='mb-8 text-xl'>Trending - TVs</h2>
           <Link href='/trending/tvs' className='underline'>
             View all
@@ -54,7 +54,7 @@ export default async function GeneralPage() {
       </section>
 
       <section>
-        <div className='flex justify-between'>
+        <div className='flex justify-between items-start'>
           <h2 className='mb-8 text-xl'>Trending - People</h2>
           <Link href='/trending/people' className='underline'>
             View all
