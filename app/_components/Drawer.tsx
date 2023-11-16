@@ -24,16 +24,11 @@ export default function Drawer({ children }: Props) {
   return (
     <>
       {isOpen ? (
-        <MdOutlineClose
-          className='text-primary-500/70 w-6 h-6 cursor-pointer'
-          onClick={toggle}
-        />
+        <MdOutlineClose className='drawer-toggle-button' onClick={toggle} />
       ) : (
-        <RxHamburgerMenu
-          className='text-primary-500/70 w-6 h-6 cursor-pointer'
-          onClick={toggle}
-        />
+        <RxHamburgerMenu className='drawer-toggle-button' onClick={toggle} />
       )}
+
       <div className={`absolute h-full duration-300 ${classes}`}>
         {children}
       </div>
