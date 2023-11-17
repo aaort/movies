@@ -2,6 +2,7 @@ import Back from '@/app/_components/Back';
 import ExternalLinks from '@/app/_components/ExternalLinks';
 import ReadMore from '@/app/_components/ReadMore';
 import get from '@/lib/api/get';
+import { API_KEY } from '@/lib/constants';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import type { Credits, MovieDetails, Video } from '@/types';
 import { Metadata } from 'next';
@@ -9,8 +10,6 @@ import Image from 'next/image';
 import TrailerPlayer from '../../_components/TrailerPlayer';
 import Cast from '../../sections/Cast';
 import Reviews from '../../sections/Reviews';
-
-const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
 type Props = {
   params: { movieId: string };
@@ -36,7 +35,7 @@ type ResponseType = MovieDetails & {
 
 export default async function MoviePage({ params: { movieId } }: Props) {
   const movie = await get<ResponseType>(
-    `movie/${movieId}?api_key=${apiKey}&append_to_response=videos,credits`
+    `movie/${movieId}?api_key=${API_KEY}&append_to_response=videos,credits`
   );
 
   if (!movie) {

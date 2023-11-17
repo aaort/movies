@@ -1,13 +1,11 @@
 import getRequestToken from '@/lib/auth/getRequestToken';
+import { APP_URL, BASE_URL } from '@/lib/constants';
 import Link from 'next/link';
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export default async function Login() {
   const requestToken = await getRequestToken();
 
-  const loginUrl = `${baseUrl}authenticate/${requestToken}?redirect_to=${appUrl}api/setSessionId`;
+  const loginUrl = `${BASE_URL}authenticate/${requestToken}?redirect_to=${APP_URL}api/setSessionId`;
 
   return (
     <section aria-label='auth-options-section'>

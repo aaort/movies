@@ -1,7 +1,6 @@
 import type { Account } from '@/types';
+import { API_READ_ACCESS_KEY } from '../constants';
 import get from './get';
-
-const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
 
 type Props = {
   movieId: number | string;
@@ -30,7 +29,7 @@ export default async function toggleMetedata({ sessionId, data }: Props) {
         cache: 'no-cache',
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${readApiKey}`,
+          Authorization: `Bearer ${API_READ_ACCESS_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),

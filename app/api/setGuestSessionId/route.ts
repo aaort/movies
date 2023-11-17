@@ -1,15 +1,14 @@
 import getGuestSessionId from '@/lib/auth/getGuestSessionId';
+import { APP_URL } from '@/lib/constants';
 import getSessionExpireDate from '@/lib/helpers/getSessionExpireDate';
 import { NextResponse } from 'next/server';
-
-const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export async function GET() {
   const guestSessionId = await getGuestSessionId();
 
   if (!guestSessionId) throw new Error('Unable to get guest session id ');
 
-  const res = NextResponse.redirect(`${appUrl}general`);
+  const res = NextResponse.redirect(`${APP_URL}general`);
   res.cookies.set({
     name: 'session_id',
     value: guestSessionId,

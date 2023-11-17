@@ -1,13 +1,12 @@
-const baseApiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-const readApiKey = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
+import { API_BASE_URL, API_READ_ACCESS_KEY } from '../constants';
 
 export default async function getGuestSessionId() {
-  const data = await fetch(`${baseApiUrl}authentication/guest_session/new`, {
+  const data = await fetch(`${API_BASE_URL}authentication/guest_session/new`, {
     cache: 'no-cache',
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
-      Authorization: `Bearer ${readApiKey}`,
+      Authorization: `Bearer ${API_READ_ACCESS_KEY}`,
     },
   });
 

@@ -1,11 +1,10 @@
-const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { API_BASE_URL, API_KEY } from '../constants';
 
 export default async function getSessionId(
   requestToken: string
 ): Promise<string> {
   const response = await fetch(
-    `${apiBaseUrl}authentication/session/new?api_key=${apiKey}&request_token=${requestToken}`,
+    `${API_BASE_URL}authentication/session/new?api_key=${API_KEY}&request_token=${requestToken}`,
     {
       cache: 'no-cache',
     }

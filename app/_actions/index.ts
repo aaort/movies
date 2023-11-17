@@ -1,6 +1,7 @@
 'use server';
 
 import toggleMetadata from '@/lib/api/toggleMetadata';
+import { API_BASE_URL, API_READ_ACCESS_KEY, APP_URL } from '@/lib/constants';
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
@@ -44,19 +45,15 @@ export const toggleWatchlist = async ({
 export const deleteSession = async () => {
   'use server';
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const readApiToken = process.env.NEXT_PUBLIC_API_READ_ACCESS_KEY;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-
   try {
     const session_id = cookies().get('session_id')?.value;
 
     if (!session_id) return;
 
-    await fetch(`${apiBaseUrl}authentication/session`, {
+    await fetch(`${API_BASE_URL}authentication/session`, {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${readApiToken}`,
+        Authorization: `Bearer ${API_READ_ACCESS_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ session_id }),
@@ -64,7 +61,7 @@ export const deleteSession = async () => {
 
     cookies().delete('session_id');
     cookies().delete('is_guest');
-    redirect(`${appUrl}login`);
+    redirect(`${APP_URL}login`);
   } catch (e) {
     throw e;
   }

@@ -1,7 +1,6 @@
 import getSessionId from '@/lib/auth/getSessionId';
+import { APP_URL } from '@/lib/constants';
 import { NextResponse, type NextRequest } from 'next/server';
-
-const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export async function GET(req: NextRequest) {
   const requestToken = req.nextUrl.searchParams.get('request_token');
@@ -9,7 +8,7 @@ export async function GET(req: NextRequest) {
   if (!requestToken) return undefined;
   const sessionId = await getSessionId(requestToken);
 
-  const res = NextResponse.redirect(`${appUrl}general`);
+  const res = NextResponse.redirect(`${APP_URL}general`);
   res.cookies.set({
     name: 'session_id',
     value: sessionId,
