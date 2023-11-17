@@ -1,5 +1,5 @@
 import Review from '@/app/(authenticated)/_components/Review';
-import { getReviews } from '@/app/(authenticated)/sections/Reviews';
+import { getReviews } from '@/app/(authenticated)/_sections/Reviews';
 import Back from '@/app/_components/Back';
 import { headers } from 'next/headers';
 

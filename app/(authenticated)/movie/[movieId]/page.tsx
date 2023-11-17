@@ -8,9 +8,9 @@ import type {
   MovieDetails as MovieDetailsType,
 } from '@/types';
 import { Metadata } from 'next';
+import Cast from '../../_sections/Cast';
 import MovieDetails from '../../_sections/MovieDetails';
-import Cast from '../../sections/Cast';
-import Reviews from '../../sections/Reviews';
+import Reviews from '../../_sections/Reviews';
 
 type Props = {
   params: { movieId: string };
@@ -120,15 +120,11 @@ export default async function MoviePage({ params: { movieId } }: Props) {
             </dl>
           </section>
 
-          <hr />
-
-          <section className='space-y-10'>
-            <h2>Reviews</h2>
-            <Reviews movieId={movieId} />
-          </section>
+          <Reviews movieId={movieId} />
 
           <section className='space-y-4'>
             <h2>External links</h2>
+            
             <ExternalLinks
               path={`movie/${movieId}/external_ids`}
               axis='horizontal'

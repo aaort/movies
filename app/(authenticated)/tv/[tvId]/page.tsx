@@ -1,16 +1,13 @@
 import Back from '@/app/_components/Back';
 import ExternalLinks from '@/app/_components/ExternalLinks';
-import ReadMore from '@/app/_components/ReadMore';
 import get from '@/lib/api/get';
 import generateImageUrlByFilename from '@/lib/generateImageUrlByFilename';
 import type { ResultType } from '@/lib/types';
 import type { TVDetails, Video } from '@/types';
 import { Metadata } from 'next';
-import Image from 'next/image';
-import TrailerPlayer from '../../_components/TrailerPlayer';
-import Cast from '../../sections/Cast';
-import Reviews from '../../sections/Reviews';
+import Cast from '../../_sections/Cast';
 import MovieDetails from '../../_sections/MovieDetails';
+import Reviews from '../../_sections/Reviews';
 
 type Props = {
   params: { tvId: string };
@@ -107,12 +104,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
             </dl>
           </section>
 
-          <div className='mt-10 space-y-10'>
-            <hr />
-
-            <h2 className='text-xl font-bold'>Reviews</h2>
-            <Reviews movieId={tvId} />
-          </div>
+          <Reviews tvId={tvId} />
         </div>
       </section>
     </>
