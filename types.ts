@@ -255,10 +255,16 @@ type Credits = {
   crew: CrewPerson[];
 };
 
+type ExtendedMovieDetails = MovieDetails & {
+  videos: { results: Video[] };
+  credits: Pick<Credits, 'cast' | 'crew'>;
+};
+
 export type {
   Account,
   CastPerson,
   Credits,
+  ExtendedMovieDetails,
   ExternalIds,
   Movie,
   MovieDetails,
