@@ -10,6 +10,7 @@ import Image from 'next/image';
 import TrailerPlayer from '../../_components/TrailerPlayer';
 import Cast from '../../sections/Cast';
 import Reviews from '../../sections/Reviews';
+import MovieDetails from '../../_sections/MovieDetails';
 
 type Props = {
   params: { tvId: string };
@@ -44,7 +45,10 @@ export default async function TVPage({ params: { tvId } }: Props) {
   };
 
   const trailer = videos?.find((video) => video.type === 'Trailer');
-  const creators = tv.created_by;
+  const creators = tv.created_by.map((person) => ({
+    name: person.name,
+    role: '',
+  }));
 
   return (
     <>
@@ -52,51 +56,16 @@ export default async function TVPage({ params: { tvId } }: Props) {
         <Back classes='text-primary-100 absolute left-2 top-2' title='TVs' />
       </aside>
       <section className='space-y-10 mb-10'>
-        <div
-          style={{ backgroundImage: `url(${imagePaths.backdrop})` }}
-          className='bg-center aspect-video bg-no-repeat bg-cover grid place-items-center text-primary-100'
-        >
-          <div className='w-full h-full flex justify-center items-center backdrop-brightness-[0.4] p-4 md:p-10'>
-            <div className='flex flex-col items-start sm:flex-row text-white gap-4 md:gap-8 lg:gap-16 mx-4 z-20'>
-              <div className='relative w-full min-w-[15vw] max-w-[30vw] aspect-[1/1.5] overflow-clip rounded-md drop-shadow-2xl'>
-                <Image
-                  alt='Movie poster'
-                  fill
-                  src={imagePaths.poster}
-                  priority
-                />
-              </div>
-              <div className='flex flex-col gap-10 justify-between p-2'>
-                <div className='flex flex-wrap flex-row justify-between'>
-                  <div className='space-y-8 w-full'>
-                    <div className='flex flex-wrap gap-y-2 justify-between items-center'>
-                      <h1>
-                        {tv.original_name}
-                        <span className='text-primary-200 text-sm ml-4 align-middle'>
-                          {tv.first_air_date}
-                        </span>
-                      </h1>
-                      {trailer && <TrailerPlayer videoKey={trailer?.key} />}
-                    </div>
-                    <p>{tv.tagline}</p>
-                  </div>
-                </div>
-
-                <dl className='space-y-4'>
-                  <dt className='text-xl text-primary-200'>Overview</dt>
-                  <dd className='text-lg'>
-                    <ReadMore>{tv.overview}</ReadMore>
-                  </dd>
-                </dl>
-
-                <dl>
-                  <dt>{`Creator${creators.length > 1 ? 's' : ''}`}</dt>
-                  <dd>{creators.map((creator) => creator.name).join(', ')}</dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
+        <MovieDetails
+          title={tv.original_name}
+          posterPath={imagePaths.poster}
+          backdropPath={imagePaths.backdrop}
+          releaseDate={tv.first_air_date}
+          trailerVideoKey={trailer?.key}
+          tagline={tv.tagline}
+          overview={tv.overview}
+          creators={creators}
+        />
 
         <div className='page-space-m'>
           <section className='flex flex-col md:flex-row gap-10 justify-between'>
