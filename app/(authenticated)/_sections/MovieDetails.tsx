@@ -14,13 +14,13 @@ type Props = Pick<MovieDetailsType, 'title' | 'tagline' | 'overview'> & {
 export default function MovieDetails(props: Props) {
   const {
     title,
-    overview,
     tagline,
-    releaseDate,
+    overview,
     creators,
-    trailerVideoKey,
     posterPath,
+    releaseDate,
     backdropPath,
+    trailerVideoKey,
   } = props;
 
   return (
