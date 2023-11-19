@@ -1,18 +1,18 @@
 import Review from '@/app/(authenticated)/_components/Review';
-import { getReviews } from '@/app/(authenticated)/_sections/Reviews';
+import { GetReviewsResultType } from '@/app/(authenticated)/_sections/Reviews';
 import Back from '@/app/_components/Back';
+import get from '@/lib/api/get';
 import { headers } from 'next/headers';
 
-type Props = {};
-
-export default async function ReviewsPage(props: Props) {
+export default async function ReviewsPage() {
   const headersList = headers();
   const movieId = headersList
     .get('x-invoke-path')
     ?.split('/')
     .filter(Boolean)[1]!;
 
-  const reviews = (await getReviews(movieId))?.results;
+  const reviews = (await get<GetReviewsResultType>(`movie/${movieId}/reviews`))
+    ?.results;
 
   return (
     <>

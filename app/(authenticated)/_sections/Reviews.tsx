@@ -8,14 +8,11 @@ type Props =
   | { movieId: string | number; tvId?: never }
   | { tvId: string | number; movieId?: never };
 
-type GetReviewsResultType =
-  | (ResultType<ReviewType> & {
-      id: number;
-      total_pages: number;
-      total_results: number;
-    })
-  | undefined
-  | null;
+export type GetReviewsResultType = ResultType<ReviewType> & {
+  id: number;
+  total_pages: number;
+  total_results: number;
+};
 
 export default async function Reviews({ movieId, tvId }: Props) {
   const url = (movieId ? `movie/${movieId}` : `tv/${tvId}`) + '/reviews';
