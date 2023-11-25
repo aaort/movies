@@ -1,7 +1,7 @@
 import ReadMore from '@/app/_components/ReadMore';
 import type { MovieDetails as MovieDetailsType, Video } from '@/types';
 import Image from 'next/image';
-import TrailerPlayer from '../_components/TrailerPlayer';
+import TrailerPlayer from '../../_components/TrailerPlayer';
 
 type Props = Pick<MovieDetailsType, 'title' | 'tagline' | 'overview'> & {
   posterPath: MovieDetailsType['poster_path'];

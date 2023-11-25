@@ -124,7 +124,7 @@ export default async function MoviePage({ params: { movieId } }: Props) {
 
           <section className='space-y-4'>
             <h2>External links</h2>
-            
+
             <ExternalLinks
               path={`movie/${movieId}/external_ids`}
               axis='horizontal'

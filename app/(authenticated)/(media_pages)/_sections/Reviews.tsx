@@ -2,7 +2,7 @@ import get from '@/lib/api/get';
 import type { ResultType } from '@/lib/types';
 import type { Review as ReviewType } from '@/types';
 import Link from 'next/link';
-import Review from '../_components/Review';
+import Review from '../../_components/Review';
 
 type Props =
   | { movieId: string | number; tvId?: never }
