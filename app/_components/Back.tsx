@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import { usePathname, useRouter } from 'next/navigation';
 import { BsArrowLeftShort } from 'react-icons/bs';
 
@@ -23,7 +24,7 @@ export default function Back({ to, classes, title }: Props) {
   };
 
   return (
-    <button className={`capitalize z-50 ${classes}`} onClick={handleBack}>
+    <button className={clsx('capitalize z-50', classes)} onClick={handleBack}>
       <div className='flex gap-2 items-center'>
         <BsArrowLeftShort className='w-6 h-6' /> <span>{_title}</span>
       </div>
