@@ -1,10 +1,10 @@
 import GridList from '@/app/_components/GridList';
-import Pagination from '@/app/_components/Pagination';
 import PersonCard from '@/app/_components/cards/PersonCard';
 import get from '@/lib/api/get';
 import { MAX_PAGE } from '@/lib/constants';
 import type { ResultType } from '@/lib/types';
 import type { Person } from '@/types';
+import Pagination from '../../_components/Pagination';
 
 type Props = {
   searchParams: { [key: string]: string | null | undefined };
