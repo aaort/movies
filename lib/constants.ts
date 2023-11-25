@@ -12,6 +12,21 @@ const API_KEY = process.env.apiKey!;
 const API_BASE_URL = process.env.apiBaseUrl!;
 const BASE_URL = process.env.baseUrl!;
 
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 export {
   API_BASE_URL,
   API_KEY,
@@ -19,6 +34,7 @@ export {
   APP_URL,
   BASE_URL,
   MAX_PAGE,
+  MONTHS,
   TMDB_API_DOCS_LINK,
   TMDB_LINK,
 };
