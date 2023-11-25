@@ -1,3 +1,5 @@
+import Count from '../_components/Count';
+
 type Props = {
   movieCount: number;
   tvCount: number;
@@ -9,20 +11,11 @@ export default function DataCounts(props: Props) {
 
   return (
     <div className='flex gap-4 bg-primary-200 px-4 py-2 rounded-md'>
-      <dl className='flex gap-1'>
-        <dt>Movies:</dt>
-        <dd className='text-primary-500'>{movieCount}</dd>
-      </dl>
+      <Count label='movies' count={movieCount} />
 
-      <dl className='flex gap-1'>
-        <dt>TVs:</dt>
-        <dd className='text-primary-500'>{tvCount}</dd>
-      </dl>
+      <Count label='tvs' count={tvCount} />
 
-      <dl className='flex gap-1'>
-        <dt>People:</dt>
-        <dd className='text-primary-500'>{peopleCount}</dd>
-      </dl>
+      <Count label='people' count={peopleCount} />
     </div>
   );
 }
