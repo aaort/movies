@@ -4,7 +4,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTransition } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
-// Copied from https://github.com/batuhanbilginn/search-nextjs13
 const Search = () => {
   const pathname = usePathname();
   const { replace } = useRouter();
