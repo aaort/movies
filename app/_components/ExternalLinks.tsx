@@ -16,10 +16,8 @@ type Props = {
   axis?: Axis;
 };
 
-export default async function ExternalLinks({
-  path,
-  axis = 'vertical',
-}: Props) {
+export default async function ExternalLinks(props: Props) {
+  const { path, axis = 'vertical' } = props;
   const externalIds = await get<ExternalIds>(path);
 
   // Remove "id" itself
