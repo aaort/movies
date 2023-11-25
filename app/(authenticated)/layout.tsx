@@ -1,4 +1,4 @@
-import Footer from '../_components/Footer';
+import Footer from '../_sections/Footer';
 
 type Props = React.PropsWithChildren & {};
 

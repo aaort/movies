@@ -1,5 +1,5 @@
-import Drawer from './Drawer';
-import Navbar from './Navbar';
+import Drawer from '../_components/Drawer';
+import Navbar from '../_components/Navbar';
 
 type Props = {
   leftComponent?: React.ReactNode;
