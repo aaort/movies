@@ -1,5 +1,5 @@
 import Review from '@/app/(authenticated)/_components/Review';
-import { GetReviewsResultType } from '@/app/(authenticated)/(media_pages)/_sections/Reviews';
+import { GetReviewsResultType } from '@/app/(authenticated)/(details)/_sections/Reviews';
 import Back from '@/app/_components/Back';
 import get from '@/lib/api/get';
 import { headers } from 'next/headers';
