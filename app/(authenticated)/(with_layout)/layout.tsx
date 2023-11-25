@@ -9,7 +9,6 @@ export default function Layout({ children }: Props) {
     <div className='relative overflow-x-hidden flex flex-col h-full justify-between'>
       <Header leftComponent={<SearchButton />} />
       <main className='page-space-m'>{children}</main>
-      <footer></footer>
     </div>
   );
 }
