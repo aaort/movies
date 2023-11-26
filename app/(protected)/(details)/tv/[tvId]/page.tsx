@@ -13,9 +13,8 @@ type Props = {
   params: { tvId: string };
 };
 
-export async function generateMetadata({
-  params: { tvId },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { tvId } = props.params;
   const movie = await get<TVDetails>(`tv/${tvId}`);
 
   return {
@@ -28,7 +27,8 @@ export async function generateMetadata({
 
 export const dynamicParams = true;
 
-export default async function TVPage({ params: { tvId } }: Props) {
+export default async function TVPage(props: Props) {
+  const { tvId } = props.params;
   const tv = await get<TVDetails>(`tv/${tvId}`);
   const videos = (await get<ResultType<Video>>(`tv/${tvId}/videos`))?.results;
 
@@ -52,6 +52,7 @@ export default async function TVPage({ params: { tvId } }: Props) {
       <aside>
         <Back classes='text-primary-100 absolute left-2 top-2' title='TVs' />
       </aside>
+
       <section className='space-y-10 mb-10'>
         <MovieDetails
           title={tv.original_name}

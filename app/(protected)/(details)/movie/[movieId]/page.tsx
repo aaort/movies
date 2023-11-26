@@ -16,9 +16,8 @@ type Props = {
   params: { movieId: string };
 };
 
-export async function generateMetadata({
-  params: { movieId },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { movieId } = props.params;
   const movie = await get<MovieDetailsType>(`movie/${movieId}`);
 
   return {
@@ -29,7 +28,8 @@ export async function generateMetadata({
 
 export const dynamicParams = true;
 
-export default async function MoviePage({ params: { movieId } }: Props) {
+export default async function MoviePage(props: Props) {
+  const { movieId } = props.params;
   const movie = await get<ExtendedMovieDetails>(
     `movie/${movieId}?api_key=${API_KEY}&append_to_response=videos,credits`
   );

@@ -14,9 +14,8 @@ type Props = {
   params: { personId: string };
 };
 
-export async function generateMetadata({
-  params: { personId },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { personId } = props.params;
   const person = await get<PersonDetails>(`person/${personId}`);
 
   return {
@@ -27,7 +26,8 @@ export async function generateMetadata({
 
 export const dynamicParams = true;
 
-export default async function PersonPage({ params: { personId } }: Props) {
+export default async function PersonPage(props: Props) {
+  const { personId } = props.params;
   const person = await get<PersonDetails>(`person/${personId}`);
 
   if (!person) {
