@@ -24,9 +24,13 @@ export default function Back({ to, classes, title }: Props) {
   };
 
   return (
-    <button className={clsx('capitalize z-50', classes)} onClick={handleBack}>
-      <div className='flex gap-2 items-center'>
-        <BsArrowLeftShort className='w-6 h-6' /> <span>{_title}</span>
+    <button
+      className={clsx('capitalize z-50 group', classes)}
+      onClick={handleBack}
+    >
+      <div className='flex items-center'>
+        <BsArrowLeftShort className='w-6 h-6 duration-300 group-hover:-translate-x-1' />{' '}
+        <span>{_title}</span>
       </div>
     </button>
   );
