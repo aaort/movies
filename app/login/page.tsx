@@ -11,9 +11,7 @@ export default async function Login() {
     <section aria-label='auth-options-section'>
       <div className='flex flex-col gap-10 mx-4 absolute top-[50%] md:left-[50%] translate-y-[-50%] md:translate-x-[-50%] shadow-lg shadow-gray-200/40 border-primary-100 border-[1px] rounded-xl p-10'>
         <section className='mx-auto text-center space-y-4'>
-          <b>
-            <h1>Movies</h1>
-          </b>
+          <h1 className='font-bold'>Movies</h1>
 
           <p>
             Login to your{' '}
@@ -22,21 +20,16 @@ export default async function Login() {
             </Link>{' '}
             account (or create one) to access the full range of capabilities of
             the website
-          </p>
-
-          <p>
-            <strong>OR</strong>
-          </p>
-
-          <p>
+            <p>
+              <strong>OR</strong>
+            </p>
             Login as a guest to quickly view what is going on in the cinema
             world
-            <span className='italic'>
-              {' '}
+            <i>
               {
-                "(Guest users will have limited access to the website's capabilities)"
+                " (Guest users will have limited access to the website's capabilities)"
               }
-            </span>
+            </i>
           </p>
         </section>
 
