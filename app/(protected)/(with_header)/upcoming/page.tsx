@@ -1,5 +1,5 @@
 import GridList from '@/app/_components/GridList';
-import Pagination from '@/app/(authenticated)/(with_header)/_components/Pagination';
+import Pagination from '@/app/(protected)/(with_header)/_components/Pagination';
 import MovieCard from '@/app/_components/cards/MovieCard';
 import get from '@/lib/api/get';
 import type { ResultType } from '@/lib/types';
