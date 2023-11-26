@@ -11,6 +11,7 @@ import { Metadata } from 'next';
 import Cast from '../../_sections/Cast';
 import MovieDetails from '../../_sections/MovieDetails';
 import Reviews from '../../_sections/Reviews';
+import Stats from '../../_sections/Stats';
 
 type Props = {
   params: { movieId: string };
@@ -81,44 +82,14 @@ export default async function MoviePage(props: Props) {
             </div>
           </section>
 
-          <section className='space-y-10'>
-            <h2 className='mb-4 inline-block'>General information</h2>
-            <dl className='flex flex-wrap gap-[10%] gap-y-1 justify-between'>
-              <div className='space-y-2'>
-                <dt>Status</dt>
-                <dd className='text-primary-500 text-sm'>{movie.status}</dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Original Language</dt>
-                <dd className='text-primary-500 text-sm'>
-                  {movie.original_language}
-                </dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Genres</dt>
-                <dd className='text-primary-500 text-sm'>
-                  <ul className='space-y-2'>
-                    {movie.genres.map((genre) => (
-                      <li key={genre.id}>{genre.name}</li>
-                    ))}
-                  </ul>
-                </dd>
-              </div>
-
-              <div className='space-y-2'>
-                <dt>Popularity</dt>
-                <dd className='text-primary-500 text-sm'>{movie.popularity}</dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Budget</dt>
-                <dd className='text-primary-500 text-sm'>{movie.budget}</dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Revenue</dt>
-                <dd className='text-primary-500 text-sm'>{movie.revenue}</dd>
-              </div>
-            </dl>
-          </section>
+          <Stats
+            status={movie.status}
+            budget={movie.budget}
+            genres={movie.genres}
+            revenue={movie.budget}
+            popularity={movie.popularity}
+            originalLanguage={movie.original_language}
+          />
 
           <Reviews movieId={movieId} />
 

@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import Cast from '../../_sections/Cast';
 import MovieDetails from '../../_sections/MovieDetails';
 import Reviews from '../../_sections/Reviews';
+import Stats from '../../_sections/Stats';
 
 type Props = {
   params: { tvId: string };
@@ -76,34 +77,12 @@ export default async function TVPage(props: Props) {
             </aside>
           </section>
 
-          <section>
-            <dl className='flex flex-wrap gap-[10%] gap-y-10 '>
-              <div className='space-y-2'>
-                <dt>Status</dt>
-                <dd className='text-primary-500 text-sm'>{tv.status}</dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Original Language</dt>
-                <dd className='text-primary-500 text-sm'>
-                  {tv.original_language}
-                </dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Genres</dt>
-                <dd className='text-primary-500 text-sm'>
-                  <ul className='space-y-2'>
-                    {tv.genres.map((genre) => (
-                      <li key={genre.id}>{genre.name}</li>
-                    ))}
-                  </ul>
-                </dd>
-              </div>
-              <div className='space-y-2'>
-                <dt>Popularity</dt>
-                <dd className='text-primary-500 text-sm'>{tv.popularity}</dd>
-              </div>
-            </dl>
-          </section>
+          <Stats
+            status={tv.status}
+            genres={tv.genres}
+            popularity={tv.popularity}
+            originalLanguage={tv.original_language}
+          />
 
           <Reviews tvId={tvId} />
         </div>
